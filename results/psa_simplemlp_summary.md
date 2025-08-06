@@ -547,44 +547,44 @@ Results Shape {1*1} Parameters {805}
 * Output: Mean=21.42% | Std=2.74% | Min=13.90% | Max=23.82% (n=10)
 
 Results Shape {632*4} Parameters {15810}
-* None: FAILED_OR_INCOMPLETE
-* Decay: FAILED_OR_INCOMPLETE
-* Dropout: FAILED_OR_INCOMPLETE
-* Full: FAILED_OR_INCOMPLETE
-* Hidden: FAILED_OR_INCOMPLETE
-* Output: FAILED_OR_INCOMPLETE
+* None: Mean=9.92% | Std=0.55% | Min=8.65% | Max=11.02% (n=10)
+* Decay: Mean=10.03% | Std=0.36% | Min=9.72% | Max=11.02% (n=10)
+* Dropout: Mean=10.45% | Std=0.54% | Min=9.72% | Max=11.02% (n=10)
+* Full: Mean=9.93% | Std=0.63% | Min=8.65% | Max=11.02% (n=10)
+* Hidden: Mean=10.13% | Std=0.54% | Min=9.72% | Max=11.02% (n=10)
+* Output: Mean=10.29% | Std=0.72% | Min=8.65% | Max=11.02% (n=10)
 
 Results Shape {425*4} Parameters {11670}
-* None: FAILED_OR_INCOMPLETE
-* Decay: FAILED_OR_INCOMPLETE
-* Dropout: FAILED_OR_INCOMPLETE
-* Full: FAILED_OR_INCOMPLETE
-* Hidden: FAILED_OR_INCOMPLETE
-* Output: FAILED_OR_INCOMPLETE
+* None: Mean=10.54% | Std=0.51% | Min=9.72% | Max=11.02% (n=10)
+* Decay: Mean=9.93% | Std=0.63% | Min=8.65% | Max=11.02% (n=10)
+* Dropout: Mean=9.97% | Std=0.34% | Min=9.72% | Max=10.92% (n=10)
+* Full: Mean=10.29% | Std=0.77% | Min=8.65% | Max=11.02% (n=10)
+* Hidden: Mean=10.31% | Std=0.53% | Min=9.72% | Max=11.02% (n=10)
+* Output: Mean=10.41% | Std=0.45% | Min=9.72% | Max=11.02% (n=10)
 
 Results Shape {280*4} Parameters {8770}
-* None: FAILED_OR_INCOMPLETE
-* Decay: FAILED_OR_INCOMPLETE
-* Dropout: FAILED_OR_INCOMPLETE
-* Full: FAILED_OR_INCOMPLETE
-* Hidden: FAILED_OR_INCOMPLETE
-* Output: FAILED_OR_INCOMPLETE
+* None: Mean=9.96% | Std=0.35% | Min=9.73% | Max=10.92% (n=10)
+* Decay: Mean=9.99% | Std=0.62% | Min=8.65% | Max=10.92% (n=10)
+* Dropout: Mean=9.96% | Std=0.15% | Min=9.73% | Max=10.12% (n=10)
+* Full: Mean=10.19% | Std=0.44% | Min=9.72% | Max=11.02% (n=10)
+* Hidden: Mean=9.89% | Std=0.53% | Min=8.65% | Max=10.92% (n=10)
+* Output: Mean=10.44% | Std=0.41% | Min=10.09% | Max=11.02% (n=10)
 
 Results Shape {185*4} Parameters {6870}
-* None: FAILED_OR_INCOMPLETE
-* Decay: FAILED_OR_INCOMPLETE
-* Dropout: FAILED_OR_INCOMPLETE
-* Full: FAILED_OR_INCOMPLETE
-* Hidden: FAILED_OR_INCOMPLETE
-* Output: FAILED_OR_INCOMPLETE
+* None: Mean=9.82% | Std=0.76% | Min=8.65% | Max=11.02% (n=10)
+* Decay: Mean=10.02% | Std=0.61% | Min=8.65% | Max=10.92% (n=10)
+* Dropout: Mean=9.98% | Std=0.82% | Min=8.65% | Max=11.02% (n=10)
+* Full: Mean=9.85% | Std=0.68% | Min=8.65% | Max=11.02% (n=10)
+* Hidden: Mean=10.10% | Std=0.34% | Min=9.73% | Max=11.02% (n=10)
+* Output: Mean=10.39% | Std=0.49% | Min=9.73% | Max=11.02% (n=10)
 
 Results Shape {119*4} Parameters {5550}
-* None: FAILED_OR_INCOMPLETE
-* Decay: FAILED_OR_INCOMPLETE
-* Dropout: FAILED_OR_INCOMPLETE
-* Full: FAILED_OR_INCOMPLETE
-* Hidden: FAILED_OR_INCOMPLETE
-* Output: FAILED_OR_INCOMPLETE
+* None: Mean=10.35% | Std=0.52% | Min=9.73% | Max=11.02% (n=10)
+* Decay: Mean=10.09% | Std=0.87% | Min=8.65% | Max=11.02% (n=10)
+* Dropout: Mean=9.75% | Std=0.83% | Min=8.65% | Max=11.02% (n=10)
+* Full: Mean=10.30% | Std=0.56% | Min=9.72% | Max=11.02% (n=10)
+* Hidden: Mean=10.02% | Std=0.34% | Min=9.72% | Max=10.92% (n=10)
+* Output: Mean=10.73% | Std=0.41% | Min=10.09% | Max=11.02% (n=10)
 
 Results Shape {76*4} Parameters {4690}
 * None: Mean=9.93% | Std=0.61% | Min=8.65% | Max=10.92% (n=10)
@@ -619,44 +619,44 @@ Results Shape {17*4} Parameters {3510}
 * Output: Mean=10.42% | Std=0.45% | Min=9.84% | Max=11.02% (n=10)
 
 Results Shape {939*2} Parameters {7228}
-* None: FAILED_OR_INCOMPLETE
-* Decay: FAILED_OR_INCOMPLETE
-* Dropout: FAILED_OR_INCOMPLETE
-* Full: FAILED_OR_INCOMPLETE
-* Hidden: FAILED_OR_INCOMPLETE
-* Output: FAILED_OR_INCOMPLETE
+* None: Mean=10.15% | Std=0.74% | Min=8.65% | Max=11.02% (n=10)
+* Decay: Mean=10.12% | Std=0.44% | Min=9.72% | Max=11.02% (n=10)
+* Dropout: Mean=10.09% | Std=0.68% | Min=8.65% | Max=11.02% (n=10)
+* Full: Mean=10.14% | Std=0.46% | Min=9.73% | Max=11.02% (n=10)
+* Hidden: Mean=9.81% | Std=0.41% | Min=8.65% | Max=10.12% (n=10)
+* Output: Mean=10.64% | Std=0.43% | Min=10.10% | Max=11.02% (n=10)
 
 Results Shape {588*2} Parameters {5122}
-* None: FAILED_OR_INCOMPLETE
-* Decay: FAILED_OR_INCOMPLETE
-* Dropout: FAILED_OR_INCOMPLETE
-* Full: FAILED_OR_INCOMPLETE
-* Hidden: FAILED_OR_INCOMPLETE
-* Output: FAILED_OR_INCOMPLETE
+* None: Mean=10.13% | Std=0.44% | Min=9.73% | Max=11.02% (n=10)
+* Decay: Mean=10.24% | Std=0.74% | Min=8.65% | Max=11.02% (n=10)
+* Dropout: Mean=10.19% | Std=0.38% | Min=9.84% | Max=10.92% (n=10)
+* Full: Mean=10.07% | Std=0.45% | Min=9.72% | Max=10.92% (n=10)
+* Hidden: Mean=10.20% | Std=0.73% | Min=8.65% | Max=11.02% (n=10)
+* Output: Mean=10.72% | Std=0.40% | Min=10.10% | Max=11.02% (n=10)
 
 Results Shape {354*2} Parameters {3718}
-* None: FAILED_OR_INCOMPLETE
-* Decay: FAILED_OR_INCOMPLETE
-* Dropout: FAILED_OR_INCOMPLETE
-* Full: FAILED_OR_INCOMPLETE
-* Hidden: FAILED_OR_INCOMPLETE
-* Output: FAILED_OR_INCOMPLETE
+* None: Mean=10.10% | Std=0.30% | Min=9.81% | Max=10.92% (n=10)
+* Decay: Mean=9.63% | Std=0.89% | Min=8.65% | Max=11.02% (n=10)
+* Dropout: Mean=9.83% | Std=0.42% | Min=8.65% | Max=10.12% (n=10)
+* Full: Mean=10.20% | Std=0.41% | Min=9.72% | Max=11.02% (n=10)
+* Hidden: Mean=10.23% | Std=0.52% | Min=9.72% | Max=11.02% (n=10)
+* Output: Mean=10.60% | Std=0.48% | Min=9.81% | Max=11.02% (n=10)
 
 Results Shape {214*2} Parameters {2878}
-* None: FAILED_OR_INCOMPLETE
-* Decay: FAILED_OR_INCOMPLETE
-* Dropout: FAILED_OR_INCOMPLETE
-* Full: FAILED_OR_INCOMPLETE
-* Hidden: FAILED_OR_INCOMPLETE
-* Output: FAILED_OR_INCOMPLETE
+* None: Mean=9.59% | Std=0.62% | Min=8.65% | Max=10.12% (n=10)
+* Decay: Mean=10.07% | Std=0.69% | Min=8.65% | Max=11.02% (n=10)
+* Dropout: Mean=10.30% | Std=0.78% | Min=8.65% | Max=11.02% (n=10)
+* Full: Mean=9.98% | Std=0.84% | Min=8.65% | Max=11.02% (n=10)
+* Hidden: Mean=10.03% | Std=0.37% | Min=9.72% | Max=11.02% (n=10)
+* Output: Mean=10.54% | Std=0.44% | Min=10.09% | Max=11.02% (n=10)
 
 Results Shape {115*2} Parameters {2284}
-* None: FAILED_OR_INCOMPLETE
-* Decay: FAILED_OR_INCOMPLETE
-* Dropout: FAILED_OR_INCOMPLETE
-* Full: FAILED_OR_INCOMPLETE
-* Hidden: FAILED_OR_INCOMPLETE
-* Output: FAILED_OR_INCOMPLETE
+* None: Mean=10.00% | Std=0.65% | Min=8.65% | Max=11.02% (n=10)
+* Decay: Mean=10.02% | Std=0.88% | Min=8.65% | Max=11.02% (n=10)
+* Dropout: Mean=10.13% | Std=0.43% | Min=9.72% | Max=10.92% (n=10)
+* Full: Mean=10.23% | Std=0.50% | Min=9.72% | Max=11.02% (n=10)
+* Hidden: Mean=9.71% | Std=0.65% | Min=8.65% | Max=11.02% (n=10)
+* Output: Mean=10.39% | Std=0.53% | Min=9.81% | Max=11.02% (n=10)
 
 Results Shape {59*2} Parameters {1948}
 * None: Mean=9.92% | Std=0.75% | Min=8.65% | Max=11.02% (n=10)
@@ -699,44 +699,44 @@ Results Shape {4*2} Parameters {1618}
 * Output: Mean=14.68% | Std=5.87% | Min=9.84% | Max=25.24% (n=10)
 
 Results Shape {2048*1} Parameters {4899}
-* None: FAILED_OR_INCOMPLETE
-* Decay: FAILED_OR_INCOMPLETE
+* None: Mean=9.87% | Std=0.53% | Min=8.65% | Max=10.92% (n=10)
+* Decay: Mean=10.03% | Std=0.63% | Min=8.65% | Max=11.02% (n=10)
 * Dropout: FAILED_OR_INCOMPLETE
-* Full: FAILED_OR_INCOMPLETE
-* Hidden: FAILED_OR_INCOMPLETE
-* Output: FAILED_OR_INCOMPLETE
+* Full: Mean=9.83% | Std=0.66% | Min=8.65% | Max=10.92% (n=10)
+* Hidden: Mean=9.98% | Std=0.81% | Min=8.65% | Max=11.02% (n=10)
+* Output: Mean=10.57% | Std=0.50% | Min=9.81% | Max=11.02% (n=10)
 
 Results Shape {1024*1} Parameters {2851}
-* None: FAILED_OR_INCOMPLETE
-* Decay: FAILED_OR_INCOMPLETE
-* Dropout: FAILED_OR_INCOMPLETE
-* Full: FAILED_OR_INCOMPLETE
-* Hidden: FAILED_OR_INCOMPLETE
-* Output: FAILED_OR_INCOMPLETE
+* None: Mean=9.86% | Std=0.55% | Min=8.65% | Max=11.02% (n=10)
+* Decay: Mean=10.14% | Std=0.87% | Min=8.65% | Max=11.02% (n=10)
+* Dropout: Mean=9.99% | Std=0.34% | Min=9.72% | Max=10.92% (n=10)
+* Full: Mean=10.22% | Std=0.50% | Min=9.81% | Max=11.02% (n=10)
+* Hidden: Mean=10.18% | Std=0.50% | Min=9.72% | Max=10.92% (n=10)
+* Output: Mean=10.47% | Std=0.51% | Min=9.72% | Max=11.02% (n=10)
 
 Results Shape {512*1} Parameters {1827}
-* None: FAILED_OR_INCOMPLETE
-* Decay: FAILED_OR_INCOMPLETE
-* Dropout: FAILED_OR_INCOMPLETE
-* Full: FAILED_OR_INCOMPLETE
-* Hidden: FAILED_OR_INCOMPLETE
-* Output: FAILED_OR_INCOMPLETE
+* None: Mean=10.08% | Std=0.67% | Min=8.65% | Max=10.92% (n=10)
+* Decay: Mean=9.66% | Std=0.52% | Min=8.65% | Max=10.10% (n=10)
+* Dropout: Mean=10.11% | Std=0.71% | Min=8.65% | Max=11.02% (n=10)
+* Full: Mean=10.14% | Std=0.68% | Min=8.65% | Max=11.02% (n=10)
+* Hidden: Mean=9.97% | Std=0.61% | Min=8.65% | Max=10.92% (n=10)
+* Output: Mean=10.49% | Std=0.52% | Min=9.72% | Max=11.02% (n=10)
 
 Results Shape {256*1} Parameters {1315}
-* None: FAILED_OR_INCOMPLETE
-* Decay: FAILED_OR_INCOMPLETE
-* Dropout: FAILED_OR_INCOMPLETE
-* Full: FAILED_OR_INCOMPLETE
-* Hidden: FAILED_OR_INCOMPLETE
-* Output: FAILED_OR_INCOMPLETE
+* None: Mean=10.04% | Std=0.62% | Min=8.65% | Max=11.02% (n=10)
+* Decay: Mean=10.00% | Std=0.63% | Min=8.65% | Max=11.02% (n=10)
+* Dropout: Mean=10.09% | Std=0.69% | Min=8.65% | Max=11.02% (n=10)
+* Full: Mean=10.16% | Std=0.41% | Min=9.72% | Max=10.92% (n=10)
+* Hidden: Mean=10.02% | Std=0.63% | Min=8.65% | Max=11.02% (n=10)
+* Output: Mean=10.59% | Std=0.45% | Min=9.84% | Max=11.02% (n=10)
 
 Results Shape {128*1} Parameters {1059}
-* None: FAILED_OR_INCOMPLETE
-* Decay: FAILED_OR_INCOMPLETE
-* Dropout: FAILED_OR_INCOMPLETE
-* Full: FAILED_OR_INCOMPLETE
-* Hidden: FAILED_OR_INCOMPLETE
-* Output: FAILED_OR_INCOMPLETE
+* None: Mean=10.17% | Std=0.53% | Min=9.72% | Max=11.02% (n=10)
+* Decay: Mean=9.91% | Std=0.53% | Min=8.65% | Max=10.92% (n=10)
+* Dropout: Mean=10.19% | Std=0.44% | Min=9.72% | Max=11.02% (n=10)
+* Full: Mean=9.65% | Std=0.52% | Min=8.65% | Max=10.12% (n=10)
+* Hidden: Mean=10.18% | Std=0.44% | Min=9.72% | Max=11.02% (n=10)
+* Output: Mean=10.59% | Std=0.46% | Min=9.84% | Max=11.02% (n=10)
 
 Results Shape {64*1} Parameters {931}
 * None: Mean=9.70% | Std=0.38% | Min=8.65% | Max=10.12% (n=10)

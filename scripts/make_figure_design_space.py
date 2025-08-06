@@ -62,8 +62,27 @@ def generate_design_space_plot(architectures, output_file):
     # Grid lines for easier reading
     ax.grid(True, which="both", linestyle='--', alpha=0.5)
     
-    # Add rectangles and labels
+    # Separate architectures by type for proper layering
+    non_squares = []
+    squares = []
+    
     for depth, width in architectures:
+        if depth == width:
+            squares.append((depth, width))
+        else:
+            non_squares.append((depth, width))
+    
+    # Plot non-squares first (so they appear behind)
+    for depth, width in non_squares:
+        rect = patches.Rectangle((1, 1), depth, width, linewidth=1,
+                                 edgecolor='blue', facecolor='cyan', alpha=0.3)
+        ax.add_patch(rect)
+        # Annotate each rectangle
+        ax.text(depth * 1.1, width * 1.1, f'{depth}×{width}', fontsize=8, 
+                verticalalignment='bottom')
+    
+    # Plot squares last (so they appear on top)
+    for depth, width in squares:
         rect = patches.Rectangle((1, 1), depth, width, linewidth=1,
                                  edgecolor='blue', facecolor='cyan', alpha=0.3)
         ax.add_patch(rect)

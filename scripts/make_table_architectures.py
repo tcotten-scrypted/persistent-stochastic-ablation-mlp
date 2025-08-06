@@ -44,14 +44,13 @@ def main():
     N_in = 784  # MNIST input
     N_out = 10  # MNIST output
 
-    # Asymmetric configurations (from the paper)
-    asymmetric_configs = [
-        "939*2", "588*2", "354*2", "214*2", "115*2",
-        "59*2", "30*2", "16*2", "8*2", "4*2",
-        "2048*1", "1024*1", "512*1", "256*1", "128*1",
-        "64*1", "32*1", "16*1", "8*1", "4*1",
-        "2*1", "1*2", "3*3", "2*2", "1*1", "5*5", "6*6", "7*7"
-    ]
+    # Import asymmetric configurations from utility
+    import sys
+    from pathlib import Path
+    sys.path.append(str(Path(__file__).parent))
+    from get_asymmetric_models import get_asymmetric_models
+    
+    asymmetric_configs = get_asymmetric_models()
 
     # Generate LaTeX table
     print("\\begin{table}[ht]")
