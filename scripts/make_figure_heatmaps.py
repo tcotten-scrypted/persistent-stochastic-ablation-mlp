@@ -23,7 +23,7 @@ import math
 from collections import defaultdict
 import sys
 sys.path.append(str(Path(__file__).parent))
-from regime_classifier import get_regime_from_data
+from regime_classifier import classify_regime
 
 # Color constants for consistent visualization
 COLORS = {
@@ -805,7 +805,7 @@ def plot_regimes(architectures: list, metrics: dict, output_file: Path):
     # Regime colors
     regime_colors = {
         'beneficial-regularization': '#4CAF50',  # Green
-        'at-capacity': '#E53935',      # Red
+        'optimally-sized': '#E53935',      # Red
         'chaotic-optimization': '#1565C0',          # Blue
         'untrainable': '#212121',      # Black
         'unknown': '#A1887F'           # Brown for unknown
@@ -813,7 +813,7 @@ def plot_regimes(architectures: list, metrics: dict, output_file: Path):
     
     regime_labels = {
         'beneficial-regularization': 'I. Beneficial Regularization',
-        'at-capacity': 'II. At-Capacity',
+        'optimally-sized': 'II. Optimally Sized',
         'chaotic-optimization': 'III. Chaotic Optimization',
         'untrainable': 'IV. Untrainable',
         'unknown': 'Unknown'
@@ -823,11 +823,11 @@ def plot_regimes(architectures: list, metrics: dict, output_file: Path):
     regimes = []
     for depth, width in zip(depths, widths):
         arch_key = f"{depth}x{width}"
-        regime = get_regime_from_data(arch_key, metrics)
+        regime = classify_regime(arch_key, metrics)
         regimes.append(regime)
     
     # Plot each regime with appropriate color
-    for regime_name in ['beneficial-regularization', 'at-capacity', 'chaotic-optimization', 'untrainable']:
+    for regime_name in ['beneficial-regularization', 'optimally-sized', 'chaotic-optimization', 'untrainable', 'unknown']:
         mask = [r == regime_name for r in regimes]
         if any(mask):
             regime_depths = [d for d, m in zip(depths, mask) if m]

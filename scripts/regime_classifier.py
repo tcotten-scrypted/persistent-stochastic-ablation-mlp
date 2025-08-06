@@ -4,12 +4,14 @@ Regime Classifier Module for SimpleMLP PSA Analysis
 
 This module provides a clean interface for determining the training regime
 of any SimpleMLP configuration based on Persistent Stochastic Ablation (PSA) trial data.
+This version uses rule-based classification based on the performance patterns
+observed in the comprehensive trial data.
 
 Regimes:
-- Untrainable: All 6 modes <= 11.35% accuracy
-- Chaotic Optimization: Baselines ineffective (<= 11.35%) but ablative modes show results > 11.35%
-- Over-parameterized: Parameter count > 500,000
-- At-capacity: Well-sized models (10,000 <= parameter count <= 500,000)
+- Untrainable: Vanishing Gradient Problem - no mode exceeds 11.35% accuracy
+- Chaotic Optimization: Baseline modes are ineffective (<= 11.35%), but at least one ablative mode shows significant learning (> 11.35%).
+- Beneficial Regularization: High-performing models where traditional regularizers (Dropout, Decay) often outperform the baseline, and the performance gap between the best and worst modes is relatively small.
+- Optimally Sized: High-performing models where the baseline ('none') is consistently the best performer, and any intervention (regularization or ablation) is detrimental.
 
 Author: Tim Cotten @cottenio <tcotten@scrypted.ai, tcotten2@gmu.edu>
 """
@@ -94,7 +96,7 @@ def calculate_summary_metrics(trial_results: Dict[str, List[Dict]]) -> Dict[str,
         # Calculate metrics for each mode
         mode_metrics = {}
         for mode in ['none', 'decay', 'dropout', 'full', 'hidden', 'output']:
-            if mode in trials[0]:  # Check if mode exists in first trial
+            if mode in trials[0]:
                 values = [trial[mode] for trial in trials if mode in trial and trial[mode] is not None]
                 if values:
                     mode_metrics[mode] = {
@@ -121,122 +123,170 @@ def calculate_parameter_count(depth: int, width: int) -> int:
     Returns:
         Total parameter count
     """
-    input_size = 784  # MNIST flattened
-    output_size = 10  # MNIST digits
+    input_size = 784
+    output_size = 10
     
-    if depth == 0:  # No hidden layers
-        return input_size * output_size + output_size  # weights + bias
+    if depth == 0:
+        return input_size * output_size + output_size
     else:
-        # Input to first hidden layer
-        param_count = input_size * width + width  # weights + bias
-        # Hidden to hidden layers
-        for _ in range(depth - 1):
-            param_count += width * width + width  # weights + bias
-        # Last hidden to output
-        param_count += width * output_size + output_size  # weights + bias
-        
+        param_count = input_size * width + width
+        param_count += (depth - 1) * (width * width + width)
+        param_count += width * output_size + output_size
         return param_count
 
 
 def classify_regime(arch_key: str, metrics: Dict[str, Dict]) -> str:
     """
-    Classifies the training regime of an architecture based on its metrics.
+    Classifies the training regime of an architecture based on its performance metrics.
+    This version uses rule-based logic derived from empirical data patterns.
     
     Args:
-        arch_key: Architecture key (e.g., "1x2048")
-        metrics: Summary metrics for the architecture
+        arch_key: Architecture key (e.g., "1x2048").
+        metrics: Summary metrics for the architecture.
         
     Returns:
-        Regime classification: 'untrainable', 'chaotic-optimization', 'beneficial-regularization', or 'at-capacity'
+        Regime classification string.
     """
     if arch_key not in metrics:
-        return 'unknown'
+        return 'Unknown'
     
     m = metrics[arch_key]
     
-    # Check if architecture is untrainable (all modes <= 11.35%)
-    available_modes = [mode for mode in ['none', 'decay', 'dropout', 'full', 'hidden', 'output'] if mode in m]
-    if available_modes:
-        all_untrainable = all(m[mode]['mean'] <= 11.35 for mode in available_modes)
-        if all_untrainable:
-            return 'untrainable'
-    
-    # Check for Chaotic Optimization: baseline modes ineffective but ablative modes show results > 11.35%
+    all_modes = ['none', 'decay', 'dropout', 'full', 'hidden', 'output']
     baseline_modes = ['none', 'decay', 'dropout']
     ablative_modes = ['full', 'hidden', 'output']
     
-    # Check if all baseline modes are ineffective (<= 11.35%)
-    baseline_available = [mode for mode in baseline_modes if mode in m]
-    if baseline_available:
-        all_baseline_ineffective = all(m[mode]['mean'] <= 11.35 for mode in baseline_available)
-        
-        # Check if any ablative mode shows results > 11.35%
-        ablative_available = [mode for mode in ablative_modes if mode in m]
-        if ablative_available:
-            any_ablative_effective = any(m[mode]['mean'] > 11.35 for mode in ablative_available)
-            
-            if all_baseline_ineffective and any_ablative_effective:
-                return 'chaotic-optimization'
+    available_modes = [mode for mode in all_modes if mode in m]
+    available_baselines = [mode for mode in baseline_modes if mode in m]
+    available_ablatives = [mode for mode in ablative_modes if mode in m]
+
+    if not available_modes or len(available_modes) < 6:
+        return 'unknown'
+
+    # --- Rule 1, Regime IV: Vanishing Gradient Problem (Untrainable) ---
     
-    # For remaining trainable architectures, determine regime based on performance patterns
-    baseline_available = [mode for mode in baseline_modes if mode in m]
-    ablative_available = [mode for mode in ablative_modes if mode in m]
+    # Condition A: Untrainable
+    # Check if NO mode's MAX performance exceeds 11.35% - all modes' best trials are at or below this threshold
+    # This indicates a fundamental architectural flaw where gradients vanish
+    # and the network cannot learn meaningful representations
+    max_perf_across_modes = max(m[mode]['max'] for mode in available_modes)
+    if max_perf_across_modes <= 11.35:
+        return 'untrainable'
     
-    if len(baseline_available) >= 2 and len(ablative_available) >= 2:
-        # Calculate baseline variance
-        baseline_performances = [m[mode]['mean'] for mode in baseline_available]
-        baseline_variance = np.var(baseline_performances)
+    # Condition B: Unrescuable
+    # Check if the means are all below 11.35%, and if there is no MAX in the
+    # ablative modes that exceeds 11.35%
+    if all(m[mode]['mean'] <= 11.35 for mode in available_modes) and \
+       all(m[mode]['max'] <= 11.35 for mode in available_ablatives):
+        return 'untrainable'
+    
+    # --- Rule 2, Regime I: Beneficial Regularization ---
+    # Check if baseline means are within 1 std of each other, and each ablation mode is within 1 std of baseline
+    # This indicates the model is robust and performs consistently across all modes
+    # Calculate baseline statistics
+    baseline_means = [m[mode]['mean'] for mode in available_baselines]
+    baseline_mean = np.mean(baseline_means)
+    baseline_std = np.std(baseline_means)
+    
+    # Cap std at 0.5% if it's too small (for high-performing models)
+    effective_std = max(baseline_std, 0.5)
+    
+    # Check if all baseline means are within 1 std of baseline mean
+    baselines_within_std = all(abs(mean - baseline_mean) <= effective_std for mean in baseline_means)
+    
+    # Check if each ablation mode is within 1 std of baseline mean
+    ablations_within_std = all(abs(m[mode]['mean'] - baseline_mean) <= effective_std for mode in available_ablatives)
+    
+    # Check if ablation modes are consistent among themselves (within 1 std of ablation mean)
+    ablative_means = [m[mode]['mean'] for mode in available_ablatives]
+    ablative_mean = np.mean(ablative_means)
+    ablative_std = np.std(ablative_means)
+    effective_ablative_std = max(ablative_std, 0.5)
+    ablations_consistent = all(abs(m[mode]['mean'] - ablative_mean) <= effective_ablative_std for mode in available_ablatives)
+    
+    # Beneficial Regularization: baselines are consistent AND (ablations are within baseline std OR there's significant overlap)
+    if baselines_within_std and ablations_within_std:
+        return 'beneficial-regularization'
+    
+    # Also check for significant overlap between baseline and ablation ranges
+    if baselines_within_std:
+        max_ablation = max(ablative_means)
+        min_baseline = min(baseline_means)
+        overlap = max_ablation - min_baseline
         
-        # Calculate ablative variance
-        ablative_performances = [m[mode]['mean'] for mode in ablative_available]
-        ablative_variance = np.var(ablative_performances)
-        
-        # Calculate overall variance (all modes)
-        all_performances = baseline_performances + ablative_performances
-        overall_variance = np.var(all_performances)
-        
-        # Define thresholds
-        baseline_threshold = 5.0  # Baseline modes should be within ~5 percentage points
-        ablation_variance_threshold = 10.0  # Ablative modes should show more variance
-        
-        # Over-parameterized: All modes perform similarly (low overall variance)
-        if overall_variance < baseline_threshold:
+        # If there's any overlap (>0.01%), it's beneficial regularization
+        if overlap >= 0.01:
             return 'beneficial-regularization'
+    
+    # Debug Rule 2 if it doesn't match
+    print(f"\n=== Rule 2 Debug: {arch_key} ===")
+    print(f"  Baseline means: {[f'{mean:.2f}%' for mean in baseline_means]}")
+    print(f"  Baseline mean: {baseline_mean:.2f}%, Baseline std: {baseline_std:.2f}%, Effective std: {effective_std:.2f}%")
+    print(f"  Baseline within std: {baselines_within_std}")
+    ablation_means_debug = [f"{m[mode]['mean']:.2f}%" for mode in available_ablatives]
+    print(f"  Ablation means: {ablation_means_debug}")
+    print(f"  Ablations within std: {ablations_within_std}")
+    print(f"  Rule 2 result: {baselines_within_std and ablations_within_std}")
+    
+    # --- Rule 3, Regime II: Optimally Sized ---
+    # Check if ablation actively harms and underperforms baseline by 1 standard deviation
+    # This indicates the model is optimally sized - any intervention hurts performance
+    baseline_means = [m[mode]['mean'] for mode in available_baselines]
+    ablative_means = [m[mode]['mean'] for mode in available_ablatives]
+    baseline_mean = np.mean(baseline_means)
+    ablative_mean = np.mean(ablative_means)
+    
+    # Calculate the standard deviation of baseline performance
+    baseline_std = np.std(baseline_means)
+    effective_std = max(baseline_std, 0.5)  # Apply same cap as Rule 2
+    
+    # Check if ablative mean underperforms baseline by at least 1 standard deviation
+    # This indicates ablation actively harms the model's performance
+    if ablative_mean < (baseline_mean - effective_std):
+        return 'optimally-sized'
+    
+    # Check if best baseline max outperforms best ablative max
+    # This captures cases where baseline modes can rescue better than ablative modes
+    # BUT only when ablatives aren't helping on average (to avoid catching chaotic cases)
+    baseline_maxes = [m[mode]['max'] for mode in available_baselines]
+    ablative_maxes = [m[mode]['max'] for mode in available_ablatives]
+    best_baseline_max = max(baseline_maxes)
+    best_ablative_max = max(ablative_maxes)
+    
+    if best_baseline_max > best_ablative_max and ablative_mean <= baseline_mean:
+        return 'optimally-sized'
+    
+    # Also check for consistent baselines + consistent ablations that are harmful
+    # This captures cases where ablation is systematically harmful but consistent
+    # BUT only if the harm is significant (no overlap and meaningful difference)
+    if baselines_within_std and ablations_consistent and ablative_mean < baseline_mean:
+        # Check if there's significant overlap or if the difference is too small
+        max_ablation = max(ablative_means)
+        min_baseline = min(baseline_means)
+        overlap = max_ablation - min_baseline
+        difference = baseline_mean - ablative_mean
         
-        # At-capacity: Baselines similar, ablations show larger variance
-        elif baseline_variance < baseline_threshold and ablative_variance > ablation_variance_threshold:
-            return 'at-capacity'
-        
-        # Default to at-capacity for other cases
-        else:
-            return 'at-capacity'
+        # Only classify as optimally-sized if there's no overlap AND meaningful difference
+        if overlap <= 0 and difference > 0.1:  # No overlap and >0.1% difference
+            return 'optimally-sized'
     
-    # Fallback to parameter count if we don't have enough data
-    depth, width = map(int, arch_key.split('x'))
-    param_count = calculate_parameter_count(depth, width)
+    # --- Rule 4, Regime III: Chaotic Optimization ---
+    # Condition A: Optimizer Rescue (Baselines fail, Ablatives succeed on MAX)
+    all_baselines_fail = all(m[mode]['max'] <= 11.35 for mode in available_baselines)
+    any_ablative_succeeds = any(m[mode]['max'] > 11.35 for mode in available_ablatives)
+    if all_baselines_fail and any_ablative_succeeds:
+        return 'chaotic-optimization'
     
-    if param_count > 500000:
-        return 'over-parameterized'
-    else:
-        return 'at-capacity'
+    # Condition B: Stochastic Overachievement (Ablation outperforms baseline)
+    # This is the opposite of optimally-sized: ablation helps rather than hurts
+    # Use a more lenient threshold for chaotic detection (0.5% instead of 1 std)
+    chaotic_threshold = 0.5  # Fixed 0.5% threshold for chaotic detection
+    if ablative_mean > (baseline_mean + chaotic_threshold):
+        return 'chaotic-optimization'
+    
+    print(f"Regime: {arch_key} - #debugging data here")
 
-
-def get_regime_from_data(configuration: str, metrics: Dict[str, Dict]) -> str:
-    """
-    Main function to get regime classification for a configuration.
-    
-    Args:
-        configuration: Configuration string (e.g., "1*2048" or "1x2048")
-        metrics: Summary metrics dictionary
-        
-    Returns:
-        Regime classification string
-    """
-    # Convert configuration format if needed
-    arch_key = configuration.replace('*', 'x')
-    
-    return classify_regime(arch_key, metrics)
-
+    return 'unknown' 
 
 def get_all_regime_classifications(configurations_file: Path, trials_file: Path) -> Dict[str, str]:
     """
@@ -249,11 +299,9 @@ def get_all_regime_classifications(configurations_file: Path, trials_file: Path)
     Returns:
         Dictionary mapping configuration strings to regime classifications
     """
-    # Load data
     trial_results = parse_trial_data(trials_file)
     metrics = calculate_summary_metrics(trial_results)
     
-    # Load configurations
     configurations = []
     with open(configurations_file, 'r') as f:
         for line in f:
@@ -261,87 +309,33 @@ def get_all_regime_classifications(configurations_file: Path, trials_file: Path)
             if line and '*' in line:
                 configurations.append(line)
     
-    # Classify each configuration
-    classifications = {}
-    for config in configurations:
-        regime = get_regime_from_data(config, metrics)
-        classifications[config] = regime
-    
+    classifications = {config: classify_regime(config.replace('*', 'x'), metrics) for config in configurations}
     return classifications
 
 
 if __name__ == "__main__":
-    # Example usage
     configs_file = Path('reproduction/configurations.txt')
     trials_file = Path('results/psa_simplemlp_trials.md')
     
     if configs_file.exists() and trials_file.exists():
-        # Load data
-        trial_results = parse_trial_data(trials_file)
-        metrics = calculate_summary_metrics(trial_results)
+        classifications = get_all_regime_classifications(configs_file, trials_file)
         
-        # Load configurations
-        configurations = []
-        with open(configs_file, 'r') as f:
-            for line in f:
-                line = line.strip()
-                if line and '*' in line:
-                    configurations.append(line)
-        
-        print("Regime Classifications with Performance Analysis:")
+        print("Regime Classifications (Rule-Based):")
         print("=" * 60)
         
-        # Group by regime
-        regime_counts = defaultdict(list)
-        regime_details = defaultdict(list)
-        
-        for config in configurations:
-            arch_key = config.replace('*', 'x')
-            regime = get_regime_from_data(config, metrics)
-            regime_counts[regime].append(config)
+        regime_groups = defaultdict(list)
+        for config, regime in classifications.items():
+            regime_groups[regime].append(config)
             
-            # Store performance details for analysis
-            if arch_key in metrics:
-                m = metrics[arch_key]
-                baseline_modes = ['none', 'decay', 'dropout']
-                ablative_modes = ['full', 'hidden', 'output']
-                
-                baseline_available = [mode for mode in baseline_modes if mode in m]
-                ablative_available = [mode for mode in ablative_modes if mode in m]
-                
-                if len(baseline_available) >= 2 and len(ablative_available) >= 2:
-                    baseline_performances = [m[mode]['mean'] for mode in baseline_available]
-                    ablative_performances = [m[mode]['mean'] for mode in ablative_available]
-                    all_performances = baseline_performances + ablative_performances
-                    
-                    baseline_variance = np.var(baseline_performances)
-                    ablative_variance = np.var(ablative_performances)
-                    overall_variance = np.var(all_performances)
-                    
-                    regime_details[regime].append({
-                        'config': config,
-                        'baseline_variance': baseline_variance,
-                        'ablative_variance': ablative_variance,
-                        'overall_variance': overall_variance,
-                        'baseline_performances': baseline_performances,
-                        'ablative_performances': ablative_performances
-                    })
+        # Define the desired order for printing
+        regime_order = ['Beneficial Regularization', 'Optimally Sized', 'Chaotic Optimization', 'Architecturally Flawed', 'Unknown']
         
-        # Print results with performance analysis
-        for regime in ['untrainable', 'chaotic', 'over-parameterized', 'at-capacity']:
-            if regime in regime_counts:
-                print(f"\n{regime.replace('-', ' ').title()} ({len(regime_counts[regime])}):")
-                for config in sorted(regime_counts[regime]):
-                    print(f"  {config}")
-                
-                # Show performance analysis for trainable regimes
-                if regime in ['over-parameterized', 'at-capacity'] and regime in regime_details:
-                    print(f"\n  Performance Analysis for {regime}:")
-                    for detail in regime_details[regime][:5]:  # Show first 5 examples
-                        print(f"    {detail['config']}: baseline_var={detail['baseline_variance']:.2f}, "
-                              f"ablative_var={detail['ablative_variance']:.2f}, "
-                              f"overall_var={detail['overall_variance']:.2f}")
-                        print(f"      Baselines: {[f'{p:.1f}%' for p in detail['baseline_performances']]}")
-                        print(f"      Ablations: {[f'{p:.1f}%' for p in detail['ablative_performances']]}")
+        for regime in regime_order:
+            if regime in regime_groups:
+                configs = sorted(regime_groups[regime])
+                print(f"\n--- {regime} ({len(configs)}) ---")
+                # Print in a more compact format, e.g., 4 columns
+                for i in range(0, len(configs), 4):
+                    print("  ".join(f"{c:<10}" for c in configs[i:i+4]))
     else:
-        print("Configuration or trials file not found.") 
+        print("Error: Configuration or trials file not found. Ensure 'reproduction/configurations.txt' and 'results/psa_simplemlp_trials.md' exist.")

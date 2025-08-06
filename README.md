@@ -201,6 +201,11 @@ poetry run clean file1.safetensors file2.safetensors
 
 Generate LaTeX tables and figures for publication:
 
+**Dataset Analysis:**
+```bash
+poetry run analyze-dataset              # MNIST dataset statistics and ZeroR baselines
+```
+
 **Architecture Analysis:**
 ```bash
 poetry run make-architecture-table      # Parameter counts and classifications
@@ -210,7 +215,12 @@ poetry run make-trial-accuracy-table    # Experimental results with statistics
 **Visualization:**
 ```bash
 poetry run make-design-space-figure     # Design space scatter plot
-poetry run make-figure-heatmaps         # Five comprehensive heatmap visualizations
+poetry run make-figure-heatmaps         # Six comprehensive heatmap visualizations
+```
+
+**Regime Classification:**
+```bash
+python -c "from scripts.regime_classifier import get_all_regime_classifications; print(get_all_regime_classifications('reproduction/configurations.txt', 'results/psa_simplemlp_trials.md'))"
 ```
 
 **Reproduction Tools:**
@@ -237,6 +247,15 @@ poetry run sagemaker-results-parser
 
 This repository includes comprehensive documentation for different aspects of the project:
 
+### [CHANGELOG.md](CHANGELOG.md) - Project Changes
+
+Detailed changelog tracking all notable changes, enhancements, and additions to the project:
+
+- **Version History**: Chronological record of all significant updates
+- **Feature Additions**: New analysis tools, visualization enhancements, and regime classification system
+- **Technical Details**: Key insights, performance optimizations, and code quality improvements
+- **File Modifications**: Complete list of new, modified, and generated files
+
 ### [REPRODUCTION.md](REPRODUCTION.md) - Research Reproduction Guide
 
 A detailed guide for reproducing the experimental results from the mini-paper:
@@ -252,9 +271,11 @@ A detailed guide for reproducing the experimental results from the mini-paper:
 
 A comprehensive reference for all utility scripts and tools:
 
+- **Dataset Analysis**: `analyze_dataset.py` - Analyze MNIST dataset using exact PSA methodology, providing class distributions and ZeroR baselines
+- **Regime Classification**: `regime_classifier.py` - Rule-based classification system for determining training regimes (Untrainable, Chaotic, Beneficial Regularization, Optimally Sized)
 - **Architecture Analysis**: `make_table_architectures.py` - Generate LaTeX tables of network architectures and parameter counts
 - **Results Analysis**: `make_table_trial_accuracy.py` - Create publication-ready LaTeX tables from experimental results with statistical information
-- **Visualization**: `make_figure_design_space.py` and `make_figure_heatmaps.py` - Generate design space plots and comprehensive heatmap visualizations
+- **Visualization**: `make_figure_design_space.py` and `make_figure_heatmaps.py` - Generate design space plots and six comprehensive heatmap visualizations
 - **Usage Examples**: Both direct Python and Poetry command examples for each tool
 - **Output Formats**: Sample LaTeX output and formatting details
 - **Features**: Detailed descriptions of each tool's capabilities and options

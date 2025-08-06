@@ -31,8 +31,9 @@ generate-reproduction-tests = "scripts.generate_reproduction_tests:main"
 sagemaker-results-parser = "aws.sagemaker.results_parser:main"
 make-architecture-table = "scripts.make_table_architectures:main"
 make-trial-accuracy-table = "scripts.make_table_trial_accuracy:main"
-make-design-space-figure = "scripts.make_figure_design_space:main"
+make-figure-design-space = "scripts.make_figure_design_space:main"
 make-figure-heatmaps = "scripts.make_figure_heatmaps:main"
+analyze-dataset = "analyze_dataset:main"
 
 [build-system]
 requires = ["poetry-core"]

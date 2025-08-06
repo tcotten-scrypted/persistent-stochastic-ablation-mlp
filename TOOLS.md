@@ -2,6 +2,94 @@
 
 This document describes the utility scripts available in the `scripts/` folder for various analysis and automation tasks.
 
+## Dataset Analysis
+
+### `analyze_dataset.py`
+
+Analyze MNIST dataset using the exact same methodology as PSA SimpleMLP training.
+
+**Purpose**: Provides comprehensive statistics about MNIST class distribution and ZeroR baselines using the identical data loading and splitting methodology as the training code, ensuring consistency between analysis and experimental results.
+
+**Usage**:
+```bash
+# Direct Python
+python analyze_dataset.py
+
+# Poetry command
+poetry run analyze-dataset
+```
+
+**Output**: Rich console tables showing:
+- **Class Distribution**: Count and percentage for each digit (0-9) in each dataset split
+- **ZeroR Baselines**: Most frequent class and its accuracy for each split
+- **Summary Comparison**: Side-by-side comparison of all dataset splits
+
+**Features**:
+- **Exact Methodology**: Uses identical data loading, transforms, and splitting as `train_psa_simplemlp.py`
+- **Reproducible Splits**: Same random seed (1337) for train/validation splitting
+- **Structured Output**: Returns `MNISTAnalysis` object for programmatic access
+- **ZeroR Calculation**: Baseline accuracy using most frequent class strategy
+
+**Dataset Splits Analyzed**:
+- **Full Training (60k)**: Original MNIST training set
+- **Full Test (10k)**: Original MNIST test set  
+- **Split Training (50k)**: Training portion after validation split
+- **Split Validation (10k)**: Validation portion for model selection
+
+**Key Findings**:
+- Class 1 is consistently the most frequent across all splits
+- ZeroR baselines: ~11.24% (full train), ~11.35% (test), ~11.28% (split train), ~11.02% (validation)
+- Class distribution is well-balanced with slight variations
+
+## Regime Classification
+
+### `regime_classifier.py`
+
+Rule-based classification system for determining training regimes based on PSA trial data.
+
+**Purpose**: Provides a clean, modular interface for classifying SimpleMLP configurations into four distinct training regimes based on performance patterns observed in comprehensive trial data. Uses data-driven rules to categorize architectures by their response to different ablation strategies.
+
+**Usage**:
+```python
+from scripts.regime_classifier import classify_regime, get_all_regime_classifications
+from pathlib import Path
+
+# Classify a single architecture
+metrics = calculate_summary_metrics(trial_results)
+regime = classify_regime('1x512', metrics)
+print(f"1x512 is: {regime}")
+
+# Classify all architectures
+classifications = get_all_regime_classifications(
+    Path('reproduction/configurations.txt'), 
+    Path('results/psa_simplemlp_trials.md')
+)
+```
+
+**Training Regimes**:
+- **🔴 Untrainable**: Vanishing Gradient Problem - no mode exceeds 11.35% accuracy
+- **🔵 Chaotic Optimization**: Baseline modes ineffective (≤11.35%), but ablative modes show learning (>11.35%)
+- **🟢 Beneficial Regularization**: High-performing models where regularizers often help, performance gaps are small
+- **🟠 Optimally Sized**: High-performing models where baseline is best, any intervention is detrimental
+
+**Classification Rules**:
+1. **Rule 1 (Untrainable)**: `max_performance_across_all_modes <= 11.35%`
+2. **Rule 2 (Beneficial Regularization)**: Baselines consistent AND (ablations within baseline std OR meaningful overlap exists)
+3. **Rule 3 (Optimally Sized)**: Ablation harms performance by >1 std OR (baseline max > ablative max AND ablative mean ≤ baseline mean)
+4. **Rule 4 (Chaotic Optimization)**: Ablative mean > baseline mean + 0.5% (fixed threshold for sensitivity)
+
+**Features**:
+- **Data-Driven**: Uses actual trial results rather than heuristics
+- **Robust Thresholds**: Applies 0.5% minimum standard deviation cap to prevent overly strict conditions
+- **Comprehensive Coverage**: Achieves 100% classification rate with refined rules
+- **Validation**: Includes detailed debugging output for rule verification
+
+**Key Insights**:
+- 11.35% threshold corresponds to ZeroR baseline (most frequent class in test set)
+- Fixed 0.5% threshold for chaotic detection provides better sensitivity than variable std
+- Overlap analysis distinguishes beneficial regularization from optimal sizing
+- Max-based rules capture baseline rescue superiority patterns
+
 ## Architecture Analysis
 
 ### `make_table_architectures.py`
@@ -156,7 +244,7 @@ python scripts/make_figure_design_space.py --config-file reproduction/my_configs
 
 Generate comprehensive heat map visualizations for SimpleMLP design space.
 
-**Purpose**: Creates a suite of four data-driven heat map visualizations that tell a comprehensive story about the SimpleMLP design space under Persistent Stochastic Ablation (PSA).
+**Purpose**: Creates a suite of six data-driven heat map visualizations that tell a comprehensive story about the SimpleMLP design space under Persistent Stochastic Ablation (PSA).
 
 **Usage**:
 ```bash
@@ -170,11 +258,13 @@ poetry run make-figure-heatmaps
 python scripts/make_figure_heatmaps.py --config-file reproduction/my_configs.txt --trials-file results/my_trials.md --output-dir results/
 ```
 
-**Output**: Four high-resolution PNG files:
-1. **Baseline Performance**: Raw performance of control models (viridis colormap)
-2. **Ablation Uplift**: Quantitative benefit/harm of PSA (coolwarm colormap)
-3. **Instability Map**: Trial-to-trial variance/chaos (magma colormap)
-4. **Winning Strategy**: Best-performing ablation mode per architecture (categorical)
+**Output**: Six high-resolution PNG files:
+1. **Baseline Performance**: Raw performance of control models with colorbar (viridis colormap)
+2. **Ablation Effects**: Quantitative benefit/harm of PSA (green=beneficial, red=harmful, brown=neutral)
+3. **Instability**: Max standard deviation across six ablation modes (magma colormap)
+4. **Winning Strategy**: Best-performing ablation mode per architecture (categorical with distinct colors)
+5. **Parameter Matching**: Architectural complexity visualization with dynamic labeling system
+6. **Regimes**: Training regime classification using rule-based system (four regime colors)
 
 **Input**: 
 - Reads from `reproduction/configurations.txt` (default)
@@ -182,11 +272,13 @@ python scripts/make_figure_heatmaps.py --config-file reproduction/my_configs.txt
 - Outputs to `results/` directory (default)
 
 **Features**:
-- **Comprehensive Analysis**: Four complementary visualizations for complete understanding
-- **Data-Driven**: Based on actual experimental trial data
-- **Statistical Rigor**: Uses mean and standard deviation calculations
+- **Comprehensive Analysis**: Six complementary visualizations for complete understanding
+- **Data-Driven**: Based on actual experimental trial data and regime classification
+- **Statistical Rigor**: Uses mean and standard deviation calculations with robust thresholds
+- **Advanced Labeling**: Dynamic Bezier curve positioning for non-overlapping architecture labels
 - **Professional Visualization**: High-resolution (300 DPI) publication-ready figures
 - **Logarithmic Scale**: Optimal for wide-ranging architectural parameters
+- **Regime Integration**: Uses `regime_classifier.py` for data-driven regime classification
 - **Memory Efficient**: Proper cleanup of matplotlib resources
 - **Configurable**: Custom input files and output directory
 - **Error Handling**: Graceful handling of missing files and parsing errors 

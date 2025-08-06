@@ -701,7 +701,7 @@ Results Shape {4*2} Parameters {1618}
 Results Shape {2048*1} Parameters {4899}
 * None: Mean=9.87% | Std=0.53% | Min=8.65% | Max=10.92% (n=10)
 * Decay: Mean=10.03% | Std=0.63% | Min=8.65% | Max=11.02% (n=10)
-* Dropout: FAILED_OR_INCOMPLETE
+* Dropout: Mean=10.01% | Std=0.61% | Min=8.65% | Max=10.92% (n=10)
 * Full: Mean=9.83% | Std=0.66% | Min=8.65% | Max=10.92% (n=10)
 * Hidden: Mean=9.98% | Std=0.81% | Min=8.65% | Max=11.02% (n=10)
 * Output: Mean=10.57% | Std=0.50% | Min=9.81% | Max=11.02% (n=10)
