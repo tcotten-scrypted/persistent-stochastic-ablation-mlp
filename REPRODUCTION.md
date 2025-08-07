@@ -12,11 +12,15 @@ This study investigates whether **Persistent Stochastic Ablation (PSA)** can act
 **Persistent Stochastic Ablation (PSA):** A novel training paradigm that mimics environmental evolutionary pressure by permanently ablating neurons in the network's Last Known Good (LKG) state between training cycles.
 
 **The Frustration Engine:** A meta-learning framework that implements PSA through iterative cycles of:
-1. Load the LKG model state
-2. Apply permanent ablation to a randomly chosen neuron
-3. Train for one epoch
-4. Evaluate and update LKG if improved
-5. Repeat
+1. Start with Last Known Good (LKG) model state
+2. Create a fresh copy of LKG state
+3. For ablative modes (full/hidden/output), apply ONE ablation to the copy
+4. Train the copy for one epoch
+5. Evaluate on validation set
+6. If improved, update LKG state (unablated version)
+7. Repeat with fresh copy of LKG
+
+Each meta-loop resets the optimizer to ensure fair comparison between ablation strategies.
 
 **Six Ablation Modes:**
 - **`none`**: Control group (no regularization)
@@ -159,7 +163,7 @@ For large-scale experimentation, we used AWS SageMaker to automate the running o
 
 **Regime 3 - Architectural Failure:**
 - Deep models (e.g., `115*115`, `91*91`) should fail to train
-- All modes should achieve ~11.35% accuracy (random chance)
+- All modes should achieve ~11.02% accuracy (validation ZeroR baseline)
 
 **Regime 4 - Chaotic Optimization:**
 - Small models (e.g., `8*8`, `2*1`) should show unpredictable results

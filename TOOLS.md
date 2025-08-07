@@ -67,13 +67,13 @@ classifications = get_all_regime_classifications(
 ```
 
 **Training Regimes**:
-- **🔴 Untrainable**: Vanishing Gradient Problem - no mode exceeds 11.35% accuracy
-- **🔵 Chaotic Optimization**: Baseline modes ineffective (≤11.35%), but ablative modes show learning (>11.35%)
+- **🔴 Untrainable**: Vanishing Gradient Problem - no mode exceeds validation ZeroR baseline (11.02%)
+- **🔵 Chaotic Optimization**: Baseline modes ineffective (≤11.02%), but ablative modes show learning (>11.02%)
 - **🟢 Beneficial Regularization**: High-performing models where regularizers often help, performance gaps are small
 - **🟠 Optimally Sized**: High-performing models where baseline is best, any intervention is detrimental
 
 **Classification Rules**:
-1. **Rule 1 (Untrainable)**: `max_performance_across_all_modes <= 11.35%`
+1. **Rule 1 (Untrainable)**: `max_performance_across_all_modes <= validation_zeror` (11.02%)
 2. **Rule 2 (Beneficial Regularization)**: Baselines consistent AND (ablations within baseline std OR meaningful overlap exists)
 3. **Rule 3 (Optimally Sized)**: Ablation harms performance by >1 std OR (baseline max > ablative max AND ablative mean ≤ baseline mean)
 4. **Rule 4 (Chaotic Optimization)**: Ablative mean > baseline mean + 0.5% (fixed threshold for sensitivity)
@@ -85,7 +85,7 @@ classifications = get_all_regime_classifications(
 - **Validation**: Includes detailed debugging output for rule verification
 
 **Key Insights**:
-- 11.35% threshold corresponds to ZeroR baseline (most frequent class in test set)
+- 11.02% threshold corresponds to ZeroR baseline (most frequent class in validation set)
 - Fixed 0.5% threshold for chaotic detection provides better sensitivity than variable std
 - Overlap analysis distinguishes beneficial regularization from optimal sizing
 - Max-based rules capture baseline rescue superiority patterns

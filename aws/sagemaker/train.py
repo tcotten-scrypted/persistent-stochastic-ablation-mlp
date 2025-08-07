@@ -3,8 +3,8 @@
 # Author: Tim Cotten @cottenio <tcotten@scrypted.ai, tcotten2@gmu.edu> 
 #
 # Description:
-# A comprehensive training harness for testing architectural variations and four
-# distinct live ablation strategies on the MNIST dataset.
+# A comprehensive training harness for testing architectural variations and six
+# distinct ablation strategies on the MNIST dataset.
 # Adapted for AWS SageMaker execution with environment-specific modifications.
 #
 # Core Concepts:
@@ -14,22 +14,25 @@
 #    - 'hidden': Fully ablates a neuron in a HIDDEN layer only.
 #    - 'output': Partially ablates a neuron in the OUTPUT layer only.
 #
-# 2. Ablation is performed after a meta-loop is complete regardless of
-# improvement, affecting the Last Known Good (LKG) state of the model even if a new
-# derivative model wasn't chosen; with the goal of setting higher and
-# higher "bounties" to emulate unpredictable evolutionary pressure from
-# the environment.
+# 2. Each meta-loop starts with a fresh copy of the Last Known Good (LKG) model.
+# This copy is ablated once (for ablative modes) to create the active model state
+# for the current loop. The LKG state itself is only updated when the validation
+# accuracy improves, preserving the best model found so far. A "bounty" tracks
+# the highest validation accuracy achieved across all meta-loops.
 #
 # 3. Ablation strategy is always ONE neuron randomly selected from the
-# previously trained model. For the 'full' mode this means randomly selecting
-# a layer first (including the output layer), then a random neuron from
+# LKG model at the start of each meta-loop. For the 'full' mode this means randomly
+# selecting a layer first (including the output layer), then a random neuron from
 # within the layer. For the 'hidden' mode this means randomly selecting from
-# a list of all available neurons from the hidden layers only. Ablation can
-# be cumulative if subsequent meta-loops fail: the LKG model is continuously
-# damaged and retrained until a new LKG bounty is achieved.
+# a list of all available neurons from the hidden layers only. Each meta-loop
+# starts fresh with a single ablation - ablations do not accumulate across loops.
 #
-# 4. Dynamic Architecture: Use --arch "[4*4, 2*8]" to define complex models.
-# 5. Frustration Engine: The training orchestration driving the experiments.
+# 4. Each meta-loop resets the optimizer to ensure fair comparison between
+# ablation strategies, preventing momentum or adaptive state from carrying over
+# between loops.
+#
+# 5. Dynamic Architecture: Use --arch "[4*4, 2*8]" to define complex models.
+# 6. Frustration Engine: The training orchestration driving the experiments.
 
 import torch
 import torch.nn as nn
