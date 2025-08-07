@@ -23,7 +23,7 @@ import math
 from collections import defaultdict
 import sys
 sys.path.append(str(Path(__file__).parent))
-from regime_classifier import classify_regime
+from regime_classifier import classify_regime, get_validation_zeror_baseline
 
 # Color constants for consistent visualization
 COLORS = {
@@ -187,7 +187,7 @@ def plot_baseline_performance(architectures: list, metrics: dict, output_file: P
     from matplotlib.colors import LinearSegmentedColormap
     colors = [COLORS['blue'], COLORS['bright_green']]  # Blue -> green
     cmap = LinearSegmentedColormap.from_list('baseline_gradient', colors, N=100)
-    norm = plt.Normalize(vmin=11.35, vmax=100)  # Start from untrainable threshold
+    norm = plt.Normalize(vmin=11.02, vmax=100)  # Start from validation ZeroR baseline
     
     # Collect all baseline accuracies for colorbar
     baseline_accuracies = []
@@ -200,7 +200,7 @@ def plot_baseline_performance(architectures: list, metrics: dict, output_file: P
             m = metrics[arch_key]
             # Check if architecture is untrainable (all modes <= 11.35%)
             available_modes = [mode for mode in ['none', 'decay', 'dropout', 'full', 'hidden', 'output'] if mode in m]
-            all_untrainable = all(m[mode]['mean'] <= 11.35 for mode in available_modes)
+            all_untrainable = all(m[mode]['mean'] <= 11.02 for mode in available_modes)
             
             if all_untrainable:
                 color = COLORS['black']
@@ -248,7 +248,7 @@ def plot_ablation_effects(architectures: list, metrics: dict, trial_results: dic
             
             # Check if architecture is untrainable (all modes <= 11.35%)
             available_modes = [mode for mode in ['none', 'decay', 'dropout', 'full', 'hidden', 'output'] if mode in m]
-            all_untrainable = all(m[mode]['mean'] <= 11.35 for mode in available_modes)
+            all_untrainable = all(m[mode]['mean'] <= 11.02 for mode in available_modes)
             
             if all_untrainable:
                 color = COLORS['black']
@@ -326,7 +326,7 @@ def plot_instability(architectures: list, metrics: dict, output_file: Path):
             m = metrics[arch_key]
             # Check if architecture is untrainable (all modes <= 11.35%)
             available_modes = [mode for mode in ['none', 'decay', 'dropout', 'full', 'hidden', 'output'] if mode in m]
-            all_untrainable = all(m[mode]['mean'] <= 11.35 for mode in available_modes)
+            all_untrainable = all(m[mode]['mean'] <= 11.02 for mode in available_modes)
             
             if all_untrainable:
                 color = COLORS['black']
@@ -398,7 +398,7 @@ def plot_winning_strategy(architectures: list, metrics: dict, output_file: Path)
             # Check if all available modes achieve ≤11.35% (untrainable)
             available_modes = [mode for mode in ['none', 'decay', 'dropout', 'full', 'hidden', 'output'] if mode in m]
             if available_modes:
-                all_untrainable = all(m[mode]['mean'] <= 11.35 for mode in available_modes)
+                all_untrainable = all(m[mode]['mean'] <= 11.02 for mode in available_modes)
                 if all_untrainable:
                     winner = 'untrainable'
                 else:

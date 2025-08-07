@@ -8,8 +8,8 @@ This version uses rule-based classification based on the performance patterns
 observed in the comprehensive trial data.
 
 Regimes:
-- Untrainable: Vanishing Gradient Problem - no mode exceeds 11.35% accuracy
-- Chaotic Optimization: Baseline modes are ineffective (<= 11.35%), but at least one ablative mode shows significant learning (> 11.35%).
+- Untrainable: Vanishing Gradient Problem - no mode exceeds validation ZeroR baseline accuracy
+- Chaotic Optimization: Baseline modes are ineffective (<= validation ZeroR), but at least one ablative mode shows significant learning (> validation ZeroR).
 - Beneficial Regularization: High-performing models where traditional regularizers (Dropout, Decay) often outperform the baseline, and the performance gap between the best and worst modes is relatively small.
 - Optimally Sized: High-performing models where the baseline ('none') is consistently the best performer, and any intervention (regularization or ablation) is detrimental.
 
@@ -21,6 +21,32 @@ import re
 import numpy as np
 from collections import defaultdict
 from typing import Dict, List, Tuple, Optional
+import sys
+import os
+
+# Add the project root to the path to import analyze_dataset
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from analyze_dataset import analyze_mnist
+
+# Cache for the validation ZeroR baseline to avoid recomputing
+_VALIDATION_ZEROR_CACHE = None
+
+def get_validation_zeror_baseline() -> float:
+    """
+    Get the validation set ZeroR baseline dynamically from the dataset analysis.
+    
+    Returns:
+        The validation set ZeroR accuracy as a percentage (e.g., 11.02)
+    """
+    global _VALIDATION_ZEROR_CACHE
+    
+    if _VALIDATION_ZEROR_CACHE is None:
+        print("🔍 Computing validation ZeroR baseline from MNIST dataset analysis...")
+        analysis = analyze_mnist()
+        _VALIDATION_ZEROR_CACHE = analysis.split_validation.zeror_accuracy
+        print(f"📊 Validation ZeroR baseline: {_VALIDATION_ZEROR_CACHE:.2f}%")
+    
+    return _VALIDATION_ZEROR_CACHE
 
 
 def parse_trial_data(trials_file: Path) -> Dict[str, List[Dict]]:
@@ -150,6 +176,9 @@ def classify_regime(arch_key: str, metrics: Dict[str, Dict]) -> str:
     if arch_key not in metrics:
         return 'Unknown'
     
+    # Get the dynamic validation ZeroR baseline
+    validation_zeror = get_validation_zeror_baseline()
+    
     m = metrics[arch_key]
     
     all_modes = ['none', 'decay', 'dropout', 'full', 'hidden', 'output']
@@ -166,18 +195,18 @@ def classify_regime(arch_key: str, metrics: Dict[str, Dict]) -> str:
     # --- Rule 1, Regime IV: Vanishing Gradient Problem (Untrainable) ---
     
     # Condition A: Untrainable
-    # Check if NO mode's MAX performance exceeds 11.35% - all modes' best trials are at or below this threshold
+    # Check if NO mode's MAX performance exceeds validation ZeroR baseline - all modes' best trials are at or below this threshold
     # This indicates a fundamental architectural flaw where gradients vanish
     # and the network cannot learn meaningful representations
     max_perf_across_modes = max(m[mode]['max'] for mode in available_modes)
-    if max_perf_across_modes <= 11.35:
+    if max_perf_across_modes <= validation_zeror:
         return 'untrainable'
     
     # Condition B: Unrescuable
-    # Check if the means are all below 11.35%, and if there is no MAX in the
-    # ablative modes that exceeds 11.35%
-    if all(m[mode]['mean'] <= 11.35 for mode in available_modes) and \
-       all(m[mode]['max'] <= 11.35 for mode in available_ablatives):
+    # Check if the means are all below validation ZeroR baseline, and if there is no MAX in the
+    # ablative modes that exceeds validation ZeroR baseline
+    if all(m[mode]['mean'] <= validation_zeror for mode in available_modes) and \
+       all(m[mode]['max'] <= validation_zeror for mode in available_ablatives):
         return 'untrainable'
     
     # --- Rule 2, Regime I: Beneficial Regularization ---
@@ -272,8 +301,8 @@ def classify_regime(arch_key: str, metrics: Dict[str, Dict]) -> str:
     
     # --- Rule 4, Regime III: Chaotic Optimization ---
     # Condition A: Optimizer Rescue (Baselines fail, Ablatives succeed on MAX)
-    all_baselines_fail = all(m[mode]['max'] <= 11.35 for mode in available_baselines)
-    any_ablative_succeeds = any(m[mode]['max'] > 11.35 for mode in available_ablatives)
+    all_baselines_fail = all(m[mode]['max'] <= validation_zeror for mode in available_baselines)
+    any_ablative_succeeds = any(m[mode]['max'] > validation_zeror for mode in available_ablatives)
     if all_baselines_fail and any_ablative_succeeds:
         return 'chaotic-optimization'
     

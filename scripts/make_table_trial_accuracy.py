@@ -47,18 +47,34 @@ def parse_results_file(filepath):
 
 def generate_latex_table(results, order, caption, label):
     """Generates the LaTeX code for a professional-looking table."""
-    
     header = r"""
-\begin{table}[ht]
-\centering
-\caption{""" + caption + r"""}
-\label{tab:""" + label + r"""}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{l l l l l l l l}
+% \setcounter{LTchunksize}{50}
+\tiny 
+\begin{longtable}{@{}lccccccl@{}}
+\caption{Mean Peak Accuracy (\%) with Standard Deviation over 10 Trials of 100 Meta-Loops for SimpleMLP Architectures}
+\label{tab:results_summary_stats} \\
 \toprule
-    \textbf{Architecture} & {\textbf{`none`}} & {\textbf{`decay`}} & {\textbf{`dropout`}} & {\textbf{`full`}} & {\textbf{`hidden`}} & {\textbf{`output`}} & \textbf{Winner} \\
- & {Mean $\pm$ Std (\%)} & {Mean $\pm$ Std (\%)} & {Mean $\pm$ Std (\%)} & {Mean $\pm$ Std (\%)} & {Mean $\pm$ Std (\%)} & {Mean $\pm$ Std (\%)} & \\
-\midrule"""
+\textbf{Architecture} & \textbf{none} & \textbf{decay} & \textbf{dropout} & \textbf{full} & \textbf{hidden} & \textbf{output} & \textbf{Winner} \\
+ & Mean $\pm$ Std (\%) & Mean $\pm$ Std (\%) & Mean $\pm$ Std (\%) & Mean $\pm$ Std (\%) & Mean $\pm$ Std (\%) & Mean $\pm$ Std (\%) & \\
+\midrule
+\endfirsthead
+
+\multicolumn{8}{c}%
+{{\bfseries Table \thetable\ continued from previous page}} \\
+\toprule
+\textbf{Architecture} & \textbf{none} & \textbf{decay} & \textbf{dropout} & \textbf{full} & \textbf{hidden} & \textbf{output} & \textbf{Winner} \\
+ & Mean $\pm$ Std (\%) & Mean $\pm$ Std (\%) & Mean $\pm$ Std (\%) & Mean $\pm$ Std (\%) & Mean $\pm$ Std (\%) & Mean $\pm$ Std (\%) & \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{8}{r}{{Continued on next page}} \\
+\endfoot
+
+\bottomrule
+\endlastfoot
+"""
+    
     print(header)
 
     for arch in order:
@@ -95,12 +111,10 @@ def generate_latex_table(results, order, caption, label):
                     cells.append("N/A")
             
             arch_display = arch.replace('x', '*')
-            print(f"{arch_display} & {' & '.join(cells)} & {winner_str} \\\\")
+            print(f"${arch_display}$ & {' & '.join(cells)} & {winner_str} \\\\")
 
-    footer = r"""\bottomrule
-\end{tabular}
-}
-\end{table}"""
+    footer = r"""\end{longtable}"""
+
     print(footer)
 
 
