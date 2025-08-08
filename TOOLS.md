@@ -359,6 +359,44 @@ poetry run sagemaker-estimate-storage --jobs-file path/to/jobs.txt
 - **Log Files**: Training and system logs
 - **Other**: Miscellaneous files
 
+### `sagemaker-cost-estimator`
+
+Calculate total costs for all SageMaker training jobs based on billable time and instance pricing.
+
+**Purpose**: Provides comprehensive cost analysis for the entire PSA experimental dataset, including breakdowns by job status, architecture, and ablation mode.
+
+**Usage**:
+```bash
+# Basic cost estimation (uses aws/sagemaker/requested-jobs.txt)
+poetry run sagemaker-cost-estimator
+
+# Use custom jobs file
+poetry run sagemaker-cost-estimator --jobs-file path/to/jobs.txt
+
+# Custom output file
+poetry run sagemaker-cost-estimator --output-file results/my_cost_report.json
+```
+
+**Output**: 
+- **Console Tables**: Cost summary, breakdown by status and ablation mode
+- **JSON Report**: `results/sagemaker_cost_report.json` with complete cost analysis
+
+**Features**:
+- **Targeted Job Analysis**: Uses `requested-jobs.txt` file instead of querying all PSA jobs
+- **Real-Time Cost Calculation**: Uses actual billable time from SageMaker API
+- **Fixed Instance Pricing**: Based on ml.g4dn.xlarge @ $0.7364/hr in us-east-1
+- **Multiple Breakdowns**: By job status, architecture, ablation mode, and combinations
+- **Rich Console Output**: Formatted tables with cost, hours, and job counts
+- **JSON Export**: Complete analysis data for further processing
+- **Error Handling**: Graceful handling of API errors and missing jobs
+- **Progress Tracking**: Real-time progress with detailed status updates
+
+**Cost Breakdowns**:
+- **By Job Status**: Completed, Failed, InProgress, Stopped, etc.
+- **By Ablation Mode**: none, decay, dropout, full, hidden, output
+- **By Architecture**: Individual architecture costs (1*2048, 18*18, etc.)
+- **By Architecture+Mode**: Combined breakdown for detailed analysis
+
 ### `sagemaker-get-training-logs`
 
 Download all CloudWatch training logs for PSA experiments and organize them in a structured directory.

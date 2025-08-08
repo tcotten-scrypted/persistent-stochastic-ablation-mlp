@@ -234,6 +234,10 @@ poetry run generate-reproduction-tests  # Generate commands for all configuratio
 Parse and analyze SageMaker training results:
 ```bash
 poetry run sagemaker-results-parser
+poetry run sagemaker-estimate-storage
+poetry run sagemaker-cost-estimator
+poetry run sagemaker-get-training-logs
+poetry run sagemaker-logs-parser
 ```
 
 **Requirements:**
@@ -243,6 +247,7 @@ poetry run sagemaker-results-parser
 **Output Files:**
 - `results/psa_simplemlp_summary.md` - Statistical summary of all experiments
 - `results/psa_simplemlp_trials.md` - Raw trial data in markdown tables
+- `results/sagemaker_cost_report.json` - Detailed cost analysis
 
 ## Documentation
 
