@@ -18,6 +18,9 @@ from matplotlib.colors import LinearSegmentedColormap
 import pandas as pd
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TaskProgressColumn
+import sys
+sys.path.append(str(Path(__file__).parent))
+from regime_classifier import classify_regime
 
 # --- Configuration ---
 CONSOLE = Console()
@@ -197,20 +200,24 @@ def create_convergence_plot(convergence_data: Dict, target_architectures: List[s
             y_min = max(1, min_acc - range_acc * 0.05)
             y_max = min(100, max_acc + range_acc * 0.05)
             
-            # Use logarithmic scale for y-axis (but keep percentage formatting)
-            ax.set_yscale('log')
+            # Use linear scale for better readability and consistent tick marks
+            ax.set_yscale('linear')
             ax.set_ylim(y_min, y_max)
             
-            # Format y-axis as percentages and ensure proper tick spacing
+            # Format y-axis as percentages
             ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: '{:.1f}%'.format(y)))
             
-            # Force more tick marks for better readability
-            if y_max > 50:
-                # For high-performance ranges, use more tick marks
-                ax.yaxis.set_major_locator(plt.LogLocator(base=10, numticks=8))
+            # Set reasonable tick intervals based on the actual data range
+            range_size = y_max - y_min
+            if range_size > 50:
+                # For large ranges, use 10% intervals
+                ax.yaxis.set_major_locator(plt.MultipleLocator(10))
+            elif range_size > 20:
+                # For medium ranges, use 5% intervals
+                ax.yaxis.set_major_locator(plt.MultipleLocator(5))
             else:
-                # For lower ranges, use standard spacing
-                ax.yaxis.set_major_locator(plt.LogLocator(base=10, numticks=6))
+                # For small ranges, use 2% intervals
+                ax.yaxis.set_major_locator(plt.MultipleLocator(2))
         else:
             # Fallback to linear scale if no data, but start at 1
             ax.set_ylim(1, 100)
@@ -222,20 +229,48 @@ def create_convergence_plot(convergence_data: Dict, target_architectures: List[s
         ax.set_title(f'Architecture {architecture}')
         ax.set_xlim(0.5, 100.5)  # Start slightly before 1 and end slightly after 100 for better visibility
         ax.grid(True, alpha=0.3)
+        
+        # Add ZeroR baseline line (will be included in the main legend)
+        ax.axhline(y=11.02, color='#212121', linestyle='--', alpha=0.5, label='ZeroR Baseline')
+        
+        # Create legend for all elements (training modes + ZeroR baseline)
         ax.legend(loc='lower right')
         
-        # Add ZeroR baseline line
-        ax.axhline(y=11.02, color='red', linestyle='--', alpha=0.5, label='ZeroR Baseline')
+        # Calculate metrics for regime classification
+        arch_metrics = {}
+        for mode in convergence_data[architecture]:
+            trial_accuracies = []
+            for trial_data in convergence_data[architecture][mode].values():
+                trial_accuracies.extend(trial_data.values())
+            
+            if trial_accuracies:
+                arch_metrics[mode] = {
+                    'mean': np.mean(trial_accuracies),
+                    'max': np.max(trial_accuracies),
+                    'min': np.min(trial_accuracies),
+                    'std': np.std(trial_accuracies)
+                }
         
-        # Add text annotation for architecture type
-        if architecture == "1*1024":
-            ax.text(0.02, 0.98, 'Over-parameterized (Stable)', 
-                   transform=ax.transAxes, fontsize=12, fontweight='bold',
-                   verticalalignment='top', bbox=dict(boxstyle='round', facecolor='lightgreen', alpha=0.7))
-        elif architecture == "18*18":
-            ax.text(0.02, 0.98, 'Chaotic Optimization', 
-                   transform=ax.transAxes, fontsize=12, fontweight='bold',
-                   verticalalignment='top', bbox=dict(boxstyle='round', facecolor='lightcoral', alpha=0.7))
+        # Classify regime
+        arch_key = architecture.replace('*', 'x')  # Convert 1*1024 to 1x1024
+        regime = classify_regime(arch_key, {arch_key: arch_metrics})
+        
+        # Map regime to display name and color (matching heatmap colors with 25% opacity)
+        regime_display = {
+            'untrainable': ('IV. Architectural Failure', '#212121'),  # Black
+            'chaotic-optimization': ('III. Chaotic Optimization', '#1565C0'),  # Blue
+            'beneficial-regularization': ('I. Beneficial Regularization', '#4CAF50'),  # Green
+            'optimally-sized': ('II. Optimally Sized', '#E53935'),  # Red
+            'unknown': ('Unknown', '#A1887F')  # Brown
+        }
+        
+        display_name, color = regime_display.get(regime, ('Unknown', 'lightyellow'))
+        
+        # Add text annotation for architecture type - straddling the top border
+        ax.text(-0.08, 1.08, display_name, 
+               transform=ax.transAxes, fontsize=12, fontweight='bold',
+               verticalalignment='center', horizontalalignment='left',
+               bbox=dict(boxstyle='round', facecolor=color, alpha=0.25))
     
     # Adjust layout
     plt.tight_layout()

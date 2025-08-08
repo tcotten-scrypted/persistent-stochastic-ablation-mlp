@@ -247,15 +247,7 @@ def classify_regime(arch_key: str, metrics: Dict[str, Dict]) -> str:
         if overlap >= 0.01:
             return 'beneficial-regularization'
     
-    # Debug Rule 2 if it doesn't match
-    print(f"\n=== Rule 2 Debug: {arch_key} ===")
-    print(f"  Baseline means: {[f'{mean:.2f}%' for mean in baseline_means]}")
-    print(f"  Baseline mean: {baseline_mean:.2f}%, Baseline std: {baseline_std:.2f}%, Effective std: {effective_std:.2f}%")
-    print(f"  Baseline within std: {baselines_within_std}")
-    ablation_means_debug = [f"{m[mode]['mean']:.2f}%" for mode in available_ablatives]
-    print(f"  Ablation means: {ablation_means_debug}")
-    print(f"  Ablations within std: {ablations_within_std}")
-    print(f"  Rule 2 result: {baselines_within_std and ablations_within_std}")
+
     
     # --- Rule 3, Regime II: Optimally Sized ---
     # Check if ablation actively harms and underperforms baseline by 1 standard deviation
