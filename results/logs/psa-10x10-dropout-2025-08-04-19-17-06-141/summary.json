@@ -1,0 +1,9 @@
+{
+  "job_name": "psa-10x10-dropout-2025-08-04-19-17-06-141",
+  "timestamp": "2025-08-08T00:50:04.757018",
+  "log_files": [
+    "results/logs/psa-10x10-dropout-2025-08-04-19-17-06-141/psa-10x10-dropout-2025-08-04-19-17-06-141/algo-1-1754335119.log"
+  ],
+  "total_files": 1,
+  "total_size": 180807
+}

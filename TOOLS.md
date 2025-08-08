@@ -281,4 +281,132 @@ python scripts/make_figure_heatmaps.py --config-file reproduction/my_configs.txt
 - **Regime Integration**: Uses `regime_classifier.py` for data-driven regime classification
 - **Memory Efficient**: Proper cleanup of matplotlib resources
 - **Configurable**: Custom input files and output directory
-- **Error Handling**: Graceful handling of missing files and parsing errors 
+- **Error Handling**: Graceful handling of missing files and parsing errors
+
+## AWS SageMaker Integration
+
+### `sagemaker-results-parser`
+
+Parse and analyze SageMaker training results:
+```bash
+poetry run sagemaker-results-parser
+```
+
+**Requirements:**
+- AWS credentials configured
+- `.env` file with AWS configuration in `aws/sagemaker/` (copy from `.env.example`)
+
+**Output Files:**
+- `results/psa_simplemlp_summary.md` - Statistical summary of all experiments
+- `results/psa_simplemlp_trials.md` - Raw trial data in markdown tables
+
+### `reconstruct_jobs.py`
+
+Simple script to reconstruct the `requested-jobs.txt` file by scanning the S3 bucket for PSA job directories.
+
+**Purpose**: Rebuilds the job list when the original `requested-jobs.txt` file is corrupted or incomplete by scanning the actual S3 bucket structure.
+
+**Usage**:
+```bash
+# From aws/sagemaker directory
+python reconstruct_jobs.py
+```
+
+**Output**: 
+- Reconstructs `aws/sagemaker/requested-jobs.txt` with all found job names
+- Shows preview of first 5 jobs found
+
+**Features**:
+- **S3 Bucket Scanning**: Automatically discovers all PSA job directories
+- **Job Name Extraction**: Parses job names from S3 paths
+- **Sorted Output**: Job names sorted alphabetically
+- **Error Handling**: Graceful handling of AWS errors and missing buckets
+
+### `sagemaker-estimate-storage`
+
+Analyze S3 storage usage for all PSA training jobs and generate detailed storage reports.
+
+**Purpose**: Provides comprehensive storage analysis for the entire PSA experimental dataset, including file type breakdowns and per-job storage details.
+
+**Usage**:
+```bash
+# Basic storage estimation
+poetry run sagemaker-estimate-storage
+
+# Detailed breakdown per job
+poetry run sagemaker-estimate-storage --detailed
+
+# Use custom jobs file
+poetry run sagemaker-estimate-storage --jobs-file path/to/jobs.txt
+```
+
+**Output**: 
+- **Console Tables**: Storage summary, file type breakdown, detailed job analysis
+- **JSON Report**: `aws/sagemaker/storage_report.json` with complete analysis data
+
+**Features**:
+- **Comprehensive Analysis**: Total storage, file counts, average per job
+- **File Type Categorization**: Model archives, JSON files, text files, logs, etc.
+- **Detailed Breakdown**: Per-job storage details with file type analysis
+- **Human-Readable Formatting**: Storage sizes in B/KB/MB/GB/TB
+- **Progress Tracking**: Real-time progress with rich console output
+- **JSON Export**: Complete analysis data for further processing
+
+**Storage Categories**:
+- **Model Archives**: `.tar.gz` files containing model checkpoints
+- **JSON Files**: Configuration and results data
+- **Text Files**: Logs and metadata
+- **Log Files**: Training and system logs
+- **Other**: Miscellaneous files
+
+### `sagemaker-get-training-logs`
+
+Download all CloudWatch training logs for PSA experiments and organize them in a structured directory.
+
+**Purpose**: Retrieves complete training logs from CloudWatch for all PSA jobs, enabling detailed analysis of training dynamics, errors, and performance patterns.
+
+**Usage**:
+```bash
+# Download all logs (requires requested-jobs.txt)
+poetry run sagemaker-get-training-logs
+
+# Reconstruct jobs first, then download logs
+poetry run sagemaker-get-training-logs --reconstruct-jobs
+
+# Custom output directory
+poetry run sagemaker-get-training-logs --output-dir results/my_logs
+
+# Force re-download of existing logs
+poetry run sagemaker-get-training-logs --force
+
+# Use custom jobs file
+poetry run sagemaker-get-training-logs --jobs-file path/to/jobs.txt
+```
+
+**Output Structure**:
+```
+results/logs/
+├── psa-1x2048-none-2025-08-04-19-53-35-910/
+│   ├── summary.json
+│   ├── algo-1-1234567890.log
+│   └── algo-1-1234567891.log
+├── psa-1x2048-decay-2025-08-04-19-53-37-670/
+│   ├── summary.json
+│   └── algo-1-1234567892.log
+└── download_summary.json
+```
+
+**Features**:
+- **Complete Log Retrieval**: Downloads all log streams for each job
+- **Structured Organization**: Logs organized by job name in subdirectories
+- **Timestamp Preservation**: Original timestamps preserved in log entries
+- **Progress Tracking**: Real-time progress with detailed status updates
+- **Summary Generation**: Per-job and overall download summaries
+- **Error Handling**: Graceful handling of missing log groups or streams
+- **Resume Capability**: Skips already downloaded logs unless --force specified
+
+**Log Analysis Benefits**:
+- **Training Dynamics**: Analyze convergence patterns and training curves
+- **Error Investigation**: Debug failed jobs and identify issues
+- **Performance Analysis**: Study resource utilization and optimization
+- **Reproducibility**: Complete training logs for experimental validation 

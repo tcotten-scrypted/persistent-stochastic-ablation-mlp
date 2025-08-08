@@ -1,0 +1,9 @@
+{
+  "job_name": "psa-115x2-output-2025-08-04-19-55-48-465",
+  "timestamp": "2025-08-08T00:50:26.568974",
+  "log_files": [
+    "results/logs/psa-115x2-output-2025-08-04-19-55-48-465/psa-115x2-output-2025-08-04-19-55-48-465/algo-1-1754337392.log"
+  ],
+  "total_files": 1,
+  "total_size": 321663
+}

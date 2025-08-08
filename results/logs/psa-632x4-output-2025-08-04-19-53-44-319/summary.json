@@ -1,0 +1,9 @@
+{
+  "job_name": "psa-632x4-output-2025-08-04-19-53-44-319",
+  "timestamp": "2025-08-08T01:02:29.212121",
+  "log_files": [
+    "results/logs/psa-632x4-output-2025-08-04-19-53-44-319/psa-632x4-output-2025-08-04-19-53-44-319/algo-1-1754337290.log"
+  ],
+  "total_files": 1,
+  "total_size": 327203
+}

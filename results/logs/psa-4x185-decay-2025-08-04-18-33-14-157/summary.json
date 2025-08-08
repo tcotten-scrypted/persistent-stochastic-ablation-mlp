@@ -1,0 +1,9 @@
+{
+  "job_name": "psa-4x185-decay-2025-08-04-18-33-14-157",
+  "timestamp": "2025-08-08T01:00:21.616619",
+  "log_files": [
+    "results/logs/psa-4x185-decay-2025-08-04-18-33-14-157/psa-4x185-decay-2025-08-04-18-33-14-157/algo-1-1754332506.log"
+  ],
+  "total_files": 1,
+  "total_size": 181245
+}

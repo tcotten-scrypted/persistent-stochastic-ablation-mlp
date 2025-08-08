@@ -1,0 +1,9 @@
+{
+  "job_name": "psa-2x59-output-2025-08-04-18-32-02-222",
+  "timestamp": "2025-08-08T00:58:29.384294",
+  "log_files": [
+    "results/logs/psa-2x59-output-2025-08-04-18-32-02-222/psa-2x59-output-2025-08-04-18-32-02-222/algo-1-1754332474.log"
+  ],
+  "total_files": 1,
+  "total_size": 319025
+}

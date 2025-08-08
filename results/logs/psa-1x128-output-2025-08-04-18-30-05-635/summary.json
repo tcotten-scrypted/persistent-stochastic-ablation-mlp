@@ -1,0 +1,9 @@
+{
+  "job_name": "psa-1x128-output-2025-08-04-18-30-05-635",
+  "timestamp": "2025-08-08T00:52:51.363217",
+  "log_files": [
+    "results/logs/psa-1x128-output-2025-08-04-18-30-05-635/psa-1x128-output-2025-08-04-18-30-05-635/algo-1-1754332343.log"
+  ],
+  "total_files": 1,
+  "total_size": 318863
+}

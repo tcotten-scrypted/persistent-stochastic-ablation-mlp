@@ -1,0 +1,9 @@
+{
+  "job_name": "psa-1x256-full-2025-08-04-18-29-52-956",
+  "timestamp": "2025-08-08T00:53:12.763854",
+  "log_files": [
+    "results/logs/psa-1x256-full-2025-08-04-18-29-52-956/psa-1x256-full-2025-08-04-18-29-52-956/algo-1-1754332237.log"
+  ],
+  "total_files": 1,
+  "total_size": 319142
+}

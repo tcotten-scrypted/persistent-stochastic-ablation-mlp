@@ -1,0 +1,9 @@
+{
+  "job_name": "psa-64x1-decay-2025-08-04-19-57-25-102",
+  "timestamp": "2025-08-08T01:02:30.642301",
+  "log_files": [
+    "results/logs/psa-64x1-decay-2025-08-04-19-57-25-102/psa-64x1-decay-2025-08-04-19-57-25-102/algo-1-1754337488.log"
+  ],
+  "total_files": 1,
+  "total_size": 180764
+}

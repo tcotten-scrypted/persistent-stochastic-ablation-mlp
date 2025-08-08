@@ -1,0 +1,5897 @@
+{
+  "timestamp": "2025-08-08T00:39:32.354813",
+  "bucket": "scrypted-ai-training",
+  "prefix": "psa-experiment",
+  "total_jobs": 588,
+  "total_storage_bytes": 13957369905,
+  "total_storage_human": "13.00 GB",
+  "total_files": 54329,
+  "average_per_job": "22.64 MB",
+  "file_types": {
+    "other": 0,
+    "model_archives": 146646,
+    "json_files": 13957223259
+  },
+  "job_details": [
+    {
+      "job_name": "psa-1024x1-decay-2025-08-04-19-56-48-115",
+      "total_size": 200873360,
+      "file_count": 745,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 200873109
+      }
+    },
+    {
+      "job_name": "psa-1024x1-dropout-2025-08-04-19-56-49-685",
+      "total_size": 227253522,
+      "file_count": 842,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 227253275
+      }
+    },
+    {
+      "job_name": "psa-1024x1-full-2025-08-04-19-56-51-122",
+      "total_size": 177844362,
+      "file_count": 660,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 177844118
+      }
+    },
+    {
+      "job_name": "psa-1024x1-hidden-2025-08-04-19-56-52-622",
+      "total_size": 193521409,
+      "file_count": 718,
+      "file_types": {
+        "other": 0,
+        "model_archives": 245,
+        "json_files": 193521164
+      }
+    },
+    {
+      "job_name": "psa-1024x1-none-2025-08-04-19-56-46-515",
+      "total_size": 184680572,
+      "file_count": 685,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 184680319
+      }
+    },
+    {
+      "job_name": "psa-1024x1-output-2025-08-04-19-56-54-257",
+      "total_size": 194007586,
+      "file_count": 720,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 194007339
+      }
+    },
+    {
+      "job_name": "psa-10x10-decay-2025-08-04-19-17-04-385",
+      "total_size": 7891167,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 7890915
+      }
+    },
+    {
+      "job_name": "psa-10x10-dropout-2025-08-04-19-17-06-141",
+      "total_size": 8153322,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 8153069
+      }
+    },
+    {
+      "job_name": "psa-10x10-full-2025-08-04-19-17-07-770",
+      "total_size": 7912187,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 7911932
+      }
+    },
+    {
+      "job_name": "psa-10x10-hidden-2025-08-04-19-17-09-508",
+      "total_size": 8155626,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 8155370
+      }
+    },
+    {
+      "job_name": "psa-10x10-none-2025-08-04-19-17-02-730",
+      "total_size": 8468174,
+      "file_count": 37,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 8467928
+      }
+    },
+    {
+      "job_name": "psa-10x10-output-2025-08-04-19-17-11-149",
+      "total_size": 8520377,
+      "file_count": 37,
+      "file_types": {
+        "other": 0,
+        "model_archives": 260,
+        "json_files": 8520117
+      }
+    },
+    {
+      "job_name": "psa-115x115-decay-2025-08-04-19-12-28-787",
+      "total_size": 28248213,
+      "file_count": 109,
+      "file_types": {
+        "other": 0,
+        "model_archives": 228,
+        "json_files": 28247985
+      }
+    },
+    {
+      "job_name": "psa-115x115-dropout-2025-08-04-19-12-30-378",
+      "total_size": 29338508,
+      "file_count": 113,
+      "file_types": {
+        "other": 0,
+        "model_archives": 229,
+        "json_files": 29338279
+      }
+    },
+    {
+      "job_name": "psa-115x115-full-2025-08-04-19-12-32-132",
+      "total_size": 31575579,
+      "file_count": 121,
+      "file_types": {
+        "other": 0,
+        "model_archives": 228,
+        "json_files": 31575351
+      }
+    },
+    {
+      "job_name": "psa-115x115-hidden-2025-08-04-19-12-33-746",
+      "total_size": 28567038,
+      "file_count": 110,
+      "file_types": {
+        "other": 0,
+        "model_archives": 230,
+        "json_files": 28566808
+      }
+    },
+    {
+      "job_name": "psa-115x115-none-2025-08-04-19-12-26-919",
+      "total_size": 24642367,
+      "file_count": 95,
+      "file_types": {
+        "other": 0,
+        "model_archives": 230,
+        "json_files": 24642137
+      }
+    },
+    {
+      "job_name": "psa-115x115-output-2025-08-04-19-12-35-382",
+      "total_size": 26873624,
+      "file_count": 104,
+      "file_types": {
+        "other": 0,
+        "model_archives": 230,
+        "json_files": 26873394
+      }
+    },
+    {
+      "job_name": "psa-115x2-decay-2025-08-04-19-55-42-201",
+      "total_size": 26214481,
+      "file_count": 102,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 26214227
+      }
+    },
+    {
+      "job_name": "psa-115x2-dropout-2025-08-04-19-55-43-724",
+      "total_size": 26554064,
+      "file_count": 103,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 26553814
+      }
+    },
+    {
+      "job_name": "psa-115x2-full-2025-08-04-19-55-45-363",
+      "total_size": 24272279,
+      "file_count": 94,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 24272026
+      }
+    },
+    {
+      "job_name": "psa-115x2-hidden-2025-08-04-19-55-47-007",
+      "total_size": 28533684,
+      "file_count": 110,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 28533436
+      }
+    },
+    {
+      "job_name": "psa-115x2-none-2025-08-04-19-55-40-441",
+      "total_size": 24259585,
+      "file_count": 94,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 24259335
+      }
+    },
+    {
+      "job_name": "psa-115x2-output-2025-08-04-19-55-48-465",
+      "total_size": 26075994,
+      "file_count": 101,
+      "file_types": {
+        "other": 0,
+        "model_archives": 245,
+        "json_files": 26075749
+      }
+    },
+    {
+      "job_name": "psa-119x4-decay-2025-08-04-19-54-16-269",
+      "total_size": 26236478,
+      "file_count": 101,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 26236225
+      }
+    },
+    {
+      "job_name": "psa-119x4-dropout-2025-08-04-19-54-17-803",
+      "total_size": 27708321,
+      "file_count": 107,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 27708069
+      }
+    },
+    {
+      "job_name": "psa-119x4-full-2025-08-04-19-54-19-338",
+      "total_size": 24757326,
+      "file_count": 96,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 24757074
+      }
+    },
+    {
+      "job_name": "psa-119x4-hidden-2025-08-04-19-54-20-975",
+      "total_size": 28414826,
+      "file_count": 109,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 28414574
+      }
+    },
+    {
+      "job_name": "psa-119x4-none-2025-08-04-19-54-14-536",
+      "total_size": 23950942,
+      "file_count": 93,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 23950689
+      }
+    },
+    {
+      "job_name": "psa-119x4-output-2025-08-04-19-54-22-618",
+      "total_size": 25176298,
+      "file_count": 97,
+      "file_types": {
+        "other": 0,
+        "model_archives": 241,
+        "json_files": 25176057
+      }
+    },
+    {
+      "job_name": "psa-11x11-decay-2025-08-04-19-16-54-855",
+      "total_size": 8290856,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 8290601
+      }
+    },
+    {
+      "job_name": "psa-11x11-dropout-2025-08-04-19-16-56-497",
+      "total_size": 9149874,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 9149621
+      }
+    },
+    {
+      "job_name": "psa-11x11-full-2025-08-04-19-16-58-043",
+      "total_size": 7902213,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 7901957
+      }
+    },
+    {
+      "job_name": "psa-11x11-hidden-2025-08-04-19-16-59-659",
+      "total_size": 8627022,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 8626768
+      }
+    },
+    {
+      "job_name": "psa-11x11-none-2025-08-04-19-16-53-126",
+      "total_size": 8205519,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 8205267
+      }
+    },
+    {
+      "job_name": "psa-11x11-output-2025-08-04-19-17-01-193",
+      "total_size": 8186845,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 8186588
+      }
+    },
+    {
+      "job_name": "psa-128x1-decay-2025-08-04-19-57-15-861",
+      "total_size": 27205107,
+      "file_count": 105,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 27204853
+      }
+    },
+    {
+      "job_name": "psa-128x1-dropout-2025-08-04-19-57-17-444",
+      "total_size": 30155721,
+      "file_count": 116,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 30155471
+      }
+    },
+    {
+      "job_name": "psa-128x1-full-2025-08-04-19-57-18-944",
+      "total_size": 27940772,
+      "file_count": 107,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 27940526
+      }
+    },
+    {
+      "job_name": "psa-128x1-hidden-2025-08-04-19-57-20-495",
+      "total_size": 28743269,
+      "file_count": 110,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 28743018
+      }
+    },
+    {
+      "job_name": "psa-128x1-none-2025-08-04-19-57-14-436",
+      "total_size": 25896178,
+      "file_count": 100,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 25895927
+      }
+    },
+    {
+      "job_name": "psa-128x1-output-2025-08-04-19-57-22-007",
+      "total_size": 26537008,
+      "file_count": 102,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 26536760
+      }
+    },
+    {
+      "job_name": "psa-12x12-decay-2025-08-04-19-16-44-834",
+      "total_size": 8369311,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 8369060
+      }
+    },
+    {
+      "job_name": "psa-12x12-dropout-2025-08-04-19-16-46-566",
+      "total_size": 8548300,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 8548045
+      }
+    },
+    {
+      "job_name": "psa-12x12-full-2025-08-04-19-16-48-111",
+      "total_size": 8602071,
+      "file_count": 37,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 8601816
+      }
+    },
+    {
+      "job_name": "psa-12x12-hidden-2025-08-04-19-16-49-845",
+      "total_size": 8523738,
+      "file_count": 37,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 8523483
+      }
+    },
+    {
+      "job_name": "psa-12x12-none-2025-08-04-19-16-43-076",
+      "total_size": 8845317,
+      "file_count": 38,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 8845060
+      }
+    },
+    {
+      "job_name": "psa-12x12-output-2025-08-04-19-16-51-482",
+      "total_size": 7886267,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 7886009
+      }
+    },
+    {
+      "job_name": "psa-13x13-decay-2025-08-04-19-16-34-868",
+      "total_size": 8494025,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 8493767
+      }
+    },
+    {
+      "job_name": "psa-13x13-dropout-2025-08-04-19-16-36-534",
+      "total_size": 8969193,
+      "file_count": 38,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 8968941
+      }
+    },
+    {
+      "job_name": "psa-13x13-full-2025-08-04-19-16-38-029",
+      "total_size": 8108156,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 8107902
+      }
+    },
+    {
+      "job_name": "psa-13x13-hidden-2025-08-04-19-16-39-764",
+      "total_size": 8243268,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 8243014
+      }
+    },
+    {
+      "job_name": "psa-13x13-none-2025-08-04-19-16-33-199",
+      "total_size": 8832844,
+      "file_count": 37,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 8832590
+      }
+    },
+    {
+      "job_name": "psa-13x13-output-2025-08-04-19-16-41-452",
+      "total_size": 8401887,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 8401628
+      }
+    },
+    {
+      "job_name": "psa-14x14-decay-2025-08-04-19-16-24-990",
+      "total_size": 9570273,
+      "file_count": 40,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 9570019
+      }
+    },
+    {
+      "job_name": "psa-14x14-dropout-2025-08-04-19-16-26-713",
+      "total_size": 8832527,
+      "file_count": 37,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 8832274
+      }
+    },
+    {
+      "job_name": "psa-14x14-full-2025-08-04-19-16-28-348",
+      "total_size": 8937990,
+      "file_count": 38,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 8937734
+      }
+    },
+    {
+      "job_name": "psa-14x14-hidden-2025-08-04-19-16-29-886",
+      "total_size": 9281565,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 9281310
+      }
+    },
+    {
+      "job_name": "psa-14x14-none-2025-08-04-19-16-23-332",
+      "total_size": 8851104,
+      "file_count": 37,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 8850848
+      }
+    },
+    {
+      "job_name": "psa-14x14-output-2025-08-04-19-16-31-513",
+      "total_size": 8567667,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 8567414
+      }
+    },
+    {
+      "job_name": "psa-15x15-decay-2025-08-04-19-16-15-227",
+      "total_size": 8960049,
+      "file_count": 38,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 8959800
+      }
+    },
+    {
+      "job_name": "psa-15x15-dropout-2025-08-04-19-16-16-771",
+      "total_size": 8986818,
+      "file_count": 38,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 8986566
+      }
+    },
+    {
+      "job_name": "psa-15x15-full-2025-08-04-19-16-18-314",
+      "total_size": 8761059,
+      "file_count": 37,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 8760804
+      }
+    },
+    {
+      "job_name": "psa-15x15-hidden-2025-08-04-19-16-20-033",
+      "total_size": 8899611,
+      "file_count": 38,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 8899356
+      }
+    },
+    {
+      "job_name": "psa-15x15-none-2025-08-04-19-16-13-600",
+      "total_size": 8652468,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 8652209
+      }
+    },
+    {
+      "job_name": "psa-15x15-output-2025-08-04-19-16-21-693",
+      "total_size": 8659978,
+      "file_count": 37,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 8659723
+      }
+    },
+    {
+      "job_name": "psa-16x1-decay-2025-08-04-19-57-43-660",
+      "total_size": 9259490,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 9259243
+      }
+    },
+    {
+      "job_name": "psa-16x1-dropout-2025-08-04-19-57-45-090",
+      "total_size": 9147668,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 9147416
+      }
+    },
+    {
+      "job_name": "psa-16x1-full-2025-08-04-19-57-46-722",
+      "total_size": 8831010,
+      "file_count": 38,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 8830760
+      }
+    },
+    {
+      "job_name": "psa-16x1-hidden-2025-08-04-19-57-48-284",
+      "total_size": 8915466,
+      "file_count": 38,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 8915220
+      }
+    },
+    {
+      "job_name": "psa-16x1-none-2025-08-04-19-57-42-069",
+      "total_size": 8451951,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 8451700
+      }
+    },
+    {
+      "job_name": "psa-16x1-output-2025-08-04-19-57-49-776",
+      "total_size": 8988379,
+      "file_count": 38,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 8988129
+      }
+    },
+    {
+      "job_name": "psa-16x16-decay-2025-08-04-19-16-05-062",
+      "total_size": 9079349,
+      "file_count": 38,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 9079094
+      }
+    },
+    {
+      "job_name": "psa-16x16-dropout-2025-08-04-19-16-06-731",
+      "total_size": 9709156,
+      "file_count": 41,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 9708910
+      }
+    },
+    {
+      "job_name": "psa-16x16-full-2025-08-04-19-16-08-575",
+      "total_size": 9197129,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 9196876
+      }
+    },
+    {
+      "job_name": "psa-16x16-hidden-2025-08-04-19-16-10-220",
+      "total_size": 8606062,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 8605807
+      }
+    },
+    {
+      "job_name": "psa-16x16-none-2025-08-04-19-16-03-445",
+      "total_size": 8426117,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 8425865
+      }
+    },
+    {
+      "job_name": "psa-16x16-output-2025-08-04-19-16-11-954",
+      "total_size": 9204626,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 9204368
+      }
+    },
+    {
+      "job_name": "psa-16x2-decay-2025-08-04-19-56-10-824",
+      "total_size": 9567094,
+      "file_count": 41,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 9566840
+      }
+    },
+    {
+      "job_name": "psa-16x2-dropout-2025-08-04-19-56-12-406",
+      "total_size": 9240008,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 9239754
+      }
+    },
+    {
+      "job_name": "psa-16x2-full-2025-08-04-19-56-13-918",
+      "total_size": 8982183,
+      "file_count": 38,
+      "file_types": {
+        "other": 0,
+        "model_archives": 242,
+        "json_files": 8981941
+      }
+    },
+    {
+      "job_name": "psa-16x2-hidden-2025-08-04-19-56-15-656",
+      "total_size": 8858707,
+      "file_count": 37,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 8858453
+      }
+    },
+    {
+      "job_name": "psa-16x2-none-2025-08-04-19-56-09-258",
+      "total_size": 8858224,
+      "file_count": 38,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 8857971
+      }
+    },
+    {
+      "job_name": "psa-16x2-output-2025-08-04-19-56-17-419",
+      "total_size": 8468270,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 8468022
+      }
+    },
+    {
+      "job_name": "psa-17x17-decay-2025-08-04-19-15-55-371",
+      "total_size": 9285002,
+      "file_count": 40,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 9284749
+      }
+    },
+    {
+      "job_name": "psa-17x17-dropout-2025-08-04-19-15-56-897",
+      "total_size": 9540671,
+      "file_count": 41,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 9540420
+      }
+    },
+    {
+      "job_name": "psa-17x17-full-2025-08-04-19-15-58-558",
+      "total_size": 8694201,
+      "file_count": 37,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 8693948
+      }
+    },
+    {
+      "job_name": "psa-17x17-hidden-2025-08-04-19-16-00-183",
+      "total_size": 9158588,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 9158332
+      }
+    },
+    {
+      "job_name": "psa-17x17-none-2025-08-04-19-15-53-630",
+      "total_size": 9080745,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 9080496
+      }
+    },
+    {
+      "job_name": "psa-17x17-output-2025-08-04-19-16-01-740",
+      "total_size": 9226017,
+      "file_count": 38,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 9225773
+      }
+    },
+    {
+      "job_name": "psa-17x4-decay-2025-08-04-19-54-54-456",
+      "total_size": 9246996,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 9246750
+      }
+    },
+    {
+      "job_name": "psa-17x4-dropout-2025-08-04-19-54-56-123",
+      "total_size": 9247394,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 9247142
+      }
+    },
+    {
+      "job_name": "psa-17x4-full-2025-08-04-19-54-57-755",
+      "total_size": 9560870,
+      "file_count": 41,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 9560623
+      }
+    },
+    {
+      "job_name": "psa-17x4-hidden-2025-08-04-19-54-59-482",
+      "total_size": 9285293,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 9285039
+      }
+    },
+    {
+      "job_name": "psa-17x4-none-2025-08-04-19-54-52-936",
+      "total_size": 9215976,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 9215724
+      }
+    },
+    {
+      "job_name": "psa-17x4-output-2025-08-04-19-55-00-951",
+      "total_size": 9056740,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 245,
+        "json_files": 9056495
+      }
+    },
+    {
+      "job_name": "psa-185x4-decay-2025-08-04-19-54-06-643",
+      "total_size": 36168081,
+      "file_count": 139,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 36167832
+      }
+    },
+    {
+      "job_name": "psa-185x4-dropout-2025-08-04-19-54-08-222",
+      "total_size": 40646220,
+      "file_count": 155,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 40645967
+      }
+    },
+    {
+      "job_name": "psa-185x4-full-2025-08-04-19-54-09-724",
+      "total_size": 34046805,
+      "file_count": 130,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 34046553
+      }
+    },
+    {
+      "job_name": "psa-185x4-hidden-2025-08-04-19-54-11-461",
+      "total_size": 36707483,
+      "file_count": 140,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 36707231
+      }
+    },
+    {
+      "job_name": "psa-185x4-none-2025-08-04-19-54-05-004",
+      "total_size": 37489247,
+      "file_count": 143,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 37488999
+      }
+    },
+    {
+      "job_name": "psa-185x4-output-2025-08-04-19-54-12-989",
+      "total_size": 33638423,
+      "file_count": 129,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 33638172
+      }
+    },
+    {
+      "job_name": "psa-18x18-decay-2025-08-04-19-15-45-344",
+      "total_size": 9239364,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 9239110
+      }
+    },
+    {
+      "job_name": "psa-18x18-dropout-2025-08-04-19-15-47-069",
+      "total_size": 9537097,
+      "file_count": 40,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 9536847
+      }
+    },
+    {
+      "job_name": "psa-18x18-full-2025-08-04-19-15-48-821",
+      "total_size": 9544875,
+      "file_count": 40,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 9544621
+      }
+    },
+    {
+      "job_name": "psa-18x18-hidden-2025-08-04-19-15-50-406",
+      "total_size": 9540307,
+      "file_count": 40,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 9540060
+      }
+    },
+    {
+      "job_name": "psa-18x18-none-2025-08-04-19-15-43-782",
+      "total_size": 8853947,
+      "file_count": 38,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 8853694
+      }
+    },
+    {
+      "job_name": "psa-18x18-output-2025-08-04-19-15-52-009",
+      "total_size": 9552112,
+      "file_count": 40,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 9551853
+      }
+    },
+    {
+      "job_name": "psa-19x19-decay-2025-08-04-19-15-35-344",
+      "total_size": 8833982,
+      "file_count": 37,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 8833732
+      }
+    },
+    {
+      "job_name": "psa-19x19-dropout-2025-08-04-19-15-37-046",
+      "total_size": 9784010,
+      "file_count": 41,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 9783758
+      }
+    },
+    {
+      "job_name": "psa-19x19-full-2025-08-04-19-15-38-682",
+      "total_size": 10666549,
+      "file_count": 44,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 10666299
+      }
+    },
+    {
+      "job_name": "psa-19x19-hidden-2025-08-04-19-15-40-314",
+      "total_size": 9059499,
+      "file_count": 38,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 9059246
+      }
+    },
+    {
+      "job_name": "psa-19x19-none-2025-08-04-19-15-33-561",
+      "total_size": 8858145,
+      "file_count": 37,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 8857895
+      }
+    },
+    {
+      "job_name": "psa-19x19-output-2025-08-04-19-15-42-161",
+      "total_size": 10143293,
+      "file_count": 43,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 10143038
+      }
+    },
+    {
+      "job_name": "psa-1x1-decay-2025-08-04-19-18-34-804",
+      "total_size": 7334868,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 7334613
+      }
+    },
+    {
+      "job_name": "psa-1x1-dropout-2025-08-04-19-18-36-410",
+      "total_size": 7294495,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 7294237
+      }
+    },
+    {
+      "job_name": "psa-1x1-full-2025-08-04-19-18-38-147",
+      "total_size": 6996996,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 6996738
+      }
+    },
+    {
+      "job_name": "psa-1x1-hidden-2025-08-04-19-18-39-729",
+      "total_size": 6525188,
+      "file_count": 29,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 6524931
+      }
+    },
+    {
+      "job_name": "psa-1x1-none-2025-08-04-19-18-33-159",
+      "total_size": 7340477,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 262,
+        "json_files": 7340215
+      }
+    },
+    {
+      "job_name": "psa-1x1-output-2025-08-04-19-18-41-374",
+      "total_size": 6655862,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 6655604
+      }
+    },
+    {
+      "job_name": "psa-1x1024-decay-2025-08-04-18-29-29-899",
+      "total_size": 6568111,
+      "file_count": 29,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 6567858
+      }
+    },
+    {
+      "job_name": "psa-1x1024-dropout-2025-08-04-18-29-31-471",
+      "total_size": 6802904,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 6802658
+      }
+    },
+    {
+      "job_name": "psa-1x1024-full-2025-08-04-18-29-33-117",
+      "total_size": 7453679,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7453428
+      }
+    },
+    {
+      "job_name": "psa-1x1024-hidden-2025-08-04-18-29-34-880",
+      "total_size": 7359695,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 7359446
+      }
+    },
+    {
+      "job_name": "psa-1x1024-none-2025-08-04-18-29-28-066",
+      "total_size": 7133726,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 7133477
+      }
+    },
+    {
+      "job_name": "psa-1x1024-output-2025-08-04-18-29-36-708",
+      "total_size": 8058475,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 8058227
+      }
+    },
+    {
+      "job_name": "psa-1x128-decay-2025-08-04-18-29-59-226",
+      "total_size": 6724955,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 6724703
+      }
+    },
+    {
+      "job_name": "psa-1x128-dropout-2025-08-04-18-30-00-743",
+      "total_size": 6491987,
+      "file_count": 29,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 6491739
+      }
+    },
+    {
+      "job_name": "psa-1x128-full-2025-08-04-18-30-02-403",
+      "total_size": 6881312,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 6881062
+      }
+    },
+    {
+      "job_name": "psa-1x128-hidden-2025-08-04-18-30-04-059",
+      "total_size": 7056593,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 7056345
+      }
+    },
+    {
+      "job_name": "psa-1x128-none-2025-08-04-18-29-57-628",
+      "total_size": 7154931,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7154680
+      }
+    },
+    {
+      "job_name": "psa-1x128-output-2025-08-04-18-30-05-635",
+      "total_size": 6767258,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 6767003
+      }
+    },
+    {
+      "job_name": "psa-1x16-decay-2025-08-04-18-30-27-901",
+      "total_size": 7386301,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 7386044
+      }
+    },
+    {
+      "job_name": "psa-1x16-dropout-2025-08-04-18-30-29-745",
+      "total_size": 6896229,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 6895979
+      }
+    },
+    {
+      "job_name": "psa-1x16-full-2025-08-04-18-30-31-273",
+      "total_size": 6867697,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 6867441
+      }
+    },
+    {
+      "job_name": "psa-1x16-hidden-2025-08-04-18-30-32-892",
+      "total_size": 6906315,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 6906065
+      }
+    },
+    {
+      "job_name": "psa-1x16-none-2025-08-04-18-30-26-271",
+      "total_size": 7180348,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 7180092
+      }
+    },
+    {
+      "job_name": "psa-1x16-output-2025-08-04-18-30-34-491",
+      "total_size": 7142894,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 7142639
+      }
+    },
+    {
+      "job_name": "psa-1x2-decay-2025-08-04-18-30-56-782",
+      "total_size": 7285719,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 7285460
+      }
+    },
+    {
+      "job_name": "psa-1x2-dropout-2025-08-04-18-30-58-319",
+      "total_size": 6756583,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 260,
+        "json_files": 6756323
+      }
+    },
+    {
+      "job_name": "psa-1x2-full-2025-08-04-18-30-59-936",
+      "total_size": 7002443,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 7002184
+      }
+    },
+    {
+      "job_name": "psa-1x2-hidden-2025-08-04-18-31-01-595",
+      "total_size": 7150566,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 7150308
+      }
+    },
+    {
+      "job_name": "psa-1x2-none-2025-08-04-18-30-55-141",
+      "total_size": 7950809,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 260,
+        "json_files": 7950549
+      }
+    },
+    {
+      "job_name": "psa-1x2-output-2025-08-04-18-31-03-231",
+      "total_size": 7340859,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 261,
+        "json_files": 7340598
+      }
+    },
+    {
+      "job_name": "psa-1x2048-decay-2025-08-04-18-19-46-516",
+      "total_size": 6641942,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 6641694
+      }
+    },
+    {
+      "job_name": "psa-1x2048-dropout-2025-08-04-18-19-48-336",
+      "total_size": 6899559,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 6899310
+      }
+    },
+    {
+      "job_name": "psa-1x2048-full-2025-08-04-18-19-49-976",
+      "total_size": 6659113,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 6658864
+      }
+    },
+    {
+      "job_name": "psa-1x2048-hidden-2025-08-04-18-19-51-595",
+      "total_size": 7201263,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 7201019
+      }
+    },
+    {
+      "job_name": "psa-1x2048-none-2025-08-04-18-19-44-561",
+      "total_size": 7268551,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 7268304
+      }
+    },
+    {
+      "job_name": "psa-1x2048-output-2025-08-04-18-19-53-096",
+      "total_size": 7268638,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 7268385
+      }
+    },
+    {
+      "job_name": "psa-1x256-decay-2025-08-04-18-29-49-705",
+      "total_size": 7113698,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 7113448
+      }
+    },
+    {
+      "job_name": "psa-1x256-dropout-2025-08-04-18-29-51-446",
+      "total_size": 6770595,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 6770346
+      }
+    },
+    {
+      "job_name": "psa-1x256-full-2025-08-04-18-29-52-956",
+      "total_size": 7508424,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 7508178
+      }
+    },
+    {
+      "job_name": "psa-1x256-hidden-2025-08-04-18-29-54-451",
+      "total_size": 6993019,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 6992772
+      }
+    },
+    {
+      "job_name": "psa-1x256-none-2025-08-04-18-29-48-057",
+      "total_size": 6847360,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 6847110
+      }
+    },
+    {
+      "job_name": "psa-1x256-output-2025-08-04-18-29-56-051",
+      "total_size": 6613961,
+      "file_count": 29,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 6613712
+      }
+    },
+    {
+      "job_name": "psa-1x32-decay-2025-08-04-18-30-18-506",
+      "total_size": 7128460,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 7128210
+      }
+    },
+    {
+      "job_name": "psa-1x32-dropout-2025-08-04-18-30-20-037",
+      "total_size": 6666678,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 6666429
+      }
+    },
+    {
+      "job_name": "psa-1x32-full-2025-08-04-18-30-21-651",
+      "total_size": 7610091,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 7609839
+      }
+    },
+    {
+      "job_name": "psa-1x32-hidden-2025-08-04-18-30-23-208",
+      "total_size": 6454017,
+      "file_count": 28,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 6453762
+      }
+    },
+    {
+      "job_name": "psa-1x32-none-2025-08-04-18-30-16-924",
+      "total_size": 7159044,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 7158790
+      }
+    },
+    {
+      "job_name": "psa-1x32-output-2025-08-04-18-30-24-714",
+      "total_size": 7119608,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 7119354
+      }
+    },
+    {
+      "job_name": "psa-1x4-decay-2025-08-04-18-30-47-144",
+      "total_size": 6477959,
+      "file_count": 29,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 6477701
+      }
+    },
+    {
+      "job_name": "psa-1x4-dropout-2025-08-04-18-30-48-808",
+      "total_size": 6847370,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 6847112
+      }
+    },
+    {
+      "job_name": "psa-1x4-full-2025-08-04-18-30-50-376",
+      "total_size": 6654436,
+      "file_count": 29,
+      "file_types": {
+        "other": 0,
+        "model_archives": 260,
+        "json_files": 6654176
+      }
+    },
+    {
+      "job_name": "psa-1x4-hidden-2025-08-04-18-30-52-083",
+      "total_size": 7950509,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 7950251
+      }
+    },
+    {
+      "job_name": "psa-1x4-none-2025-08-04-18-30-45-570",
+      "total_size": 6778834,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 6778579
+      }
+    },
+    {
+      "job_name": "psa-1x4-output-2025-08-04-18-30-53-620",
+      "total_size": 6907066,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 262,
+        "json_files": 6906804
+      }
+    },
+    {
+      "job_name": "psa-1x512-decay-2025-08-04-18-29-39-959",
+      "total_size": 7094912,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 7094662
+      }
+    },
+    {
+      "job_name": "psa-1x512-dropout-2025-08-04-18-29-41-501",
+      "total_size": 7453466,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 7453219
+      }
+    },
+    {
+      "job_name": "psa-1x512-full-2025-08-04-18-29-43-145",
+      "total_size": 7145962,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 7145708
+      }
+    },
+    {
+      "job_name": "psa-1x512-hidden-2025-08-04-18-29-44-901",
+      "total_size": 7268625,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7268374
+      }
+    },
+    {
+      "job_name": "psa-1x512-none-2025-08-04-18-29-38-446",
+      "total_size": 7380030,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 7379776
+      }
+    },
+    {
+      "job_name": "psa-1x512-output-2025-08-04-18-29-46-557",
+      "total_size": 7242556,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 7242308
+      }
+    },
+    {
+      "job_name": "psa-1x64-decay-2025-08-04-18-30-08-833",
+      "total_size": 7631842,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 7631592
+      }
+    },
+    {
+      "job_name": "psa-1x64-dropout-2025-08-04-18-30-10-391",
+      "total_size": 6499613,
+      "file_count": 28,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 6499362
+      }
+    },
+    {
+      "job_name": "psa-1x64-full-2025-08-04-18-30-11-931",
+      "total_size": 7041759,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7041508
+      }
+    },
+    {
+      "job_name": "psa-1x64-hidden-2025-08-04-18-30-13-660",
+      "total_size": 6861935,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 6861682
+      }
+    },
+    {
+      "job_name": "psa-1x64-none-2025-08-04-18-30-07-178",
+      "total_size": 7189865,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 7189612
+      }
+    },
+    {
+      "job_name": "psa-1x64-output-2025-08-04-18-30-15-410",
+      "total_size": 7949149,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 7948895
+      }
+    },
+    {
+      "job_name": "psa-1x8-decay-2025-08-04-18-30-37-522",
+      "total_size": 6794938,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 6794686
+      }
+    },
+    {
+      "job_name": "psa-1x8-dropout-2025-08-04-18-30-39-174",
+      "total_size": 6849547,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 6849299
+      }
+    },
+    {
+      "job_name": "psa-1x8-full-2025-08-04-18-30-40-709",
+      "total_size": 7353297,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 7353040
+      }
+    },
+    {
+      "job_name": "psa-1x8-hidden-2025-08-04-18-30-42-346",
+      "total_size": 6772276,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 6772019
+      }
+    },
+    {
+      "job_name": "psa-1x8-none-2025-08-04-18-30-35-977",
+      "total_size": 6577374,
+      "file_count": 29,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 6577119
+      }
+    },
+    {
+      "job_name": "psa-1x8-output-2025-08-04-18-30-43-933",
+      "total_size": 7108707,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 7108451
+      }
+    },
+    {
+      "job_name": "psa-2048x1-decay-2025-08-04-19-56-38-896",
+      "total_size": 403536632,
+      "file_count": 1492,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 403536377
+      }
+    },
+    {
+      "job_name": "psa-2048x1-dropout-2025-08-04-19-56-40-448",
+      "total_size": 460206015,
+      "file_count": 1701,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 460205765
+      }
+    },
+    {
+      "job_name": "psa-2048x1-full-2025-08-04-19-56-42-086",
+      "total_size": 394625683,
+      "file_count": 1459,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 394625431
+      }
+    },
+    {
+      "job_name": "psa-2048x1-hidden-2025-08-04-19-56-43-614",
+      "total_size": 434078798,
+      "file_count": 1604,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 434078542
+      }
+    },
+    {
+      "job_name": "psa-2048x1-none-2025-08-04-19-56-37-369",
+      "total_size": 436634792,
+      "file_count": 1613,
+      "file_types": {
+        "other": 0,
+        "model_archives": 243,
+        "json_files": 436634549
+      }
+    },
+    {
+      "job_name": "psa-2048x1-output-2025-08-04-19-56-45-046",
+      "total_size": 414915660,
+      "file_count": 1534,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 414915416
+      }
+    },
+    {
+      "job_name": "psa-20x20-decay-2025-08-04-19-15-25-370",
+      "total_size": 9545130,
+      "file_count": 40,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 9544878
+      }
+    },
+    {
+      "job_name": "psa-20x20-dropout-2025-08-04-19-15-26-981",
+      "total_size": 9808941,
+      "file_count": 41,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 9808690
+      }
+    },
+    {
+      "job_name": "psa-20x20-full-2025-08-04-19-15-28-603",
+      "total_size": 9205815,
+      "file_count": 39,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 9205568
+      }
+    },
+    {
+      "job_name": "psa-20x20-hidden-2025-08-04-19-15-30-225",
+      "total_size": 9650690,
+      "file_count": 40,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 9650443
+      }
+    },
+    {
+      "job_name": "psa-20x20-none-2025-08-04-19-15-23-631",
+      "total_size": 9581383,
+      "file_count": 40,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 9581134
+      }
+    },
+    {
+      "job_name": "psa-20x20-output-2025-08-04-19-15-31-815",
+      "total_size": 9850264,
+      "file_count": 41,
+      "file_types": {
+        "other": 0,
+        "model_archives": 243,
+        "json_files": 9850021
+      }
+    },
+    {
+      "job_name": "psa-214x2-decay-2025-08-04-19-55-32-561",
+      "total_size": 45534445,
+      "file_count": 172,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 45534194
+      }
+    },
+    {
+      "job_name": "psa-214x2-dropout-2025-08-04-19-55-34-093",
+      "total_size": 42578096,
+      "file_count": 162,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 42577844
+      }
+    },
+    {
+      "job_name": "psa-214x2-full-2025-08-04-19-55-35-741",
+      "total_size": 41718143,
+      "file_count": 158,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 41717893
+      }
+    },
+    {
+      "job_name": "psa-214x2-hidden-2025-08-04-19-55-37-378",
+      "total_size": 42260501,
+      "file_count": 160,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 42260249
+      }
+    },
+    {
+      "job_name": "psa-214x2-none-2025-08-04-19-55-30-916",
+      "total_size": 39741962,
+      "file_count": 151,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 39741716
+      }
+    },
+    {
+      "job_name": "psa-214x2-output-2025-08-04-19-55-38-902",
+      "total_size": 39375898,
+      "file_count": 150,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 39375652
+      }
+    },
+    {
+      "job_name": "psa-21x21-decay-2025-08-04-19-15-15-534",
+      "total_size": 9653156,
+      "file_count": 41,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 9652905
+      }
+    },
+    {
+      "job_name": "psa-21x21-dropout-2025-08-04-19-15-17-190",
+      "total_size": 10099647,
+      "file_count": 42,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 10099403
+      }
+    },
+    {
+      "job_name": "psa-21x21-full-2025-08-04-19-15-18-684",
+      "total_size": 9921375,
+      "file_count": 41,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 9921131
+      }
+    },
+    {
+      "job_name": "psa-21x21-hidden-2025-08-04-19-15-20-243",
+      "total_size": 9549030,
+      "file_count": 40,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 9548781
+      }
+    },
+    {
+      "job_name": "psa-21x21-none-2025-08-04-19-15-13-778",
+      "total_size": 10042287,
+      "file_count": 42,
+      "file_types": {
+        "other": 0,
+        "model_archives": 243,
+        "json_files": 10042044
+      }
+    },
+    {
+      "job_name": "psa-21x21-output-2025-08-04-19-15-21-990",
+      "total_size": 9988976,
+      "file_count": 41,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 9988729
+      }
+    },
+    {
+      "job_name": "psa-22x22-decay-2025-08-04-19-15-05-369",
+      "total_size": 9684796,
+      "file_count": 41,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 9684549
+      }
+    },
+    {
+      "job_name": "psa-22x22-dropout-2025-08-04-19-15-06-920",
+      "total_size": 11911727,
+      "file_count": 49,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 11911478
+      }
+    },
+    {
+      "job_name": "psa-22x22-full-2025-08-04-19-15-08-437",
+      "total_size": 9826851,
+      "file_count": 42,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 9826605
+      }
+    },
+    {
+      "job_name": "psa-22x22-hidden-2025-08-04-19-15-10-117",
+      "total_size": 9982976,
+      "file_count": 42,
+      "file_types": {
+        "other": 0,
+        "model_archives": 243,
+        "json_files": 9982733
+      }
+    },
+    {
+      "job_name": "psa-22x22-none-2025-08-04-19-15-03-818",
+      "total_size": 10151212,
+      "file_count": 43,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 10150968
+      }
+    },
+    {
+      "job_name": "psa-22x22-output-2025-08-04-19-15-11-853",
+      "total_size": 9545317,
+      "file_count": 40,
+      "file_types": {
+        "other": 0,
+        "model_archives": 240,
+        "json_files": 9545077
+      }
+    },
+    {
+      "job_name": "psa-23x23-decay-2025-08-04-19-14-55-734",
+      "total_size": 10575304,
+      "file_count": 44,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 10575056
+      }
+    },
+    {
+      "job_name": "psa-23x23-dropout-2025-08-04-19-14-57-367",
+      "total_size": 11228233,
+      "file_count": 46,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 11227985
+      }
+    },
+    {
+      "job_name": "psa-23x23-full-2025-08-04-19-14-58-914",
+      "total_size": 9971658,
+      "file_count": 42,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 9971414
+      }
+    },
+    {
+      "job_name": "psa-23x23-hidden-2025-08-04-19-15-00-460",
+      "total_size": 9760240,
+      "file_count": 41,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 9759993
+      }
+    },
+    {
+      "job_name": "psa-23x23-none-2025-08-04-19-14-53-728",
+      "total_size": 9550808,
+      "file_count": 40,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 9550555
+      }
+    },
+    {
+      "job_name": "psa-23x23-output-2025-08-04-19-15-02-007",
+      "total_size": 10864547,
+      "file_count": 45,
+      "file_types": {
+        "other": 0,
+        "model_archives": 242,
+        "json_files": 10864305
+      }
+    },
+    {
+      "job_name": "psa-24x24-decay-2025-08-04-19-14-45-799",
+      "total_size": 9930223,
+      "file_count": 42,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 9929975
+      }
+    },
+    {
+      "job_name": "psa-24x24-dropout-2025-08-04-19-14-47-382",
+      "total_size": 11228906,
+      "file_count": 46,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 11228653
+      }
+    },
+    {
+      "job_name": "psa-24x24-full-2025-08-04-19-14-48-891",
+      "total_size": 10312140,
+      "file_count": 43,
+      "file_types": {
+        "other": 0,
+        "model_archives": 239,
+        "json_files": 10311901
+      }
+    },
+    {
+      "job_name": "psa-24x24-hidden-2025-08-04-19-14-50-642",
+      "total_size": 10468645,
+      "file_count": 44,
+      "file_types": {
+        "other": 0,
+        "model_archives": 242,
+        "json_files": 10468403
+      }
+    },
+    {
+      "job_name": "psa-24x24-none-2025-08-04-19-14-44-273",
+      "total_size": 9870380,
+      "file_count": 41,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 9870127
+      }
+    },
+    {
+      "job_name": "psa-24x24-output-2025-08-04-19-14-52-194",
+      "total_size": 10508584,
+      "file_count": 44,
+      "file_types": {
+        "other": 0,
+        "model_archives": 236,
+        "json_files": 10508348
+      }
+    },
+    {
+      "job_name": "psa-256x1-decay-2025-08-04-19-57-06-653",
+      "total_size": 46362679,
+      "file_count": 176,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 46362427
+      }
+    },
+    {
+      "job_name": "psa-256x1-dropout-2025-08-04-19-57-08-196",
+      "total_size": 54025111,
+      "file_count": 204,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 54024863
+      }
+    },
+    {
+      "job_name": "psa-256x1-full-2025-08-04-19-57-09-775",
+      "total_size": 51075372,
+      "file_count": 194,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 51075124
+      }
+    },
+    {
+      "job_name": "psa-256x1-hidden-2025-08-04-19-57-11-249",
+      "total_size": 48403234,
+      "file_count": 184,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 48402979
+      }
+    },
+    {
+      "job_name": "psa-256x1-none-2025-08-04-19-57-05-126",
+      "total_size": 49848479,
+      "file_count": 189,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 49848226
+      }
+    },
+    {
+      "job_name": "psa-256x1-output-2025-08-04-19-57-12-903",
+      "total_size": 49804435,
+      "file_count": 189,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 49804181
+      }
+    },
+    {
+      "job_name": "psa-25x25-decay-2025-08-04-19-14-36-005",
+      "total_size": 9960749,
+      "file_count": 42,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 9960498
+      }
+    },
+    {
+      "job_name": "psa-25x25-dropout-2025-08-04-19-14-37-787",
+      "total_size": 10814279,
+      "file_count": 45,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 10814032
+      }
+    },
+    {
+      "job_name": "psa-25x25-full-2025-08-04-19-14-39-398",
+      "total_size": 10327008,
+      "file_count": 43,
+      "file_types": {
+        "other": 0,
+        "model_archives": 240,
+        "json_files": 10326768
+      }
+    },
+    {
+      "job_name": "psa-25x25-hidden-2025-08-04-19-14-41-048",
+      "total_size": 9993213,
+      "file_count": 42,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 9992966
+      }
+    },
+    {
+      "job_name": "psa-25x25-none-2025-08-04-19-14-34-407",
+      "total_size": 11254602,
+      "file_count": 46,
+      "file_types": {
+        "other": 0,
+        "model_archives": 239,
+        "json_files": 11254363
+      }
+    },
+    {
+      "job_name": "psa-25x25-output-2025-08-04-19-14-42-647",
+      "total_size": 10023093,
+      "file_count": 42,
+      "file_types": {
+        "other": 0,
+        "model_archives": 233,
+        "json_files": 10022860
+      }
+    },
+    {
+      "job_name": "psa-26x26-decay-2025-08-04-19-14-26-175",
+      "total_size": 10486266,
+      "file_count": 43,
+      "file_types": {
+        "other": 0,
+        "model_archives": 240,
+        "json_files": 10486026
+      }
+    },
+    {
+      "job_name": "psa-26x26-dropout-2025-08-04-19-14-27-830",
+      "total_size": 10780529,
+      "file_count": 44,
+      "file_types": {
+        "other": 0,
+        "model_archives": 237,
+        "json_files": 10780292
+      }
+    },
+    {
+      "job_name": "psa-26x26-full-2025-08-04-19-14-29-443",
+      "total_size": 10267015,
+      "file_count": 43,
+      "file_types": {
+        "other": 0,
+        "model_archives": 242,
+        "json_files": 10266773
+      }
+    },
+    {
+      "job_name": "psa-26x26-hidden-2025-08-04-19-14-31-196",
+      "total_size": 10689587,
+      "file_count": 44,
+      "file_types": {
+        "other": 0,
+        "model_archives": 245,
+        "json_files": 10689342
+      }
+    },
+    {
+      "job_name": "psa-26x26-none-2025-08-04-19-14-24-537",
+      "total_size": 9982290,
+      "file_count": 41,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 9982042
+      }
+    },
+    {
+      "job_name": "psa-26x26-output-2025-08-04-19-14-32-742",
+      "total_size": 11211816,
+      "file_count": 46,
+      "file_types": {
+        "other": 0,
+        "model_archives": 230,
+        "json_files": 11211586
+      }
+    },
+    {
+      "job_name": "psa-27x27-decay-2025-08-04-19-14-16-638",
+      "total_size": 10189042,
+      "file_count": 42,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 10188798
+      }
+    },
+    {
+      "job_name": "psa-27x27-dropout-2025-08-04-19-14-18-326",
+      "total_size": 11710009,
+      "file_count": 48,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 11709763
+      }
+    },
+    {
+      "job_name": "psa-27x27-full-2025-08-04-19-14-19-820",
+      "total_size": 11183826,
+      "file_count": 46,
+      "file_types": {
+        "other": 0,
+        "model_archives": 242,
+        "json_files": 11183584
+      }
+    },
+    {
+      "job_name": "psa-27x27-hidden-2025-08-04-19-14-21-357",
+      "total_size": 10549997,
+      "file_count": 44,
+      "file_types": {
+        "other": 0,
+        "model_archives": 233,
+        "json_files": 10549764
+      }
+    },
+    {
+      "job_name": "psa-27x27-none-2025-08-04-19-14-14-986",
+      "total_size": 11302552,
+      "file_count": 46,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 11302306
+      }
+    },
+    {
+      "job_name": "psa-27x27-output-2025-08-04-19-14-22-903",
+      "total_size": 10283814,
+      "file_count": 42,
+      "file_types": {
+        "other": 0,
+        "model_archives": 241,
+        "json_files": 10283573
+      }
+    },
+    {
+      "job_name": "psa-280x4-decay-2025-08-04-19-53-57-131",
+      "total_size": 54935150,
+      "file_count": 208,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 54934902
+      }
+    },
+    {
+      "job_name": "psa-280x4-dropout-2025-08-04-19-53-58-645",
+      "total_size": 65176250,
+      "file_count": 245,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 65176004
+      }
+    },
+    {
+      "job_name": "psa-280x4-full-2025-08-04-19-54-00-201",
+      "total_size": 57481478,
+      "file_count": 217,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 57481224
+      }
+    },
+    {
+      "job_name": "psa-280x4-hidden-2025-08-04-19-54-01-820",
+      "total_size": 50745129,
+      "file_count": 192,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 50744883
+      }
+    },
+    {
+      "job_name": "psa-280x4-none-2025-08-04-19-53-55-487",
+      "total_size": 52726599,
+      "file_count": 199,
+      "file_types": {
+        "other": 0,
+        "model_archives": 242,
+        "json_files": 52726357
+      }
+    },
+    {
+      "job_name": "psa-280x4-output-2025-08-04-19-54-03-460",
+      "total_size": 54312119,
+      "file_count": 205,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 54311872
+      }
+    },
+    {
+      "job_name": "psa-28x28-decay-2025-08-04-19-14-05-377",
+      "total_size": 11320489,
+      "file_count": 46,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 11320243
+      }
+    },
+    {
+      "job_name": "psa-28x28-dropout-2025-08-04-19-14-08-442",
+      "total_size": 13929411,
+      "file_count": 56,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 13929164
+      }
+    },
+    {
+      "job_name": "psa-28x28-full-2025-08-04-19-14-10-030",
+      "total_size": 10742780,
+      "file_count": 44,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 10742536
+      }
+    },
+    {
+      "job_name": "psa-28x28-hidden-2025-08-04-19-14-11-741",
+      "total_size": 10152317,
+      "file_count": 42,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 10152070
+      }
+    },
+    {
+      "job_name": "psa-28x28-none-2025-08-04-19-14-03-822",
+      "total_size": 10254298,
+      "file_count": 42,
+      "file_types": {
+        "other": 0,
+        "model_archives": 238,
+        "json_files": 10254060
+      }
+    },
+    {
+      "job_name": "psa-28x28-output-2025-08-04-19-14-13-382",
+      "total_size": 10821370,
+      "file_count": 44,
+      "file_types": {
+        "other": 0,
+        "model_archives": 239,
+        "json_files": 10821131
+      }
+    },
+    {
+      "job_name": "psa-29x29-decay-2025-08-04-19-13-55-783",
+      "total_size": 10845044,
+      "file_count": 45,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 10844797
+      }
+    },
+    {
+      "job_name": "psa-29x29-dropout-2025-08-04-19-13-57-394",
+      "total_size": 11661183,
+      "file_count": 48,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 11660939
+      }
+    },
+    {
+      "job_name": "psa-29x29-full-2025-08-04-19-13-59-079",
+      "total_size": 11225783,
+      "file_count": 46,
+      "file_types": {
+        "other": 0,
+        "model_archives": 243,
+        "json_files": 11225540
+      }
+    },
+    {
+      "job_name": "psa-29x29-hidden-2025-08-04-19-14-00-594",
+      "total_size": 11865698,
+      "file_count": 48,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 11865450
+      }
+    },
+    {
+      "job_name": "psa-29x29-none-2025-08-04-19-13-54-227",
+      "total_size": 12204458,
+      "file_count": 50,
+      "file_types": {
+        "other": 0,
+        "model_archives": 243,
+        "json_files": 12204215
+      }
+    },
+    {
+      "job_name": "psa-29x29-output-2025-08-04-19-14-02-221",
+      "total_size": 11816202,
+      "file_count": 48,
+      "file_types": {
+        "other": 0,
+        "model_archives": 238,
+        "json_files": 11815964
+      }
+    },
+    {
+      "job_name": "psa-29x4-decay-2025-08-04-19-54-44-791",
+      "total_size": 10713436,
+      "file_count": 44,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 10713187
+      }
+    },
+    {
+      "job_name": "psa-29x4-dropout-2025-08-04-19-54-46-378",
+      "total_size": 11598746,
+      "file_count": 48,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 11598496
+      }
+    },
+    {
+      "job_name": "psa-29x4-full-2025-08-04-19-54-48-007",
+      "total_size": 10698804,
+      "file_count": 44,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 10698558
+      }
+    },
+    {
+      "job_name": "psa-29x4-hidden-2025-08-04-19-54-49-670",
+      "total_size": 11129388,
+      "file_count": 46,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 11129136
+      }
+    },
+    {
+      "job_name": "psa-29x4-none-2025-08-04-19-54-43-093",
+      "total_size": 10530262,
+      "file_count": 44,
+      "file_types": {
+        "other": 0,
+        "model_archives": 242,
+        "json_files": 10530020
+      }
+    },
+    {
+      "job_name": "psa-29x4-output-2025-08-04-19-54-51-193",
+      "total_size": 11215717,
+      "file_count": 46,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 11215473
+      }
+    },
+    {
+      "job_name": "psa-2x1-decay-2025-08-04-19-58-10-849",
+      "total_size": 6888332,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 6888077
+      }
+    },
+    {
+      "job_name": "psa-2x1-dropout-2025-08-04-19-58-12-500",
+      "total_size": 7394665,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 7394410
+      }
+    },
+    {
+      "job_name": "psa-2x1-full-2025-08-04-19-58-14-142",
+      "total_size": 6728811,
+      "file_count": 29,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 6728554
+      }
+    },
+    {
+      "job_name": "psa-2x1-hidden-2025-08-04-19-58-15-624",
+      "total_size": 7065025,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 7064773
+      }
+    },
+    {
+      "job_name": "psa-2x1-none-2025-08-04-19-58-09-429",
+      "total_size": 7107968,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 7107709
+      }
+    },
+    {
+      "job_name": "psa-2x1-output-2025-08-04-19-58-17-051",
+      "total_size": 6993578,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 260,
+        "json_files": 6993318
+      }
+    },
+    {
+      "job_name": "psa-2x115-decay-2025-08-04-18-31-45-531",
+      "total_size": 7257119,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 7256870
+      }
+    },
+    {
+      "job_name": "psa-2x115-dropout-2025-08-04-18-31-47-125",
+      "total_size": 6560446,
+      "file_count": 29,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 6560197
+      }
+    },
+    {
+      "job_name": "psa-2x115-full-2025-08-04-18-31-48-855",
+      "total_size": 7229797,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 7229545
+      }
+    },
+    {
+      "job_name": "psa-2x115-hidden-2025-08-04-18-31-50-448",
+      "total_size": 6839803,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 6839552
+      }
+    },
+    {
+      "job_name": "psa-2x115-none-2025-08-04-18-31-43-872",
+      "total_size": 7315611,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 7315363
+      }
+    },
+    {
+      "job_name": "psa-2x115-output-2025-08-04-18-31-52-205",
+      "total_size": 7039712,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 7039458
+      }
+    },
+    {
+      "job_name": "psa-2x16-decay-2025-08-04-18-32-15-529",
+      "total_size": 6634756,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 6634501
+      }
+    },
+    {
+      "job_name": "psa-2x16-dropout-2025-08-04-18-32-17-175",
+      "total_size": 6562060,
+      "file_count": 29,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 6561806
+      }
+    },
+    {
+      "job_name": "psa-2x16-full-2025-08-04-18-32-18-693",
+      "total_size": 6752142,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 6751890
+      }
+    },
+    {
+      "job_name": "psa-2x16-hidden-2025-08-04-18-32-20-311",
+      "total_size": 6647242,
+      "file_count": 29,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 6646990
+      }
+    },
+    {
+      "job_name": "psa-2x16-none-2025-08-04-18-32-13-875",
+      "total_size": 6863477,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 6863229
+      }
+    },
+    {
+      "job_name": "psa-2x16-output-2025-08-04-18-32-21-881",
+      "total_size": 7928167,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 7927917
+      }
+    },
+    {
+      "job_name": "psa-2x2-decay-2025-08-04-19-18-24-660",
+      "total_size": 6998645,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 6998388
+      }
+    },
+    {
+      "job_name": "psa-2x2-dropout-2025-08-04-19-18-26-278",
+      "total_size": 6842168,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 6841910
+      }
+    },
+    {
+      "job_name": "psa-2x2-full-2025-08-04-19-18-27-848",
+      "total_size": 7400340,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 7400082
+      }
+    },
+    {
+      "job_name": "psa-2x2-hidden-2025-08-04-19-18-29-605",
+      "total_size": 8169755,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 8169497
+      }
+    },
+    {
+      "job_name": "psa-2x2-none-2025-08-04-19-18-23-035",
+      "total_size": 6835611,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 260,
+        "json_files": 6835351
+      }
+    },
+    {
+      "job_name": "psa-2x2-output-2025-08-04-19-18-31-524",
+      "total_size": 6788681,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 261,
+        "json_files": 6788420
+      }
+    },
+    {
+      "job_name": "psa-2x214-decay-2025-08-04-18-31-35-692",
+      "total_size": 7170762,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 245,
+        "json_files": 7170517
+      }
+    },
+    {
+      "job_name": "psa-2x214-dropout-2025-08-04-18-31-37-372",
+      "total_size": 6548034,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 6547782
+      }
+    },
+    {
+      "job_name": "psa-2x214-full-2025-08-04-18-31-38-878",
+      "total_size": 7177824,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 7177577
+      }
+    },
+    {
+      "job_name": "psa-2x214-hidden-2025-08-04-18-31-40-515",
+      "total_size": 7062691,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 7062445
+      }
+    },
+    {
+      "job_name": "psa-2x214-none-2025-08-04-18-31-33-986",
+      "total_size": 6706480,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 6706233
+      }
+    },
+    {
+      "job_name": "psa-2x214-output-2025-08-04-18-31-42-247",
+      "total_size": 6983068,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 6982818
+      }
+    },
+    {
+      "job_name": "psa-2x30-decay-2025-08-04-18-32-05-283",
+      "total_size": 7223951,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 7223699
+      }
+    },
+    {
+      "job_name": "psa-2x30-dropout-2025-08-04-18-32-06-935",
+      "total_size": 6586273,
+      "file_count": 29,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 6586023
+      }
+    },
+    {
+      "job_name": "psa-2x30-full-2025-08-04-18-32-08-454",
+      "total_size": 7345557,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7345306
+      }
+    },
+    {
+      "job_name": "psa-2x30-hidden-2025-08-04-18-32-10-232",
+      "total_size": 7364470,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 7364220
+      }
+    },
+    {
+      "job_name": "psa-2x30-none-2025-08-04-18-32-03-742",
+      "total_size": 6528658,
+      "file_count": 29,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 6528405
+      }
+    },
+    {
+      "job_name": "psa-2x30-output-2025-08-04-18-32-11-949",
+      "total_size": 6820114,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 6819861
+      }
+    },
+    {
+      "job_name": "psa-2x354-decay-2025-08-04-18-31-26-192",
+      "total_size": 6519023,
+      "file_count": 29,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 6518775
+      }
+    },
+    {
+      "job_name": "psa-2x354-dropout-2025-08-04-18-31-27-811",
+      "total_size": 6568971,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 6568720
+      }
+    },
+    {
+      "job_name": "psa-2x354-full-2025-08-04-18-31-29-444",
+      "total_size": 7154502,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 7154252
+      }
+    },
+    {
+      "job_name": "psa-2x354-hidden-2025-08-04-18-31-30-970",
+      "total_size": 7248085,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 7247837
+      }
+    },
+    {
+      "job_name": "psa-2x354-none-2025-08-04-18-31-24-549",
+      "total_size": 6981077,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 245,
+        "json_files": 6980832
+      }
+    },
+    {
+      "job_name": "psa-2x354-output-2025-08-04-18-31-32-472",
+      "total_size": 7452246,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 7451993
+      }
+    },
+    {
+      "job_name": "psa-2x4-decay-2025-08-04-18-32-34-928",
+      "total_size": 7099883,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 7099625
+      }
+    },
+    {
+      "job_name": "psa-2x4-dropout-2025-08-04-18-32-36-470",
+      "total_size": 6566835,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 6566576
+      }
+    },
+    {
+      "job_name": "psa-2x4-full-2025-08-04-18-32-38-175",
+      "total_size": 7376189,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 260,
+        "json_files": 7375929
+      }
+    },
+    {
+      "job_name": "psa-2x4-hidden-2025-08-04-18-32-39-820",
+      "total_size": 6958287,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 262,
+        "json_files": 6958025
+      }
+    },
+    {
+      "job_name": "psa-2x4-none-2025-08-04-18-32-33-352",
+      "total_size": 6718553,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 6718294
+      }
+    },
+    {
+      "job_name": "psa-2x4-output-2025-08-04-18-32-41-545",
+      "total_size": 6836264,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 260,
+        "json_files": 6836004
+      }
+    },
+    {
+      "job_name": "psa-2x588-decay-2025-08-04-18-31-16-368",
+      "total_size": 6546787,
+      "file_count": 29,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 6546539
+      }
+    },
+    {
+      "job_name": "psa-2x588-dropout-2025-08-04-18-31-17-970",
+      "total_size": 6842458,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 6842214
+      }
+    },
+    {
+      "job_name": "psa-2x588-full-2025-08-04-18-31-19-629",
+      "total_size": 7156840,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 7156591
+      }
+    },
+    {
+      "job_name": "psa-2x588-hidden-2025-08-04-18-31-21-249",
+      "total_size": 7391447,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 7391203
+      }
+    },
+    {
+      "job_name": "psa-2x588-none-2025-08-04-18-31-14-688",
+      "total_size": 7226611,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 7226357
+      }
+    },
+    {
+      "job_name": "psa-2x588-output-2025-08-04-18-31-22-900",
+      "total_size": 7115493,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 7115243
+      }
+    },
+    {
+      "job_name": "psa-2x59-decay-2025-08-04-18-31-55-562",
+      "total_size": 7018953,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 7018704
+      }
+    },
+    {
+      "job_name": "psa-2x59-dropout-2025-08-04-18-31-57-115",
+      "total_size": 7207945,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 7207697
+      }
+    },
+    {
+      "job_name": "psa-2x59-full-2025-08-04-18-31-58-734",
+      "total_size": 6911760,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 6911511
+      }
+    },
+    {
+      "job_name": "psa-2x59-hidden-2025-08-04-18-32-00-390",
+      "total_size": 6793073,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 6792822
+      }
+    },
+    {
+      "job_name": "psa-2x59-none-2025-08-04-18-31-53-854",
+      "total_size": 6931068,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 6930818
+      }
+    },
+    {
+      "job_name": "psa-2x59-output-2025-08-04-18-32-02-222",
+      "total_size": 6795607,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 6795357
+      }
+    },
+    {
+      "job_name": "psa-2x8-decay-2025-08-04-18-32-25-198",
+      "total_size": 6589282,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 6589025
+      }
+    },
+    {
+      "job_name": "psa-2x8-dropout-2025-08-04-18-32-26-904",
+      "total_size": 6910776,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 6910521
+      }
+    },
+    {
+      "job_name": "psa-2x8-full-2025-08-04-18-32-28-469",
+      "total_size": 7139452,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 7139194
+      }
+    },
+    {
+      "job_name": "psa-2x8-hidden-2025-08-04-18-32-30-061",
+      "total_size": 6405902,
+      "file_count": 28,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 6405644
+      }
+    },
+    {
+      "job_name": "psa-2x8-none-2025-08-04-18-32-23-547",
+      "total_size": 6640954,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 6640697
+      }
+    },
+    {
+      "job_name": "psa-2x8-output-2025-08-04-18-32-31-819",
+      "total_size": 7428121,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 7427865
+      }
+    },
+    {
+      "job_name": "psa-2x939-decay-2025-08-04-18-31-06-421",
+      "total_size": 7204107,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 7203861
+      }
+    },
+    {
+      "job_name": "psa-2x939-dropout-2025-08-04-18-31-08-044",
+      "total_size": 7253348,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 7253102
+      }
+    },
+    {
+      "job_name": "psa-2x939-full-2025-08-04-18-31-09-783",
+      "total_size": 8445584,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 8445337
+      }
+    },
+    {
+      "job_name": "psa-2x939-hidden-2025-08-04-18-31-11-440",
+      "total_size": 7616186,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 7615939
+      }
+    },
+    {
+      "job_name": "psa-2x939-none-2025-08-04-18-31-04-775",
+      "total_size": 7919541,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 7919294
+      }
+    },
+    {
+      "job_name": "psa-2x939-output-2025-08-04-18-31-13-071",
+      "total_size": 7296273,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 7296023
+      }
+    },
+    {
+      "job_name": "psa-30x2-decay-2025-08-04-19-56-01-344",
+      "total_size": 11420276,
+      "file_count": 47,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 11420026
+      }
+    },
+    {
+      "job_name": "psa-30x2-dropout-2025-08-04-19-56-02-984",
+      "total_size": 11494192,
+      "file_count": 48,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 11493939
+      }
+    },
+    {
+      "job_name": "psa-30x2-full-2025-08-04-19-56-04-520",
+      "total_size": 11668908,
+      "file_count": 48,
+      "file_types": {
+        "other": 0,
+        "model_archives": 243,
+        "json_files": 11668665
+      }
+    },
+    {
+      "job_name": "psa-30x2-hidden-2025-08-04-19-56-06-259",
+      "total_size": 11205573,
+      "file_count": 47,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 11205321
+      }
+    },
+    {
+      "job_name": "psa-30x2-none-2025-08-04-19-55-59-741",
+      "total_size": 11209359,
+      "file_count": 46,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 11209112
+      }
+    },
+    {
+      "job_name": "psa-30x2-output-2025-08-04-19-56-07-803",
+      "total_size": 11179734,
+      "file_count": 47,
+      "file_types": {
+        "other": 0,
+        "model_archives": 245,
+        "json_files": 11179489
+      }
+    },
+    {
+      "job_name": "psa-30x30-decay-2025-08-04-19-13-45-920",
+      "total_size": 10709761,
+      "file_count": 45,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 10709514
+      }
+    },
+    {
+      "job_name": "psa-30x30-dropout-2025-08-04-19-13-47-679",
+      "total_size": 12402927,
+      "file_count": 50,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 12402675
+      }
+    },
+    {
+      "job_name": "psa-30x30-full-2025-08-04-19-13-49-317",
+      "total_size": 11180217,
+      "file_count": 47,
+      "file_types": {
+        "other": 0,
+        "model_archives": 240,
+        "json_files": 11179977
+      }
+    },
+    {
+      "job_name": "psa-30x30-hidden-2025-08-04-19-13-50-940",
+      "total_size": 11501528,
+      "file_count": 47,
+      "file_types": {
+        "other": 0,
+        "model_archives": 243,
+        "json_files": 11501285
+      }
+    },
+    {
+      "job_name": "psa-30x30-none-2025-08-04-19-13-44-233",
+      "total_size": 11266727,
+      "file_count": 47,
+      "file_types": {
+        "other": 0,
+        "model_archives": 242,
+        "json_files": 11266485
+      }
+    },
+    {
+      "job_name": "psa-30x30-output-2025-08-04-19-13-52-585",
+      "total_size": 11251644,
+      "file_count": 46,
+      "file_types": {
+        "other": 0,
+        "model_archives": 230,
+        "json_files": 11251414
+      }
+    },
+    {
+      "job_name": "psa-31x31-decay-2025-08-04-19-13-36-303",
+      "total_size": 13005751,
+      "file_count": 53,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 13005502
+      }
+    },
+    {
+      "job_name": "psa-31x31-dropout-2025-08-04-19-13-37-793",
+      "total_size": 11443263,
+      "file_count": 47,
+      "file_types": {
+        "other": 0,
+        "model_archives": 233,
+        "json_files": 11443030
+      }
+    },
+    {
+      "job_name": "psa-31x31-full-2025-08-04-19-13-39-378",
+      "total_size": 10799142,
+      "file_count": 45,
+      "file_types": {
+        "other": 0,
+        "model_archives": 238,
+        "json_files": 10798904
+      }
+    },
+    {
+      "job_name": "psa-31x31-hidden-2025-08-04-19-13-41-001",
+      "total_size": 11297349,
+      "file_count": 46,
+      "file_types": {
+        "other": 0,
+        "model_archives": 236,
+        "json_files": 11297113
+      }
+    },
+    {
+      "job_name": "psa-31x31-none-2025-08-04-19-13-34-672",
+      "total_size": 10752860,
+      "file_count": 45,
+      "file_types": {
+        "other": 0,
+        "model_archives": 242,
+        "json_files": 10752618
+      }
+    },
+    {
+      "job_name": "psa-31x31-output-2025-08-04-19-13-42-673",
+      "total_size": 10779639,
+      "file_count": 44,
+      "file_types": {
+        "other": 0,
+        "model_archives": 236,
+        "json_files": 10779403
+      }
+    },
+    {
+      "job_name": "psa-32x1-decay-2025-08-04-19-57-34-408",
+      "total_size": 11466978,
+      "file_count": 47,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 11466728
+      }
+    },
+    {
+      "job_name": "psa-32x1-dropout-2025-08-04-19-57-36-044",
+      "total_size": 12972989,
+      "file_count": 53,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 12972741
+      }
+    },
+    {
+      "job_name": "psa-32x1-full-2025-08-04-19-57-37-536",
+      "total_size": 11546225,
+      "file_count": 47,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 11545971
+      }
+    },
+    {
+      "job_name": "psa-32x1-hidden-2025-08-04-19-57-39-010",
+      "total_size": 10840310,
+      "file_count": 45,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 10840057
+      }
+    },
+    {
+      "job_name": "psa-32x1-none-2025-08-04-19-57-32-924",
+      "total_size": 11341425,
+      "file_count": 47,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 11341175
+      }
+    },
+    {
+      "job_name": "psa-32x1-output-2025-08-04-19-57-40-557",
+      "total_size": 11169168,
+      "file_count": 46,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 11168916
+      }
+    },
+    {
+      "job_name": "psa-32x32-decay-2025-08-04-19-13-26-691",
+      "total_size": 11216862,
+      "file_count": 47,
+      "file_types": {
+        "other": 0,
+        "model_archives": 236,
+        "json_files": 11216626
+      }
+    },
+    {
+      "job_name": "psa-32x32-dropout-2025-08-04-19-13-28-298",
+      "total_size": 13834336,
+      "file_count": 56,
+      "file_types": {
+        "other": 0,
+        "model_archives": 242,
+        "json_files": 13834094
+      }
+    },
+    {
+      "job_name": "psa-32x32-full-2025-08-04-19-13-29-931",
+      "total_size": 12556188,
+      "file_count": 52,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 12555939
+      }
+    },
+    {
+      "job_name": "psa-32x32-hidden-2025-08-04-19-13-31-526",
+      "total_size": 10831505,
+      "file_count": 45,
+      "file_types": {
+        "other": 0,
+        "model_archives": 239,
+        "json_files": 10831266
+      }
+    },
+    {
+      "job_name": "psa-32x32-none-2025-08-04-19-13-25-016",
+      "total_size": 11886951,
+      "file_count": 49,
+      "file_types": {
+        "other": 0,
+        "model_archives": 245,
+        "json_files": 11886706
+      }
+    },
+    {
+      "job_name": "psa-32x32-output-2025-08-04-19-13-33-138",
+      "total_size": 11277171,
+      "file_count": 47,
+      "file_types": {
+        "other": 0,
+        "model_archives": 230,
+        "json_files": 11276941
+      }
+    },
+    {
+      "job_name": "psa-354x2-decay-2025-08-04-19-55-22-978",
+      "total_size": 65168130,
+      "file_count": 245,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 65167879
+      }
+    },
+    {
+      "job_name": "psa-354x2-dropout-2025-08-04-19-55-24-546",
+      "total_size": 78376786,
+      "file_count": 293,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 78376538
+      }
+    },
+    {
+      "job_name": "psa-354x2-full-2025-08-04-19-55-26-097",
+      "total_size": 66029127,
+      "file_count": 248,
+      "file_types": {
+        "other": 0,
+        "model_archives": 242,
+        "json_files": 66028885
+      }
+    },
+    {
+      "job_name": "psa-354x2-hidden-2025-08-04-19-55-27-781",
+      "total_size": 68043670,
+      "file_count": 255,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 68043424
+      }
+    },
+    {
+      "job_name": "psa-354x2-none-2025-08-04-19-55-21-373",
+      "total_size": 67051970,
+      "file_count": 252,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 67051724
+      }
+    },
+    {
+      "job_name": "psa-354x2-output-2025-08-04-19-55-29-351",
+      "total_size": 67250559,
+      "file_count": 252,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 67250308
+      }
+    },
+    {
+      "job_name": "psa-35x35-decay-2025-08-04-19-13-17-168",
+      "total_size": 13042569,
+      "file_count": 53,
+      "file_types": {
+        "other": 0,
+        "model_archives": 233,
+        "json_files": 13042336
+      }
+    },
+    {
+      "job_name": "psa-35x35-dropout-2025-08-04-19-13-18-794",
+      "total_size": 13252567,
+      "file_count": 54,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 13252323
+      }
+    },
+    {
+      "job_name": "psa-35x35-full-2025-08-04-19-13-20-439",
+      "total_size": 11973582,
+      "file_count": 49,
+      "file_types": {
+        "other": 0,
+        "model_archives": 229,
+        "json_files": 11973353
+      }
+    },
+    {
+      "job_name": "psa-35x35-hidden-2025-08-04-19-13-21-959",
+      "total_size": 12520699,
+      "file_count": 51,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 12520453
+      }
+    },
+    {
+      "job_name": "psa-35x35-none-2025-08-04-19-13-15-600",
+      "total_size": 11408795,
+      "file_count": 47,
+      "file_types": {
+        "other": 0,
+        "model_archives": 236,
+        "json_files": 11408559
+      }
+    },
+    {
+      "job_name": "psa-35x35-output-2025-08-04-19-13-23-516",
+      "total_size": 12201276,
+      "file_count": 50,
+      "file_types": {
+        "other": 0,
+        "model_archives": 231,
+        "json_files": 12201045
+      }
+    },
+    {
+      "job_name": "psa-3x3-decay-2025-08-04-19-18-14-967",
+      "total_size": 7318314,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 7318056
+      }
+    },
+    {
+      "job_name": "psa-3x3-dropout-2025-08-04-19-18-16-596",
+      "total_size": 7374001,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 7373742
+      }
+    },
+    {
+      "job_name": "psa-3x3-full-2025-08-04-19-18-18-163",
+      "total_size": 6745912,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 6745653
+      }
+    },
+    {
+      "job_name": "psa-3x3-hidden-2025-08-04-19-18-19-844",
+      "total_size": 6984094,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 6983836
+      }
+    },
+    {
+      "job_name": "psa-3x3-none-2025-08-04-19-18-13-379",
+      "total_size": 6886032,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 6885774
+      }
+    },
+    {
+      "job_name": "psa-3x3-output-2025-08-04-19-18-21-401",
+      "total_size": 6749313,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 6749054
+      }
+    },
+    {
+      "job_name": "psa-425x4-decay-2025-08-04-19-53-47-548",
+      "total_size": 84291509,
+      "file_count": 316,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 84291255
+      }
+    },
+    {
+      "job_name": "psa-425x4-dropout-2025-08-04-19-53-49-228",
+      "total_size": 87183930,
+      "file_count": 326,
+      "file_types": {
+        "other": 0,
+        "model_archives": 243,
+        "json_files": 87183687
+      }
+    },
+    {
+      "job_name": "psa-425x4-full-2025-08-04-19-53-50-779",
+      "total_size": 82451631,
+      "file_count": 309,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 82451379
+      }
+    },
+    {
+      "job_name": "psa-425x4-hidden-2025-08-04-19-53-52-494",
+      "total_size": 78406512,
+      "file_count": 294,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 78406261
+      }
+    },
+    {
+      "job_name": "psa-425x4-none-2025-08-04-19-53-46-070",
+      "total_size": 83796973,
+      "file_count": 314,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 83796725
+      }
+    },
+    {
+      "job_name": "psa-425x4-output-2025-08-04-19-53-53-961",
+      "total_size": 84012570,
+      "file_count": 315,
+      "file_types": {
+        "other": 0,
+        "model_archives": 240,
+        "json_files": 84012330
+      }
+    },
+    {
+      "job_name": "psa-44x44-decay-2025-08-04-19-13-07-686",
+      "total_size": 13926033,
+      "file_count": 56,
+      "file_types": {
+        "other": 0,
+        "model_archives": 237,
+        "json_files": 13925796
+      }
+    },
+    {
+      "job_name": "psa-44x44-dropout-2025-08-04-19-13-09-278",
+      "total_size": 14612991,
+      "file_count": 58,
+      "file_types": {
+        "other": 0,
+        "model_archives": 241,
+        "json_files": 14612750
+      }
+    },
+    {
+      "job_name": "psa-44x44-full-2025-08-04-19-13-10-818",
+      "total_size": 12919995,
+      "file_count": 52,
+      "file_types": {
+        "other": 0,
+        "model_archives": 238,
+        "json_files": 12919757
+      }
+    },
+    {
+      "job_name": "psa-44x44-hidden-2025-08-04-19-13-12-347",
+      "total_size": 13226282,
+      "file_count": 54,
+      "file_types": {
+        "other": 0,
+        "model_archives": 241,
+        "json_files": 13226041
+      }
+    },
+    {
+      "job_name": "psa-44x44-none-2025-08-04-19-13-06-101",
+      "total_size": 13698171,
+      "file_count": 55,
+      "file_types": {
+        "other": 0,
+        "model_archives": 245,
+        "json_files": 13697926
+      }
+    },
+    {
+      "job_name": "psa-44x44-output-2025-08-04-19-13-14-006",
+      "total_size": 13110427,
+      "file_count": 53,
+      "file_types": {
+        "other": 0,
+        "model_archives": 229,
+        "json_files": 13110198
+      }
+    },
+    {
+      "job_name": "psa-47x4-decay-2025-08-04-19-54-34-897",
+      "total_size": 13059576,
+      "file_count": 53,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 13059322
+      }
+    },
+    {
+      "job_name": "psa-47x4-dropout-2025-08-04-19-54-36-576",
+      "total_size": 15379555,
+      "file_count": 62,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 15379306
+      }
+    },
+    {
+      "job_name": "psa-47x4-full-2025-08-04-19-54-38-192",
+      "total_size": 13655023,
+      "file_count": 55,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 13654774
+      }
+    },
+    {
+      "job_name": "psa-47x4-hidden-2025-08-04-19-54-39-912",
+      "total_size": 13314048,
+      "file_count": 54,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 13313802
+      }
+    },
+    {
+      "job_name": "psa-47x4-none-2025-08-04-19-54-33-370",
+      "total_size": 14085415,
+      "file_count": 57,
+      "file_types": {
+        "other": 0,
+        "model_archives": 245,
+        "json_files": 14085170
+      }
+    },
+    {
+      "job_name": "psa-47x4-output-2025-08-04-19-54-41-568",
+      "total_size": 14482346,
+      "file_count": 58,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 14482094
+      }
+    },
+    {
+      "job_name": "psa-4x1-decay-2025-08-04-19-58-01-942",
+      "total_size": 6862368,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 6862113
+      }
+    },
+    {
+      "job_name": "psa-4x1-dropout-2025-08-04-19-58-03-468",
+      "total_size": 7612062,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 7611810
+      }
+    },
+    {
+      "job_name": "psa-4x1-full-2025-08-04-19-58-04-909",
+      "total_size": 7201994,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 7201747
+      }
+    },
+    {
+      "job_name": "psa-4x1-hidden-2025-08-04-19-58-06-421",
+      "total_size": 7931083,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7930832
+      }
+    },
+    {
+      "job_name": "psa-4x1-none-2025-08-04-19-58-00-451",
+      "total_size": 7312633,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 7312380
+      }
+    },
+    {
+      "job_name": "psa-4x1-output-2025-08-04-19-58-07-917",
+      "total_size": 7143694,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 7143440
+      }
+    },
+    {
+      "job_name": "psa-4x119-decay-2025-08-04-18-33-24-493",
+      "total_size": 7569514,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 7569262
+      }
+    },
+    {
+      "job_name": "psa-4x119-dropout-2025-08-04-18-33-26-317",
+      "total_size": 7450568,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 7450322
+      }
+    },
+    {
+      "job_name": "psa-4x119-full-2025-08-04-18-33-28-001",
+      "total_size": 7219431,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7219180
+      }
+    },
+    {
+      "job_name": "psa-4x119-hidden-2025-08-04-18-33-29-768",
+      "total_size": 7520273,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 7520029
+      }
+    },
+    {
+      "job_name": "psa-4x119-none-2025-08-04-18-33-22-806",
+      "total_size": 6888810,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 6888559
+      }
+    },
+    {
+      "job_name": "psa-4x119-output-2025-08-04-18-33-31-520",
+      "total_size": 7362754,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 7362507
+      }
+    },
+    {
+      "job_name": "psa-4x17-decay-2025-08-04-18-34-04-015",
+      "total_size": 7388129,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7387878
+      }
+    },
+    {
+      "job_name": "psa-4x17-dropout-2025-08-04-18-34-05-564",
+      "total_size": 7222701,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 7222447
+      }
+    },
+    {
+      "job_name": "psa-4x17-full-2025-08-04-18-34-07-247",
+      "total_size": 7534973,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 7534716
+      }
+    },
+    {
+      "job_name": "psa-4x17-hidden-2025-08-04-18-34-08-918",
+      "total_size": 7577632,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 7577376
+      }
+    },
+    {
+      "job_name": "psa-4x17-none-2025-08-04-18-34-02-445",
+      "total_size": 7006717,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7006466
+      }
+    },
+    {
+      "job_name": "psa-4x17-output-2025-08-04-18-34-10-426",
+      "total_size": 7023862,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 7023605
+      }
+    },
+    {
+      "job_name": "psa-4x185-decay-2025-08-04-18-33-14-157",
+      "total_size": 7340142,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 7339895
+      }
+    },
+    {
+      "job_name": "psa-4x185-dropout-2025-08-04-18-33-15-971",
+      "total_size": 6879695,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 6879449
+      }
+    },
+    {
+      "job_name": "psa-4x185-full-2025-08-04-18-33-17-829",
+      "total_size": 7131033,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 245,
+        "json_files": 7130788
+      }
+    },
+    {
+      "job_name": "psa-4x185-hidden-2025-08-04-18-33-19-463",
+      "total_size": 7224530,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 7224283
+      }
+    },
+    {
+      "job_name": "psa-4x185-none-2025-08-04-18-33-12-459",
+      "total_size": 7524424,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 7524178
+      }
+    },
+    {
+      "job_name": "psa-4x185-output-2025-08-04-18-33-21-164",
+      "total_size": 7311930,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7311679
+      }
+    },
+    {
+      "job_name": "psa-4x2-decay-2025-08-04-19-56-29-696",
+      "total_size": 7650016,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 7649759
+      }
+    },
+    {
+      "job_name": "psa-4x2-dropout-2025-08-04-19-56-31-203",
+      "total_size": 6888109,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 6887855
+      }
+    },
+    {
+      "job_name": "psa-4x2-full-2025-08-04-19-56-32-676",
+      "total_size": 6786460,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 6786208
+      }
+    },
+    {
+      "job_name": "psa-4x2-hidden-2025-08-04-19-56-34-197",
+      "total_size": 7025427,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 7025168
+      }
+    },
+    {
+      "job_name": "psa-4x2-none-2025-08-04-19-56-28-057",
+      "total_size": 6881775,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 6881524
+      }
+    },
+    {
+      "job_name": "psa-4x2-output-2025-08-04-19-56-35-840",
+      "total_size": 7381416,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 7381164
+      }
+    },
+    {
+      "job_name": "psa-4x280-decay-2025-08-04-18-33-04-275",
+      "total_size": 7556817,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 7556571
+      }
+    },
+    {
+      "job_name": "psa-4x280-dropout-2025-08-04-18-33-05-918",
+      "total_size": 7314028,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 7313779
+      }
+    },
+    {
+      "job_name": "psa-4x280-full-2025-08-04-18-33-07-649",
+      "total_size": 7164496,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 7164249
+      }
+    },
+    {
+      "job_name": "psa-4x280-hidden-2025-08-04-18-33-09-286",
+      "total_size": 7375014,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 245,
+        "json_files": 7374769
+      }
+    },
+    {
+      "job_name": "psa-4x280-none-2025-08-04-18-33-02-621",
+      "total_size": 7063045,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 7062801
+      }
+    },
+    {
+      "job_name": "psa-4x280-output-2025-08-04-18-33-10-829",
+      "total_size": 7401846,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7401595
+      }
+    },
+    {
+      "job_name": "psa-4x29-decay-2025-08-04-18-33-54-149",
+      "total_size": 7404201,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 7403955
+      }
+    },
+    {
+      "job_name": "psa-4x29-dropout-2025-08-04-18-33-55-926",
+      "total_size": 7405791,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 7405545
+      }
+    },
+    {
+      "job_name": "psa-4x29-full-2025-08-04-18-33-57-635",
+      "total_size": 7562653,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7562402
+      }
+    },
+    {
+      "job_name": "psa-4x29-hidden-2025-08-04-18-33-59-204",
+      "total_size": 7507957,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 7507707
+      }
+    },
+    {
+      "job_name": "psa-4x29-none-2025-08-04-18-33-52-495",
+      "total_size": 6926482,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 6926233
+      }
+    },
+    {
+      "job_name": "psa-4x29-output-2025-08-04-18-34-00-727",
+      "total_size": 7221242,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 7220986
+      }
+    },
+    {
+      "job_name": "psa-4x4-decay-2025-08-04-19-18-05-054",
+      "total_size": 7400614,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 260,
+        "json_files": 7400354
+      }
+    },
+    {
+      "job_name": "psa-4x4-dropout-2025-08-04-19-18-06-635",
+      "total_size": 7223405,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 7223146
+      }
+    },
+    {
+      "job_name": "psa-4x4-full-2025-08-04-19-18-08-395",
+      "total_size": 7498836,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 260,
+        "json_files": 7498576
+      }
+    },
+    {
+      "job_name": "psa-4x4-hidden-2025-08-04-19-18-09-955",
+      "total_size": 6838489,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 260,
+        "json_files": 6838229
+      }
+    },
+    {
+      "job_name": "psa-4x4-none-2025-08-04-19-18-03-263",
+      "total_size": 7167166,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 7166909
+      }
+    },
+    {
+      "job_name": "psa-4x4-output-2025-08-04-19-18-11-773",
+      "total_size": 7023518,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 7023260
+      }
+    },
+    {
+      "job_name": "psa-4x425-decay-2025-08-04-18-32-54-440",
+      "total_size": 6930421,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 242,
+        "json_files": 6930179
+      }
+    },
+    {
+      "job_name": "psa-4x425-dropout-2025-08-04-18-32-56-095",
+      "total_size": 7908001,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 7907754
+      }
+    },
+    {
+      "job_name": "psa-4x425-full-2025-08-04-18-32-57-723",
+      "total_size": 7345171,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 7344922
+      }
+    },
+    {
+      "job_name": "psa-4x425-hidden-2025-08-04-18-32-59-358",
+      "total_size": 7391870,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 7391616
+      }
+    },
+    {
+      "job_name": "psa-4x425-none-2025-08-04-18-32-52-803",
+      "total_size": 7941828,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 7941581
+      }
+    },
+    {
+      "job_name": "psa-4x425-output-2025-08-04-18-33-00-994",
+      "total_size": 7591262,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 7591016
+      }
+    },
+    {
+      "job_name": "psa-4x47-decay-2025-08-04-18-33-44-422",
+      "total_size": 7083817,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7083566
+      }
+    },
+    {
+      "job_name": "psa-4x47-dropout-2025-08-04-18-33-46-056",
+      "total_size": 7221598,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 7221351
+      }
+    },
+    {
+      "job_name": "psa-4x47-full-2025-08-04-18-33-47-614",
+      "total_size": 6791431,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 6791182
+      }
+    },
+    {
+      "job_name": "psa-4x47-hidden-2025-08-04-18-33-49-324",
+      "total_size": 6973378,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 6973123
+      }
+    },
+    {
+      "job_name": "psa-4x47-none-2025-08-04-18-33-42-759",
+      "total_size": 7939620,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 7939370
+      }
+    },
+    {
+      "job_name": "psa-4x47-output-2025-08-04-18-33-50-957",
+      "total_size": 7367755,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 7367501
+      }
+    },
+    {
+      "job_name": "psa-4x632-decay-2025-08-04-18-32-44-812",
+      "total_size": 7153738,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7153487
+      }
+    },
+    {
+      "job_name": "psa-4x632-dropout-2025-08-04-18-32-46-438",
+      "total_size": 7240444,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 7240196
+      }
+    },
+    {
+      "job_name": "psa-4x632-full-2025-08-04-18-32-47-974",
+      "total_size": 7178187,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 243,
+        "json_files": 7177944
+      }
+    },
+    {
+      "job_name": "psa-4x632-hidden-2025-08-04-18-32-49-618",
+      "total_size": 8110933,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 8110686
+      }
+    },
+    {
+      "job_name": "psa-4x632-none-2025-08-04-18-32-43-177",
+      "total_size": 7314563,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 7314315
+      }
+    },
+    {
+      "job_name": "psa-4x632-output-2025-08-04-18-32-51-214",
+      "total_size": 7904557,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 7904309
+      }
+    },
+    {
+      "job_name": "psa-4x76-decay-2025-08-04-18-33-34-859",
+      "total_size": 7377512,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 7377263
+      }
+    },
+    {
+      "job_name": "psa-4x76-dropout-2025-08-04-18-33-36-518",
+      "total_size": 6970400,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 6970147
+      }
+    },
+    {
+      "job_name": "psa-4x76-full-2025-08-04-18-33-38-055",
+      "total_size": 7401216,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 7400964
+      }
+    },
+    {
+      "job_name": "psa-4x76-hidden-2025-08-04-18-33-39-650",
+      "total_size": 7130565,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7130314
+      }
+    },
+    {
+      "job_name": "psa-4x76-none-2025-08-04-18-33-33-209",
+      "total_size": 7268431,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7268180
+      }
+    },
+    {
+      "job_name": "psa-4x76-output-2025-08-04-18-33-41-241",
+      "total_size": 7177913,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 7177663
+      }
+    },
+    {
+      "job_name": "psa-512x1-decay-2025-08-04-19-56-57-349",
+      "total_size": 92576512,
+      "file_count": 346,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 92576264
+      }
+    },
+    {
+      "job_name": "psa-512x1-dropout-2025-08-04-19-56-58-963",
+      "total_size": 115229034,
+      "file_count": 430,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 115228784
+      }
+    },
+    {
+      "job_name": "psa-512x1-full-2025-08-04-19-57-00-559",
+      "total_size": 89653793,
+      "file_count": 335,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 89653540
+      }
+    },
+    {
+      "job_name": "psa-512x1-hidden-2025-08-04-19-57-02-080",
+      "total_size": 103123907,
+      "file_count": 385,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 103123660
+      }
+    },
+    {
+      "job_name": "psa-512x1-none-2025-08-04-19-56-55-791",
+      "total_size": 95438481,
+      "file_count": 357,
+      "file_types": {
+        "other": 0,
+        "model_archives": 243,
+        "json_files": 95438238
+      }
+    },
+    {
+      "job_name": "psa-512x1-output-2025-08-04-19-57-03-596",
+      "total_size": 90974846,
+      "file_count": 340,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 90974600
+      }
+    },
+    {
+      "job_name": "psa-56x56-decay-2025-08-04-19-12-57-816",
+      "total_size": 15441944,
+      "file_count": 62,
+      "file_types": {
+        "other": 0,
+        "model_archives": 229,
+        "json_files": 15441715
+      }
+    },
+    {
+      "job_name": "psa-56x56-dropout-2025-08-04-19-12-59-471",
+      "total_size": 16441861,
+      "file_count": 65,
+      "file_types": {
+        "other": 0,
+        "model_archives": 233,
+        "json_files": 16441628
+      }
+    },
+    {
+      "job_name": "psa-56x56-full-2025-08-04-19-13-01-101",
+      "total_size": 16142123,
+      "file_count": 64,
+      "file_types": {
+        "other": 0,
+        "model_archives": 229,
+        "json_files": 16141894
+      }
+    },
+    {
+      "job_name": "psa-56x56-hidden-2025-08-04-19-13-02-820",
+      "total_size": 15760924,
+      "file_count": 63,
+      "file_types": {
+        "other": 0,
+        "model_archives": 236,
+        "json_files": 15760688
+      }
+    },
+    {
+      "job_name": "psa-56x56-none-2025-08-04-19-12-56-256",
+      "total_size": 16516557,
+      "file_count": 66,
+      "file_types": {
+        "other": 0,
+        "model_archives": 231,
+        "json_files": 16516326
+      }
+    },
+    {
+      "job_name": "psa-56x56-output-2025-08-04-19-13-04-465",
+      "total_size": 15620265,
+      "file_count": 63,
+      "file_types": {
+        "other": 0,
+        "model_archives": 228,
+        "json_files": 15620037
+      }
+    },
+    {
+      "job_name": "psa-588x2-decay-2025-08-04-19-55-13-713",
+      "total_size": 104651384,
+      "file_count": 391,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 104651136
+      }
+    },
+    {
+      "job_name": "psa-588x2-dropout-2025-08-04-19-55-15-261",
+      "total_size": 124693524,
+      "file_count": 464,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 124693278
+      }
+    },
+    {
+      "job_name": "psa-588x2-full-2025-08-04-19-55-16-787",
+      "total_size": 110894512,
+      "file_count": 413,
+      "file_types": {
+        "other": 0,
+        "model_archives": 245,
+        "json_files": 110894267
+      }
+    },
+    {
+      "job_name": "psa-588x2-hidden-2025-08-04-19-55-18-334",
+      "total_size": 108873832,
+      "file_count": 406,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 108873581
+      }
+    },
+    {
+      "job_name": "psa-588x2-none-2025-08-04-19-55-12-229",
+      "total_size": 112567396,
+      "file_count": 419,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 112567142
+      }
+    },
+    {
+      "job_name": "psa-588x2-output-2025-08-04-19-55-19-921",
+      "total_size": 108538124,
+      "file_count": 404,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 108537875
+      }
+    },
+    {
+      "job_name": "psa-59x2-decay-2025-08-04-19-55-51-702",
+      "total_size": 16395700,
+      "file_count": 65,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 16395449
+      }
+    },
+    {
+      "job_name": "psa-59x2-dropout-2025-08-04-19-55-53-314",
+      "total_size": 16827936,
+      "file_count": 67,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 16827683
+      }
+    },
+    {
+      "job_name": "psa-59x2-full-2025-08-04-19-55-54-855",
+      "total_size": 16148640,
+      "file_count": 65,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 16148389
+      }
+    },
+    {
+      "job_name": "psa-59x2-hidden-2025-08-04-19-55-56-418",
+      "total_size": 15107324,
+      "file_count": 61,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 15107072
+      }
+    },
+    {
+      "job_name": "psa-59x2-none-2025-08-04-19-55-50-117",
+      "total_size": 16119749,
+      "file_count": 64,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 16119498
+      }
+    },
+    {
+      "job_name": "psa-59x2-output-2025-08-04-19-55-57-939",
+      "total_size": 15304478,
+      "file_count": 62,
+      "file_types": {
+        "other": 0,
+        "model_archives": 240,
+        "json_files": 15304238
+      }
+    },
+    {
+      "job_name": "psa-5x5-decay-2025-08-04-19-17-54-687",
+      "total_size": 6954149,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 260,
+        "json_files": 6953889
+      }
+    },
+    {
+      "job_name": "psa-5x5-dropout-2025-08-04-19-17-56-424",
+      "total_size": 7221691,
+      "file_count": 31,
+      "file_types": {
+        "other": 0,
+        "model_archives": 260,
+        "json_files": 7221431
+      }
+    },
+    {
+      "job_name": "psa-5x5-full-2025-08-04-19-17-58-146",
+      "total_size": 6978807,
+      "file_count": 30,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 6978548
+      }
+    },
+    {
+      "job_name": "psa-5x5-hidden-2025-08-04-19-18-00-075",
+      "total_size": 7652778,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 7652520
+      }
+    },
+    {
+      "job_name": "psa-5x5-none-2025-08-04-19-17-53-051",
+      "total_size": 7434874,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 7434616
+      }
+    },
+    {
+      "job_name": "psa-5x5-output-2025-08-04-19-18-01-674",
+      "total_size": 7575313,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 7575056
+      }
+    },
+    {
+      "job_name": "psa-632x4-decay-2025-08-04-19-53-37-670",
+      "total_size": 123594303,
+      "file_count": 460,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 123594051
+      }
+    },
+    {
+      "job_name": "psa-632x4-dropout-2025-08-04-19-53-39-514",
+      "total_size": 136283166,
+      "file_count": 507,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 136282913
+      }
+    },
+    {
+      "job_name": "psa-632x4-full-2025-08-04-19-53-41-169",
+      "total_size": 107882834,
+      "file_count": 402,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 107882581
+      }
+    },
+    {
+      "job_name": "psa-632x4-hidden-2025-08-04-19-53-42-780",
+      "total_size": 109623720,
+      "file_count": 409,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 109623474
+      }
+    },
+    {
+      "job_name": "psa-632x4-none-2025-08-04-19-53-35-910",
+      "total_size": 124739289,
+      "file_count": 464,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 124739039
+      }
+    },
+    {
+      "job_name": "psa-632x4-output-2025-08-04-19-53-44-319",
+      "total_size": 106039690,
+      "file_count": 396,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 106039443
+      }
+    },
+    {
+      "job_name": "psa-64x1-decay-2025-08-04-19-57-25-102",
+      "total_size": 17740392,
+      "file_count": 70,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 17740139
+      }
+    },
+    {
+      "job_name": "psa-64x1-dropout-2025-08-04-19-57-26-610",
+      "total_size": 19016875,
+      "file_count": 75,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 19016625
+      }
+    },
+    {
+      "job_name": "psa-64x1-full-2025-08-04-19-57-28-183",
+      "total_size": 18836951,
+      "file_count": 74,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 18836704
+      }
+    },
+    {
+      "job_name": "psa-64x1-hidden-2025-08-04-19-57-29-798",
+      "total_size": 16602385,
+      "file_count": 66,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 16602132
+      }
+    },
+    {
+      "job_name": "psa-64x1-none-2025-08-04-19-57-23-561",
+      "total_size": 17756241,
+      "file_count": 70,
+      "file_types": {
+        "other": 0,
+        "model_archives": 243,
+        "json_files": 17755998
+      }
+    },
+    {
+      "job_name": "psa-64x1-output-2025-08-04-19-57-31-267",
+      "total_size": 16322465,
+      "file_count": 65,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 16322219
+      }
+    },
+    {
+      "job_name": "psa-6x6-decay-2025-08-04-19-17-44-512",
+      "total_size": 7201249,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 260,
+        "json_files": 7200989
+      }
+    },
+    {
+      "job_name": "psa-6x6-dropout-2025-08-04-19-17-46-172",
+      "total_size": 7932766,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 7932513
+      }
+    },
+    {
+      "job_name": "psa-6x6-full-2025-08-04-19-17-47-812",
+      "total_size": 7220617,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 7220359
+      }
+    },
+    {
+      "job_name": "psa-6x6-hidden-2025-08-04-19-17-49-546",
+      "total_size": 7514281,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 7514024
+      }
+    },
+    {
+      "job_name": "psa-6x6-none-2025-08-04-19-17-42-735",
+      "total_size": 7509431,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 7509180
+      }
+    },
+    {
+      "job_name": "psa-6x6-output-2025-08-04-19-17-51-215",
+      "total_size": 7267249,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 263,
+        "json_files": 7266986
+      }
+    },
+    {
+      "job_name": "psa-71x71-decay-2025-08-04-19-12-48-233",
+      "total_size": 17747832,
+      "file_count": 70,
+      "file_types": {
+        "other": 0,
+        "model_archives": 227,
+        "json_files": 17747605
+      }
+    },
+    {
+      "job_name": "psa-71x71-dropout-2025-08-04-19-12-49-896",
+      "total_size": 20309237,
+      "file_count": 79,
+      "file_types": {
+        "other": 0,
+        "model_archives": 230,
+        "json_files": 20309007
+      }
+    },
+    {
+      "job_name": "psa-71x71-full-2025-08-04-19-12-51-458",
+      "total_size": 18292762,
+      "file_count": 73,
+      "file_types": {
+        "other": 0,
+        "model_archives": 229,
+        "json_files": 18292533
+      }
+    },
+    {
+      "job_name": "psa-71x71-hidden-2025-08-04-19-12-53-010",
+      "total_size": 17930598,
+      "file_count": 71,
+      "file_types": {
+        "other": 0,
+        "model_archives": 229,
+        "json_files": 17930369
+      }
+    },
+    {
+      "job_name": "psa-71x71-none-2025-08-04-19-12-46-549",
+      "total_size": 17743085,
+      "file_count": 70,
+      "file_types": {
+        "other": 0,
+        "model_archives": 231,
+        "json_files": 17742854
+      }
+    },
+    {
+      "job_name": "psa-71x71-output-2025-08-04-19-12-54-639",
+      "total_size": 19588297,
+      "file_count": 78,
+      "file_types": {
+        "other": 0,
+        "model_archives": 229,
+        "json_files": 19588068
+      }
+    },
+    {
+      "job_name": "psa-76x4-decay-2025-08-04-19-54-25-695",
+      "total_size": 17819677,
+      "file_count": 70,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 17819430
+      }
+    },
+    {
+      "job_name": "psa-76x4-dropout-2025-08-04-19-54-27-230",
+      "total_size": 19896514,
+      "file_count": 78,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 19896261
+      }
+    },
+    {
+      "job_name": "psa-76x4-full-2025-08-04-19-54-28-759",
+      "total_size": 19395852,
+      "file_count": 76,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 19395606
+      }
+    },
+    {
+      "job_name": "psa-76x4-hidden-2025-08-04-19-54-30-304",
+      "total_size": 18593710,
+      "file_count": 73,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 18593457
+      }
+    },
+    {
+      "job_name": "psa-76x4-none-2025-08-04-19-54-24-139",
+      "total_size": 19852828,
+      "file_count": 78,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 19852581
+      }
+    },
+    {
+      "job_name": "psa-76x4-output-2025-08-04-19-54-31-824",
+      "total_size": 19537246,
+      "file_count": 77,
+      "file_types": {
+        "other": 0,
+        "model_archives": 243,
+        "json_files": 19537003
+      }
+    },
+    {
+      "job_name": "psa-7x7-decay-2025-08-04-19-17-34-500",
+      "total_size": 8046813,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 8046557
+      }
+    },
+    {
+      "job_name": "psa-7x7-dropout-2025-08-04-19-17-36-177",
+      "total_size": 7518171,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 254,
+        "json_files": 7517917
+      }
+    },
+    {
+      "job_name": "psa-7x7-full-2025-08-04-19-17-37-874",
+      "total_size": 7460353,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 7460094
+      }
+    },
+    {
+      "job_name": "psa-7x7-hidden-2025-08-04-19-17-39-524",
+      "total_size": 8028508,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 8028251
+      }
+    },
+    {
+      "job_name": "psa-7x7-none-2025-08-04-19-17-32-838",
+      "total_size": 7907541,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 7907285
+      }
+    },
+    {
+      "job_name": "psa-7x7-output-2025-08-04-19-17-41-153",
+      "total_size": 8228470,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 261,
+        "json_files": 8228209
+      }
+    },
+    {
+      "job_name": "psa-8x1-decay-2025-08-04-19-57-52-726",
+      "total_size": 8108620,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 251,
+        "json_files": 8108369
+      }
+    },
+    {
+      "job_name": "psa-8x1-dropout-2025-08-04-19-57-54-380",
+      "total_size": 7908439,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 7908186
+      }
+    },
+    {
+      "job_name": "psa-8x1-full-2025-08-04-19-57-55-900",
+      "total_size": 7923250,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 247,
+        "json_files": 7923003
+      }
+    },
+    {
+      "job_name": "psa-8x1-hidden-2025-08-04-19-57-57-330",
+      "total_size": 7573184,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 7572934
+      }
+    },
+    {
+      "job_name": "psa-8x1-none-2025-08-04-19-57-51-213",
+      "total_size": 7908431,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 7908179
+      }
+    },
+    {
+      "job_name": "psa-8x1-output-2025-08-04-19-57-58-821",
+      "total_size": 7894431,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 7894185
+      }
+    },
+    {
+      "job_name": "psa-8x2-decay-2025-08-04-19-56-20-486",
+      "total_size": 7358563,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 7358310
+      }
+    },
+    {
+      "job_name": "psa-8x2-dropout-2025-08-04-19-56-21-911",
+      "total_size": 7567501,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 7567253
+      }
+    },
+    {
+      "job_name": "psa-8x2-full-2025-08-04-19-56-23-458",
+      "total_size": 7908864,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 248,
+        "json_files": 7908616
+      }
+    },
+    {
+      "job_name": "psa-8x2-hidden-2025-08-04-19-56-24-935",
+      "total_size": 7931792,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 7931539
+      }
+    },
+    {
+      "job_name": "psa-8x2-none-2025-08-04-19-56-18-965",
+      "total_size": 7935864,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 255,
+        "json_files": 7935609
+      }
+    },
+    {
+      "job_name": "psa-8x2-output-2025-08-04-19-56-26-525",
+      "total_size": 7994379,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 244,
+        "json_files": 7994135
+      }
+    },
+    {
+      "job_name": "psa-8x8-decay-2025-08-04-19-17-24-567",
+      "total_size": 8259478,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 8259222
+      }
+    },
+    {
+      "job_name": "psa-8x8-dropout-2025-08-04-19-17-26-208",
+      "total_size": 8243611,
+      "file_count": 36,
+      "file_types": {
+        "other": 0,
+        "model_archives": 250,
+        "json_files": 8243361
+      }
+    },
+    {
+      "job_name": "psa-8x8-full-2025-08-04-19-17-27-847",
+      "total_size": 7593250,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 7592992
+      }
+    },
+    {
+      "job_name": "psa-8x8-hidden-2025-08-04-19-17-29-622",
+      "total_size": 7331475,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 258,
+        "json_files": 7331217
+      }
+    },
+    {
+      "job_name": "psa-8x8-none-2025-08-04-19-17-22-812",
+      "total_size": 7319527,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 7319268
+      }
+    },
+    {
+      "job_name": "psa-8x8-output-2025-08-04-19-17-31-188",
+      "total_size": 7385033,
+      "file_count": 32,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 7384774
+      }
+    },
+    {
+      "job_name": "psa-91x91-decay-2025-08-04-19-12-38-544",
+      "total_size": 21018987,
+      "file_count": 82,
+      "file_types": {
+        "other": 0,
+        "model_archives": 229,
+        "json_files": 21018758
+      }
+    },
+    {
+      "job_name": "psa-91x91-dropout-2025-08-04-19-12-40-117",
+      "total_size": 25331356,
+      "file_count": 98,
+      "file_types": {
+        "other": 0,
+        "model_archives": 227,
+        "json_files": 25331129
+      }
+    },
+    {
+      "job_name": "psa-91x91-full-2025-08-04-19-12-41-718",
+      "total_size": 22345493,
+      "file_count": 87,
+      "file_types": {
+        "other": 0,
+        "model_archives": 229,
+        "json_files": 22345264
+      }
+    },
+    {
+      "job_name": "psa-91x91-hidden-2025-08-04-19-12-43-374",
+      "total_size": 24452206,
+      "file_count": 95,
+      "file_types": {
+        "other": 0,
+        "model_archives": 229,
+        "json_files": 24451977
+      }
+    },
+    {
+      "job_name": "psa-91x91-none-2025-08-04-19-12-37-015",
+      "total_size": 20647951,
+      "file_count": 81,
+      "file_types": {
+        "other": 0,
+        "model_archives": 228,
+        "json_files": 20647723
+      }
+    },
+    {
+      "job_name": "psa-91x91-output-2025-08-04-19-12-44-912",
+      "total_size": 20233047,
+      "file_count": 79,
+      "file_types": {
+        "other": 0,
+        "model_archives": 230,
+        "json_files": 20232817
+      }
+    },
+    {
+      "job_name": "psa-939x2-decay-2025-08-04-19-55-03-994",
+      "total_size": 171079053,
+      "file_count": 635,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 171078804
+      }
+    },
+    {
+      "job_name": "psa-939x2-dropout-2025-08-04-19-55-05-637",
+      "total_size": 206605694,
+      "file_count": 766,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 206605441
+      }
+    },
+    {
+      "job_name": "psa-939x2-full-2025-08-04-19-55-07-169",
+      "total_size": 165231644,
+      "file_count": 614,
+      "file_types": {
+        "other": 0,
+        "model_archives": 246,
+        "json_files": 165231398
+      }
+    },
+    {
+      "job_name": "psa-939x2-hidden-2025-08-04-19-55-08-816",
+      "total_size": 175987068,
+      "file_count": 654,
+      "file_types": {
+        "other": 0,
+        "model_archives": 249,
+        "json_files": 175986819
+      }
+    },
+    {
+      "job_name": "psa-939x2-none-2025-08-04-19-55-02-452",
+      "total_size": 172643006,
+      "file_count": 641,
+      "file_types": {
+        "other": 0,
+        "model_archives": 252,
+        "json_files": 172642754
+      }
+    },
+    {
+      "job_name": "psa-939x2-output-2025-08-04-19-55-10-441",
+      "total_size": 173332160,
+      "file_count": 643,
+      "file_types": {
+        "other": 0,
+        "model_archives": 243,
+        "json_files": 173331917
+      }
+    },
+    {
+      "job_name": "psa-9x9-decay-2025-08-04-19-17-14-519",
+      "total_size": 8062836,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 253,
+        "json_files": 8062583
+      }
+    },
+    {
+      "job_name": "psa-9x9-dropout-2025-08-04-19-17-16-107",
+      "total_size": 7887286,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 257,
+        "json_files": 7887029
+      }
+    },
+    {
+      "job_name": "psa-9x9-full-2025-08-04-19-17-17-693",
+      "total_size": 7545359,
+      "file_count": 33,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 7545100
+      }
+    },
+    {
+      "job_name": "psa-9x9-hidden-2025-08-04-19-17-19-445",
+      "total_size": 8056137,
+      "file_count": 35,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 8055881
+      }
+    },
+    {
+      "job_name": "psa-9x9-none-2025-08-04-19-17-12-779",
+      "total_size": 7901058,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 259,
+        "json_files": 7900799
+      }
+    },
+    {
+      "job_name": "psa-9x9-output-2025-08-04-19-17-21-215",
+      "total_size": 7931774,
+      "file_count": 34,
+      "file_types": {
+        "other": 0,
+        "model_archives": 256,
+        "json_files": 7931518
+      }
+    }
+  ]
+}

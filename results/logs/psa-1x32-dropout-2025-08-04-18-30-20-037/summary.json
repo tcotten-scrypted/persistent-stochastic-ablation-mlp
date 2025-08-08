@@ -1,0 +1,9 @@
+{
+  "job_name": "psa-1x32-dropout-2025-08-04-18-30-20-037",
+  "timestamp": "2025-08-08T00:53:16.855041",
+  "log_files": [
+    "results/logs/psa-1x32-dropout-2025-08-04-18-30-20-037/psa-1x32-dropout-2025-08-04-18-30-20-037/algo-1-1754332303.log"
+  ],
+  "total_files": 1,
+  "total_size": 180115
+}
