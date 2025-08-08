@@ -409,4 +409,85 @@ results/logs/
 - **Training Dynamics**: Analyze convergence patterns and training curves
 - **Error Investigation**: Debug failed jobs and identify issues
 - **Performance Analysis**: Study resource utilization and optimization
-- **Reproducibility**: Complete training logs for experimental validation 
+- **Reproducibility**: Complete training logs for experimental validation
+
+### `make-convergence-plots`
+
+Generate convergence plots showing validation accuracy progression across meta-loops for different architectures and training modes.
+
+**Purpose**: Creates Figure 4 from the paper, visualizing the temporal patterns of training dynamics across different training regimes.
+
+**Usage**:
+```bash
+# Generate default plot (1*1024 and 18*18 architectures)
+poetry run make-convergence-plots
+
+# Generate plot for specific architectures
+poetry run make-convergence-plots --targets "1*1024,18*18"
+
+# Generate single architecture plot
+poetry run make-convergence-plots --targets "1*1024"
+```
+
+**Output**: `results/SimpleMLP_Plot_Convergence.png`
+
+**Features**:
+- **Multi-architecture Comparison**: Stacked subplots for comparing different architectures
+- **All Training Modes**: Shows baseline (none, decay, dropout) and PSA (hidden, output, full) methods
+- **Best Trial Selection**: Displays only the best performing trial per mode based on peak accuracy achieved
+- **Regime Annotations**: Labels architectures by training regime (Over-parameterized, Chaotic Optimization)
+- **ZeroR Baseline**: Reference line at 11.02% validation accuracy
+
+**Visualization Details**:
+- **Color Coding**: Brown (Control/None), Purple (Weight Decay), Pink (Dropout), Yellow (Hidden Ablation), Cyan (Output Ablation), Orange (Full Ablation)
+- **Line Style**: Single line per mode showing the best performing trial (alpha=0.8, linewidth=2)
+- **Logarithmic Scale**: Y-axis uses log scale to better show performance differences with percentage formatting
+- **Dynamic Range**: Y-axis automatically constrained to 5% above/below actual data range, starting at 1% for optimal visualization
+- **Grid**: Light grid for readability
+- **Legend**: Training mode labels in lower right corner
+- **Consistency**: Uses identical color scheme and labels as `make-figure-heatmaps`
+
+### `sagemaker-logs-parser`
+
+Parse downloaded CloudWatch training logs to extract LKG growth and convergence data, generating markdown tables for analysis.
+
+**Purpose**: Analyzes training logs to track Last Known Good (LKG) improvements and validation accuracy progression across meta-loops, providing insights into training dynamics and ablation effectiveness.
+
+**Usage**:
+```bash
+# Parse logs and generate analysis tables
+poetry run sagemaker-logs-parser
+
+# Use custom directories
+poetry run sagemaker-logs-parser --logs-dir results/logs --output-dir results
+
+# Parse specific log directory
+poetry run sagemaker-logs-parser --logs-dir /path/to/logs --output-dir /path/to/output
+```
+
+**Output Files**:
+- `results/psa_simplemlp_trials_lkg_growth.md`: LKG growth analysis table
+- `results/psa_simplemlp_trials_convergence.md`: Convergence analysis table
+
+**Table Format**:
+- **LKG Growth Table**: Shows improvement in validation accuracy from previous LKG per meta-loop
+  - Columns: Architecture | Mode | Meta-Loop 0 | Meta-Loop 1 | ... | Meta-Loop 99 | Final Test
+  - Values: Growth percentage (0.00 if no improvement, positive values for improvements)
+- **Convergence Table**: Shows actual validation accuracy per meta-loop
+  - Columns: Architecture | Mode | Meta-Loop 0 | Meta-Loop 1 | ... | Meta-Loop 99 | Final Test
+  - Values: Validation accuracy percentage for each meta-loop
+
+**Features**:
+- **LKG Tracking**: Identifies and tracks Last Known Good model improvements
+- **Meta-loop Analysis**: Analyzes training progression across all meta-loops (0-99)
+- **Architecture Classification**: Automatically extracts architecture and ablation mode from job names
+- **Comprehensive Parsing**: Searches for multiple log patterns to capture all relevant data
+- **Markdown Generation**: Creates publication-ready markdown tables
+- **Progress Tracking**: Real-time progress with detailed status updates
+- **Error Handling**: Graceful handling of missing or malformed log data
+
+**Analysis Benefits**:
+- **Training Dynamics**: Understand how LKG evolves during training
+- **Ablation Effectiveness**: Measure the impact of different ablation strategies
+- **Convergence Patterns**: Identify architectures that benefit from PSA
+- **Meta-loop Optimization**: Optimize the number of meta-loops for different architectures 

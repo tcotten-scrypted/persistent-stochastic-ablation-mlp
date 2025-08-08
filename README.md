@@ -216,6 +216,7 @@ poetry run make-trial-accuracy-table    # Experimental results with statistics
 ```bash
 poetry run make-design-space-figure     # Design space scatter plot
 poetry run make-figure-heatmaps         # Six comprehensive heatmap visualizations
+poetry run make-convergence-plots       # Convergence plots showing validation accuracy over meta-loops (SimpleMLP_Plot_Convergence.png) - use 1*1024,18*18 format
 ```
 
 **Regime Classification:**
