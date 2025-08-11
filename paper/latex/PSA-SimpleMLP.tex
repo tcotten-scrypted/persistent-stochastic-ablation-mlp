@@ -405,7 +405,7 @@ Our findings around the ``stochastic kick'' behavior, where a random perturbatio
 
 The final regime encompasses architectures that are \textit{fundamentally untrainable}: where the choice of training strategy becomes irrelevant. Our systematic exploration of the design space was designed to map the precise boundary of this failure as an observable phenomenon where even the powerful stochastic kick of PSA is insufficient to rescue the model from architectural collapse.
 
-Models in this regime (Fig. \ref{fig-regime-map}, black points) universally fail to learn, with all six training modes stalling at an accuracy of approximately 11.02\%. This value is the empirically measured majority class baseline (ZeroR) for our 10,000-sample validation set, confirming a total failure to learn from input features. This failure is attributable to two distinct architectural pathologies: the \textit{Vanishing Gradient Problem} in excessively deep networks, and \textit{Information Bottlenecks} in degenerately narrow ones.
+Models in this regime (Fig. \ref{regime_map}, black points) universally fail to learn, with all six training modes stalling at an accuracy of approximately 11.02\%. This value is the empirically measured majority class baseline (ZeroR) for our 10,000-sample validation set, confirming a total failure to learn from input features. This failure is attributable to two distinct architectural pathologies: the \textit{Vanishing Gradient Problem} in excessively deep networks, and \textit{Information Bottlenecks} in degenerately narrow ones.
 
 \subsubsection{The VGP Boundary in Square Architectures}
 
