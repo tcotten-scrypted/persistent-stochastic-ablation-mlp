@@ -1,9 +1,0 @@
-{
-  "job_name": "psa-1x512-hidden-2025-08-04-18-29-44-901",
-  "timestamp": "2025-08-08T00:53:32.936507",
-  "log_files": [
-    "results/logs/psa-1x512-hidden-2025-08-04-18-29-44-901/psa-1x512-hidden-2025-08-04-18-29-44-901/algo-1-1754332238.log"
-  ],
-  "total_files": 1,
-  "total_size": 320043
-}

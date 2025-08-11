@@ -1,9 +1,0 @@
-{
-  "job_name": "psa-44x44-dropout-2025-08-04-19-13-09-278",
-  "timestamp": "2025-08-08T00:59:48.231322",
-  "log_files": [
-    "results/logs/psa-44x44-dropout-2025-08-04-19-13-09-278/psa-44x44-dropout-2025-08-04-19-13-09-278/algo-1-1754334846.log"
-  ],
-  "total_files": 1,
-  "total_size": 181099
-}

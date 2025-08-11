@@ -1,9 +1,0 @@
-{
-  "job_name": "psa-15x15-dropout-2025-08-04-19-16-16-771",
-  "timestamp": "2025-08-08T00:51:11.709076",
-  "log_files": [
-    "results/logs/psa-15x15-dropout-2025-08-04-19-16-16-771/psa-15x15-dropout-2025-08-04-19-16-16-771/algo-1-1754335030.log"
-  ],
-  "total_files": 1,
-  "total_size": 181127
-}

@@ -1,9 +1,0 @@
-{
-  "job_name": "psa-1024x1-output-2025-08-04-19-56-54-257",
-  "timestamp": "2025-08-08T00:50:00.149655",
-  "log_files": [
-    "results/logs/psa-1024x1-output-2025-08-04-19-56-54-257/psa-1024x1-output-2025-08-04-19-56-54-257/algo-1-1754337457.log"
-  ],
-  "total_files": 1,
-  "total_size": 333421
-}
