@@ -9,6 +9,8 @@
 # Core Concepts:
 # 1. Six Ablation Modes:
 #    - 'none': Control group.
+#    - 'decay': Traditional weight decay regularization
+#    - 'dropout': Traditional dropout regularization
 #    - 'full': Partially ablates a neuron in ANY linear layer (hidden or output).
 #    - 'hidden': Fully ablates a neuron in a HIDDEN layer only.
 #    - 'output': Partially ablates a neuron in the OUTPUT layer only.
