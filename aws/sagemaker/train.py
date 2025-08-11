@@ -482,12 +482,13 @@ def run_single_experiment(config: Config, console: Console, log: logging.Logger)
                     optimizer = optim.AdamW(model.parameters(), lr=config.LEARNING_RATE, weight_decay=config.WEIGHT_DECAY)
                     if loop == 0:  # Log once at the start
                         log.info(f"🔧 Using weight decay: {config.WEIGHT_DECAY}")
-                elif config.ABLATION_MODE == "dropout":
-                    optimizer = optim.AdamW(model.parameters(), lr=config.LEARNING_RATE)
-                    if loop == 0:  # Log once at the start
-                        log.info(f"🔧 Using dropout rate: {config.DROPOUT_RATE}")
                 else:
-                    optimizer = optim.AdamW(model.parameters(), lr=config.LEARNING_RATE)
+                    optimizer = optim.AdamW(model.parameters(), lr=config.LEARNING_RATE, weight_decay=0.0)
+                    if loop == 0:  # Log once at the start
+                        if config.ABLATION_MODE == "dropout":
+                            log.info(f"🔧 Using dropout rate: {config.DROPOUT_RATE} (weight decay: 0.0)")
+                        else:
+                            log.info("🔧 Using weight decay: 0.0")
                 
                 train_task = progress.add_task("Training...", total=len(train_loader))
                 train_one_epoch(model, train_loader, optimizer, criterion, config, progress, train_task)
