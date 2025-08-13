@@ -1,0 +1,9 @@
+{
+  "job_name": "psa-30x2-decay-2025-08-11-22-30-41-605",
+  "timestamp": "2025-08-12T22:54:28.552362",
+  "log_files": [
+    "results/logs/psa-30x2-decay-2025-08-11-22-30-41-605/psa-30x2-decay-2025-08-11-22-30-41-605/algo-1-1754951509.log"
+  ],
+  "total_files": 1,
+  "total_size": 180848
+}

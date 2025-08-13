@@ -1,0 +1,9 @@
+{
+  "job_name": "psa-4x76-dropout-2025-08-11-19-52-09-533",
+  "timestamp": "2025-08-12T22:43:50.574343",
+  "log_files": [
+    "results/logs/psa-4x76-dropout-2025-08-11-19-52-09-533/psa-4x76-dropout-2025-08-11-19-52-09-533/algo-1-1754941973.log"
+  ],
+  "total_files": 1,
+  "total_size": 181386
+}

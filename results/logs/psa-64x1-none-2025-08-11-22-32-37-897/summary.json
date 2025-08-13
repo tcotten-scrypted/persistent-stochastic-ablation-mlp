@@ -1,0 +1,9 @@
+{
+  "job_name": "psa-64x1-none-2025-08-11-22-32-37-897",
+  "timestamp": "2025-08-12T22:58:11.158383",
+  "log_files": [
+    "results/logs/psa-64x1-none-2025-08-11-22-32-37-897/psa-64x1-none-2025-08-11-22-32-37-897/algo-1-1754951601.log"
+  ],
+  "total_files": 1,
+  "total_size": 180615
+}

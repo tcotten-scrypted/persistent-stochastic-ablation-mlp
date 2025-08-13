@@ -362,8 +362,8 @@ def plot_instability(architectures: list, metrics: dict, output_file: Path):
     save_and_close(fig, output_file)
 
 def plot_winning_strategy(architectures: list, metrics: dict, output_file: Path):
-    """Plots a categorical map showing which mode had the highest mean accuracy."""
-    title = 'SimpleMLP Design Space: Winning Strategy Map'
+    """Plots a categorical map showing which mode had the highest peak (max) accuracy."""
+    title = 'SimpleMLP Design Space: Peak Performance Strategy Map'
     fig, ax = setup_plot(title)
     
     depths = np.array([arch[0] for arch in architectures])
@@ -402,17 +402,21 @@ def plot_winning_strategy(architectures: list, metrics: dict, output_file: Path)
                 if all_untrainable:
                     winner = 'untrainable'
                 else:
-                    # Find the mode with the highest mean accuracy
-                    winner = max(available_modes, key=lambda mode: m[mode]['mean'])
+                    # Find the mode with the highest peak (max) accuracy
+                    winner = max(available_modes, key=lambda mode: m[mode]['max'])
             else:
                 winner = 'untrainable'
         winners.append(winner)
     winners = np.array(winners)
 
-    for mode_name, label in mode_labels.items():
-        mask = winners == mode_name
-        if np.any(mask):
-            ax.scatter(depths[mask], widths[mask], c=mode_colors[mode_name], s=120, edgecolors='black', linewidth=0.5, label=label)
+    # Draw modes in specific order: background to foreground (untrainable first, hidden last)
+    drawing_order = ['untrainable', 'none', 'dropout', 'decay', 'full', 'output', 'hidden']
+    
+    for mode_name in drawing_order:
+        if mode_name in mode_labels:
+            mask = winners == mode_name
+            if np.any(mask):
+                ax.scatter(depths[mask], widths[mask], c=mode_colors[mode_name], s=120, edgecolors='black', linewidth=0.5, label=mode_labels[mode_name])
 
     ax.legend(title='Winning Mode', loc='upper right', fontsize=10)
     
@@ -826,8 +830,11 @@ def plot_regimes(architectures: list, metrics: dict, output_file: Path):
         regime = classify_regime(arch_key, metrics)
         regimes.append(regime)
     
-    # Plot each regime with appropriate color
-    for regime_name in ['beneficial-regularization', 'optimally-sized', 'chaotic-optimization', 'untrainable', 'unknown']:
+    # Plot each regime with appropriate color in specific order: background to foreground
+    # Untrainable first (background), then beneficial regularization, optimally-sized, chaotic-optimization, unknown
+    regime_drawing_order = ['untrainable', 'beneficial-regularization', 'optimally-sized', 'chaotic-optimization', 'unknown']
+    
+    for regime_name in regime_drawing_order:
         mask = [r == regime_name for r in regimes]
         if any(mask):
             regime_depths = [d for d, m in zip(depths, mask) if m]

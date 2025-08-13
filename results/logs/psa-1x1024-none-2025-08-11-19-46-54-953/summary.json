@@ -1,0 +1,9 @@
+{
+  "job_name": "psa-1x1024-none-2025-08-11-19-46-54-953",
+  "timestamp": "2025-08-12T22:40:32.511382",
+  "log_files": [
+    "results/logs/psa-1x1024-none-2025-08-11-19-46-54-953/psa-1x1024-none-2025-08-11-19-46-54-953/algo-1-1754941658.log"
+  ],
+  "total_files": 1,
+  "total_size": 180962
+}

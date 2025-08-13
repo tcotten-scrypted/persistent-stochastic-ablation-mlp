@@ -1,0 +1,9 @@
+{
+  "job_name": "psa-2048x1-none-2025-08-11-22-31-32-235",
+  "timestamp": "2025-08-12T22:55:50.979873",
+  "log_files": [
+    "results/logs/psa-2048x1-none-2025-08-11-22-31-32-235/psa-2048x1-none-2025-08-11-22-31-32-235/algo-1-1754951536.log"
+  ],
+  "total_files": 1,
+  "total_size": 180747
+}

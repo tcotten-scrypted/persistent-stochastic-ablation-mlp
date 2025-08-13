@@ -1,0 +1,9 @@
+{
+  "job_name": "psa-512x1-hidden-2025-08-11-22-32-07-093",
+  "timestamp": "2025-08-12T22:57:52.365915",
+  "log_files": [
+    "results/logs/psa-512x1-hidden-2025-08-11-22-32-07-093/psa-512x1-hidden-2025-08-11-22-32-07-093/algo-1-1754951569.log"
+  ],
+  "total_files": 1,
+  "total_size": 325788
+}
