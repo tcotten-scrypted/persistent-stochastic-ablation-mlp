@@ -20,7 +20,7 @@ from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TaskProgressColumn
 import sys
 sys.path.append(str(Path(__file__).parent))
-from regime_classifier import classify_regime
+# regime_classifier import moved to runtime to avoid circular imports
 
 # --- Configuration ---
 CONSOLE = Console()
@@ -251,9 +251,29 @@ def create_convergence_plot(convergence_data: Dict, target_architectures: List[s
                     'std': np.std(trial_accuracies)
                 }
         
-        # Classify regime
+        # Classify regime using the existing trials data instead of parsed logs
         arch_key = architecture.replace('*', 'x')  # Convert 1*1024 to 1x1024
-        regime = classify_regime(arch_key, {arch_key: arch_metrics})
+        
+        # Import and use the regime classifier's existing data
+        try:
+            from regime_classifier import get_all_regime_classifications
+            trials_file = Path('results/psa_simplemlp_trials.md')
+            if trials_file.exists():
+                # Get all classifications and extract the one for this architecture
+                all_classifications = get_all_regime_classifications(
+                    Path('reproduction/configurations.txt'), 
+                    trials_file
+                )
+                # Find the matching configuration (convert back to * format for lookup)
+                config_key = architecture  # Already in 1*1024 format
+                regime = all_classifications.get(config_key, 'unknown')
+                CONSOLE.print(f"🔍 Regime classification for {arch_key}: {regime} (from trials data)", style="dim")
+            else:
+                regime = 'unknown'
+                CONSOLE.print(f"🔍 Trials file not found, using 'unknown' regime", style="red")
+        except Exception as e:
+            regime = 'unknown'
+            CONSOLE.print(f"🔍 Error getting regime classification: {e}", style="red")
         
         # Map regime to display name and color (matching heatmap colors with 25% opacity)
         regime_display = {

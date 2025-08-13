@@ -220,7 +220,6 @@ def classify_regime(arch_key: str, metrics: Dict[str, Dict]) -> str:
     # Cap std at 0.5% if it's too small (for high-performing models)
     effective_std = max(baseline_std, 0.5)
     
-    # Check if all baseline means are within 1 std of baseline mean
     baselines_within_std = all(abs(mean - baseline_mean) <= effective_std for mean in baseline_means)
     
     # Check if each ablation mode is within 1 std of baseline mean
@@ -232,21 +231,28 @@ def classify_regime(arch_key: str, metrics: Dict[str, Dict]) -> str:
     ablative_std = np.std(ablative_means)
     effective_ablative_std = max(ablative_std, 0.5)
     ablations_consistent = all(abs(m[mode]['mean'] - ablative_mean) <= effective_ablative_std for mode in available_ablatives)
-    
-    # Beneficial Regularization: baselines are consistent AND (ablations are within baseline std OR there's significant overlap)
-    if baselines_within_std and ablations_within_std:
-        return 'beneficial-regularization'
-    
-    # Also check for significant overlap between baseline and ablation ranges
-    if baselines_within_std:
-        max_ablation = max(ablative_means)
-        min_baseline = min(baseline_means)
-        overlap = max_ablation - min_baseline
-        
-        # If there's any overlap (>0.01%), it's beneficial regularization
-        if overlap >= 0.01:
+
+    is_chaotic_outlier = any(
+        abl_mean > (baseline_mean + effective_std) for abl_mean in ablative_means
+        # This condition being true is a strong indicator of Chaotic Optimization.
+        # We disqualify it from being Beneficial Regularization and let the
+        # script proceed to the Chaotic Optimization rule (Rule 4).
+    )
+
+    if not is_chaotic_outlier:
+        # Beneficial Regularization: baselines are consistent AND (ablations are within baseline std OR there's significant overlap)
+        if baselines_within_std and ablations_within_std:
             return 'beneficial-regularization'
-    
+        
+        # Also check for significant overlap between baseline and ablation ranges
+        if baselines_within_std:
+            max_ablation = max(ablative_means)
+            min_baseline = min(baseline_means)
+            overlap = max_ablation - min_baseline
+            
+            # If there's any overlap (>0.01%), it's beneficial regularization
+            if overlap >= 0.01:
+                return 'beneficial-regularization'
 
     
     # --- Rule 3, Regime II: Optimally Sized ---
@@ -304,7 +310,18 @@ def classify_regime(arch_key: str, metrics: Dict[str, Dict]) -> str:
     chaotic_threshold = 0.5  # Fixed 0.5% threshold for chaotic detection
     if ablative_mean > (baseline_mean + chaotic_threshold):
         return 'chaotic-optimization'
-    
+
+    # Condition C: High Baseline Instability
+    # Check if any baseline mode shows extreme variance, indicating a chaotic landscape
+    # where success is a matter of chance.
+    high_variance_threshold = 15.0  # A standard deviation of 15% is highly unstable
+    is_baseline_unstable = any(m[mode]['std'] > high_variance_threshold for mode in available_baselines)
+
+    if (all_baselines_fail and any_ablative_succeeds) or \
+    (ablative_mean > (baseline_mean + chaotic_threshold)) or \
+    (is_baseline_unstable):
+        return 'chaotic-optimization'
+        
     print(f"Regime: {arch_key} - #debugging data here")
 
     return 'unknown' 
