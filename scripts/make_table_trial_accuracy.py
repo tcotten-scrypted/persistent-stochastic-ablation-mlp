@@ -51,7 +51,7 @@ def generate_latex_table(results, order, caption, label):
 % \setcounter{LTchunksize}{50}
 \tiny 
 \begin{longtable}{@{}lccccccl@{}}
-\caption{Mean Peak Accuracy (\%) with Standard Deviation over 10 Trials of 100 Meta-Loops for SimpleMLP Architectures}
+\caption{Mean of Validation Peak Accuracy (\%) with Standard Deviation over 10 Trials of 100 Meta-Loops for SimpleMLP Architectures}
 \label{tab:results_summary_stats} \\
 \toprule
 \textbf{Architecture} & \textbf{none} & \textbf{decay} & \textbf{dropout} & \textbf{full} & \textbf{hidden} & \textbf{output} & \textbf{Winner} \\
