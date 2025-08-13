@@ -1,44 +1,57 @@
 \documentclass[conference]{IEEEtran}
-\IEEEoverridecommandlockouts
-% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
 
-% --- PACKAGES FOR TABLES, FIGURES, AND MATH ---
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
-\usepackage{booktabs} % For professional-looking tables
-\usepackage{hyperref} % For clickable links (optional)
-\usepackage{siunitx}  % For aligning numbers by decimal point and handling units/signs
+\usepackage{booktabs} 
+\usepackage{hyperref}
+\usepackage{siunitx}
 \usepackage{placeins}
 \usepackage{tikz}
 \usepackage{longtable}
 \usepackage{adjustbox}
 \usetikzlibrary{shapes.geometric, arrows}
 
+\IEEEoverridecommandlockouts
+
+% --- Author and Company Macros for Anonymization ---
+% Use these commands throughout the document to refer to the author and company.
+% To create a blind version, simply comment out the first block
+% and uncomment the second block.
+
+% -- VERSION PRE-PRINT: Camera-Ready (Final Version) --
+\newcommand{\TheAuthor}{Tim Cotten}
+\newcommand{\TheCompany}{Scrypted Inc.}
+\newcommand{\TheInstitution}{\TheCompany, George Mason University}
+\newcommand{\TheEmail}{tcotten@scrypted.ai, tcotten2@gmu.edu}
+
+% -- VERSION ANONYMOUS REVIEW: Blind Submission (for Peer Review) --
+% \newcommand{\TheAuthor}{Anonymous Author}
+% \newcommand{\TheCompany}{Anonymous Institution}
+% \newcommand{\TheEmail}{anonymous.email@domain.com}
+
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \begin{document}
 
-% --- TITLE AND AUTHOR INFORMATION ---
-\title{Beyond Pruning and Dropout: Evolving Robust Networks via Persistent Stochastic Ablation
-% \thanks{This work was supported in part by...} % Uncomment and fill if you have funding
-}
+\title{Beyond Pruning and Dropout: Evolving Robust Networks via Persistent Stochastic Ablation}
 
-\author{\IEEEauthorblockN{Tim Cotten}
-\IEEEauthorblockA{\textit{Scrypted Inc.}, \textit{George Mason University}\\
-tcotten@scrypted.ai, tcotten2@gmu.edu}
+\author{
+    \IEEEauthorblockN{\TheAuthor}
+    \IEEEauthorblockA{\textit{\TheInstitution}\\
+    \TheEmail}\\
+    \thanks{Conflict of Interest Statement: \TheAuthor\ is an employee of \TheCompany\ and has a financial interest in the company. This work is presented as foundational research, and its findings may inform future technology development at \TheCompany.}
 }
 
 \maketitle
 
-% --- ABSTRACT AND KEYWORDS ---
 \begin{abstract}
 
-This paper introduces and empirically evaluates ``Persistent Stochastic Ablation (PSA),'' a novel training paradigm that simulates evolutionary pressure via a ratcheting meta-learning process. At each cycle, PSA corrupts a pristine copy of the network's best-performing state (its ``Last Known Good'' state) through random neuron ablation. This damaged model is then trained against the last best performance benchmark on the validation dataset. A successful outcome promotes the newly trained model to become the next LKG state, effectively ``ratcheting'' the performance baseline upwards. This ``frustration'' mechanism forces repeated recovery attempts from a disadvantaged state, driving the model to escape difficult local optima or find more robust regularization solutions. Using a custom meta-learning harness, we conduct an systematic study on feed-forward Multi-Layer Perceptron (MLP) architectures ``SimpleMLP'' across a landscape of varying width, depth, and parameter counts on the MNIST dataset. Our findings reveal that the efficacy of PSA is not universal but is highly contextual. We trained 98 model configurations with six modes in a 3 vs. 3 comparison of baseline regularization techniques versus PSA: \{'None' (Control), 'Weight Decay', 'Dropout'\} and \{'Full', 'Hidden', 'Output'\}. For each combination we performed 10 randomly seeded trainings for a total of 5,880 total trial results. We identified and characterized four distinct behavioral training regimes: Beneficial Regularization, Optimally Sized, Chaotic Optimization, and Architectural Failure. These regimes are dictated by the interplay between model capacity and architectural stability; we document the regimes where PSA methods are beneficial, harmful, or indistinguishable compared to the existing control or regularization techniques, such as in over-parameterized models where 'Dropout' dominates. Further, we find a non-regularization use of PSA as a stochastic ``kick'' for low-capacity or exotic models to escape local minima that weight decay and dropout cannot rescue. By analyzing the temporal dynamics of model improvement, we demonstrate that can PSA act as a sustained, exploratory search mechanism, capable of achieving late-stage breakthroughs in otherwise intractable optimization landscapes. Crucially, this initial study is limited by the fundamental restrictions of the \texttt{SimpleMLP} architecture due to the boundaries of the Vanishing Gradient Problem, beyond which deeper topologies become untrainable, thereby establishing the necessary groundwork for future research with more robust architectures like a ResMLP with skip connections.
+This paper introduces and empirically evaluates ``Persistent Stochastic Ablation (PSA),'' a novel training paradigm that simulates evolutionary pressure via a ratcheting meta-learning process. At each cycle, PSA corrupts a pristine copy of the network's best-performing state (its ``Last Known Good'' state) through random neuron ablation. This damaged model is then trained against the last best performance benchmark on the validation dataset. A successful outcome promotes the newly trained model to become the next LKG state, effectively ``ratcheting'' the performance baseline upwards. This ``frustration'' mechanism forces repeated recovery attempts from a disadvantaged state, driving the model to escape difficult local optima or find more robust regularization solutions. Using a custom meta-learning harness, we conduct an systematic study on feed-forward Multi-Layer Perceptron (MLP) architectures ``SimpleMLP'' across a landscape of varying width, depth, and parameter counts on the MNIST dataset. Our findings reveal that the efficacy of PSA is not universal but is highly contextual. We trained 98 model configurations with six modes in a 3 vs. 3 comparison of baseline regularization techniques versus PSA: \{`None' (Control), `Weight Decay', `Dropout'\} and \{`Full', `Hidden', `Output'\}. For each combination we performed 10 randomly seeded trainings for a total of 5,880 total trial results. We identified and characterized four distinct behavioral training regimes: Beneficial Regularization, Optimally Sized, Chaotic Optimization, and Architectural Failure. These regimes are dictated by the interplay between model capacity and architectural stability; we document the regimes where PSA methods are beneficial, harmful, or indistinguishable compared to the existing control or regularization techniques, such as in over-parameterized models where `Dropout' is highly effective. Further, we find a non-regularization use of PSA as a stochastic ``kick'' for low-capacity or exotic models to escape local minima that weight decay and dropout cannot rescue. By analyzing the temporal dynamics of model improvement, we demonstrate that PSA can act as a sustained, exploratory search mechanism, capable of achieving late-stage breakthroughs in otherwise difficult or intractable optimization landscapes. Crucially, this initial study is limited by the fundamental restrictions of the \texttt{SimpleMLP} architecture due to the boundaries of the Vanishing Gradient Problem, beyond which deeper topologies become untrainable, thereby establishing the necessary groundwork for future research with more robust architectures like a ResMLP with skip connections.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -141,7 +154,7 @@ Finally, in order to identify the behaviors of the baselines and ablative techni
 \begin{figure*}[ht]
 \centering
 \includegraphics[width=\columnwidth]{SimpleMLP_Testing_Design_Space.png}
-\caption{The SimpleMLP architectural design space, visualized on a logarithmic scale. Width (neurons per layer) is plotted on the Y-axis, and depth (number of layers) is plotted on the X-axis. This visualization clearly demonstrates the exploration range from shallow-and-wide architectures (\texttt{1*2048}) to square architectures (\texttt{115×115}) and degenerate deep-and-narrow configurations (\texttt{2048*1}).}
+\caption{The SimpleMLP architectural design space, visualized on a logarithmic scale. Width (neurons per layer) is plotted on the Y-axis, and depth (number of layers) is plotted on the X-axis. This visualization clearly demonstrates the exploration range from shallow-and-wide architectures (\texttt{1*2048}) to square architectures (\texttt{115*115}) and degenerate deep-and-narrow configurations (\texttt{2048*1}).}
 \label{fig:simplemlp_design_space}
 \end{figure*}
 
@@ -153,11 +166,15 @@ The experimental testbed for this study is a feed-forward Multi-Layer Perceptron
 
 \verb|SimpleMLP| is constructed as a sequence of hidden blocks, where each block consists of a \textbf{Linear} layer, followed by a \textbf{Rectified Linear Unit (ReLU)} activation, and a \textbf{Dropout} layer. Blocks are defined in the form \verb|L*W| where \verb|L| represents the number of layers and \verb|W| the width of each layer in neuron count. The network's final layer is a linear output head that maps the final hidden state to 10 output logits for MNIST classification. The forward pass for an input \textit{\textbf{x}} and \textit{\textbf{L}} hidden layers is defined as: 
 
-\begin{align}
-h^{(0)} &= \text{Flatten}(x) \\
-h^{(i)} &= \text{Dropout}(\text{ReLU}(W_i h^{(i-1)} + b_i)) \quad \text{for } i=1, \dots, L \\
-y_{\text{logits}} &= W_{\text{out}} h^{(L)} + b_{\text{out}}
-\end{align}
+\begin{equation}
+\begin{aligned}
+    h^{(0)} &= \text{Flatten}(x) \\
+    h^{(i)} &= \text{Dropout} \big( \text{ReLU}(W_i h^{(i-1)} + b_i) \big), 
+    &&\text{for } i = 1, \dots, L, \\
+    y_{\text{logits}} &= W_{\text{out}} h^{(L)} + b_{\text{out}}.
+\end{aligned}
+\end{equation}
+
 where $h^{(i)}$ is the output of the $i$-th hidden block, and $W$ and $b$ represent the weight matrices and bias vectors for their respective layers.
 
 To ensure a fair comparison, \verb|nn.Dropout| modules are included in the model graph for all configurations. These layers are only active during training when \verb|--ablation-mode| is explicitly set to \verb|dropout|; in all other modes, they are set to evaluation mode and function as identity operators. We do not include them when calculating parameters, and this design guarantees that the number of trainable parameters remain identical across all experimental conditions: isolating the behavioral effects of the chosen regularization or ablation strategy within any given architectural design.
@@ -174,7 +191,7 @@ Thus, a given MNIST training architecture can be summarized as:
 
 The \verb|SimpleMLP| architecture also allows multiple collections of hidden blocks to be stacked in sequence to create complex arrangements, such as funnels (ex. \verb|[1*512, 2*256, 4*128, 8*64]|). To facilitate reproducible and large-scale experimentation, the architecture is defined via a compact string notation. For example, \verb|--arch "[2*128, 4*64]"| specifies a network with two hidden blocks of 128 neurons, followed by four hidden blocks of 64 neurons.
 
-However, for the purposes of our study's experimental design we limited ourselves to homogeneous network architectures such as \verb|(1*2048)|, \verb|(2*512)|, or \verb|(8*8)|. We reserve research on heterogeneous architectures like \verb|[2*128, 1x10, 4x16]| for our future work.
+However, for the purposes of our study's experimental design we limited ourselves to homogeneous network architectures such as \verb|(1*2048)|, \verb|(2*512)|, or \verb|(8*8)|. We reserve research on heterogeneous architectures like \verb|[2*128, 1*10, 4*16]| for our future work.
 
 \subsection{The ``Frustration Engine''}
 The core of our methodology is a meta-learning loop that iteratively challenges the network to improve upon its historical best performance. We define the ``Last Known Good'' (LKG) as the model state with the highest-ever validation accuracy, and the ``Bounty'' as that accuracy score. A single meta-loop consists of:
@@ -219,17 +236,34 @@ To understand the mechanisms of PSA, we designed six distinct training modes in 
     \item \textbf{decay (Weight Decay):} Standard weight decay applied with a fixed constant rate.\\
     \item \textbf{dropout (Dropout): } Standard dropout applied with a fixed constant rate.\\
     \item \textbf{full (Blended Pressure):} Randomly chooses a hidden linear layer from within the hidden blocks or the output layer, then chooses a random neuron to ablate. All incoming weights and the neuron's bias are zeroed (\textbf{partial ablation}). This represents a combination of the effects of the \verb|hidden| and \verb|output| modes.\\
-    \item \textbf{hidden (Internal Pressure):} Randomly chooses a neuron from the list of all neurons available in the hidden linear layers from with the hidden blocks, then performs a \textbf{full ablation} on it, where the incoming weights, bias, and \textit{outgoing} weights are zeroed.\\
+    \item \textbf{hidden (Internal Pressure):} Randomly chooses a neuron from the list of all neurons available in the hidden linear layers from within the hidden blocks, then performs a \textbf{full ablation} on it, where the incoming weights, bias, and \textit{outgoing} weights are zeroed.\\
     \item \textbf{output (External Pressure):} Randomly chooses a neuron from the linear output layer, then performs a \textit{partial} ablation on it.\\
 \end{itemize}
 
+\subsection{Isolating Training Effects}
+
+Due to the multiple training modes in our study, including \textbf{Weight Decay} and \textbf{Dropout}, we've taken great care to isolate the initialization parameters of the optimizer during training runs.
+
+We chose \verb|AdamW| \cite{b11} both for its standard support in \verb|PyTorch| and because it decouples weight decay from the gradient update. This allows us to initialize the optimizer with \verb|weight_decay = 0.0| for all modes except our specific \verb|decay| mode, which sets it to \verb|1e-4|. Thus, we have eliminated a possible confounding factor when testing the other modes, and followed the same philosophy we applied to separating the effects of \textbf{Dropout} as well.
+
+Certain other initialization parameters are held constant across all modes:
+
+\begin{itemize}
+    \item \textbf{Learning Rate (lr):} \verb|1e-4|.
+    \item \textbf{Betas (beta1, beta2):} \verb|0.9|, \verb|0.999|. Their momentum states are actually reset after each meta-loop.
+\end{itemize}
+
+We anticipate exploring compounding effects of Weight Decay and Dropout along with the other training modes in our future work.
+
+A full list of training parameters is found in the Appendix: \ref{tab:hyperparameters}
+
 \subsection{Data Pipeline and Scalable Training}
 
-To ensure the rigor and reproducibility of our 5,880 trials, we implemented a data pipeline designed for consistency, performance, and methodological soundness. These design decisions guarantee that any observed performance differences are attributable solely to the architectural and training strategy variations under experimentation.
+To ensure the rigor and reproducibility of our 5,880 trials, we implemented a data pipeline designed for statistical consistency, performance, and methodological soundness. These design decisions guarantee that any observed performance differences are attributable solely to the architectural and training strategy variations under experimentation.
 
 \subsubsection{Deterministic Dataset Splitting}
 
-We deterministically partitioned the standard MNIST dataset, comprising 60,000 training and 10,000 testing images, using a static seed (\verb|1337|) to create a pseudo-random subset of 50,000 training images and 10,000 validation images from the original 60,000 image training set. The original 10,000-image test set was reserved for unbiased performance evaluation, and was unseen by the models being trained.
+We deterministically partitioned the standard MNIST dataset, comprising 60,000 training and 10,000 testing images, using a static seed (\verb|1337|) to create a pseudo-random subset of 50,000 training images and 10,000 validation images from the original 60,000 image training set. The 10,000-image test set was reserved for unbiased, post-training performance evaluation, and was unseen by the models during the training process.
 
 \subsubsection{In-Memory Data Loading}
 
@@ -247,33 +281,37 @@ We then collected and aggregated all the CloudWatch logs as well as \verb|result
 
 \subsection{Automated Regime Classification}
 
-To ensure a reproducible analysis, we developed an automated, rule-based algorithm to classify each of the 98 architectures into one of four training regimes, based on the empirically observed performance and interactions of the six training modes. The algorithm applies a sequence of rules that operate on the summary statistics of the trial data.
+To ensure a reproducible analysis, we developed a sophisticated, rule-based algorithm to classify each of the 98 architectures into one of four distinct training regimes. The algorithm applies a sequence of cascading rules that operate on the summary statistics of the trial data for each architecture.
 
-The algorithm's failure threshold, $Z_{val}$, is not hard-coded but is dynamically determined by calculating the majority class baseline (ZeroR) accuracy of the MNIST validation set we set aside (empirically derived as $\sim11.02\%$).
+The algorithm's failure threshold, $Z_{val}$, is dynamically determined by calculating the majority class baseline (ZeroR) accuracy of the MNIST validation set (empirically derived as $\sim11.02\%$).
 
-Let $M$ be the set of all training modes, with subsets $B$ for baseline modes (\texttt{none}, \texttt{decay}, \texttt{dropout}) and $A$ for ablative modes (\texttt{full}, \texttt{hidden}, \texttt{output}). For each mode $m \in M$, let $\mu_m$, $\sigma_m$, and $P_m^{\text{(max)}}$ be its mean, standard deviation, and peak accuracy, respectively. The rules are applied in the following order:
+Let $M$ be the set of all training modes, with subsets $B$ for baseline modes (\texttt{none}, \texttt{decay}, \texttt{dropout}) and $A$ for ablative modes (\texttt{full}, \texttt{hidden}, \texttt{output}). For each mode $m \in M$, let $\mu_m$, $\sigma_m$, and $P_m^{\text{(max)}}$ be its mean, standard deviation, and peak accuracy, respectively. Let $\mu_B$ and $\sigma_B$ be the mean and standard deviation of the set of baseline mean accuracies $\{\mu_b | b \in B\}$. We define an effective standard deviation, $\sigma_{eff} = \max(\sigma_B, 0.5\%)$, to establish a minimum tolerance for high-performance models with near-zero variance. The rules are applied in the following sequential order:
 
 \begin{enumerate}
-    \item \textbf{Architectural Failure:} If all trials fail to exceed the validation ZeroR baseline then the model is untrainable.
+    \item \textbf{Architectural Failure:} An architecture is classified as untrainable if it demonstrates a fundamental inability to learn. This is triggered if the peak performance of every single trial across all modes fails to exceed the ZeroR baseline.
     \begin{equation}
         \max_{m \in M} (P_m^{\text{(max)}}) \le Z_{val}
     \end{equation}
 
-    \item \textbf{Beneficial Regularization:} The model is over-parameterized and all modes, including PSA, perform similarly: classified when the mean accuracy of all modes ($\mu_m$) is within one effective standard deviation, $\sigma_{eff}$, of the baseline mean ($\mu_B$). We define $\sigma_{eff} = \max(\sigma_B, 0.5\%)$ to establish a minimum tolerance for models with near-zero variance.
-    \begin{equation}
-        |\mu_m - \mu_B| \le \sigma_{eff} \quad \forall m \in M
-    \end{equation}
-
-    \item \textbf{Optimally Sized:} Regularization becomes detrimental as parametric capacity decreases, with PSA becoming actively harmful when compared to the baseline methods: classified when the mean accuracy of the ablative modes ($\mu_A$) is more than one effective standard deviation below the baseline mean.
+    \item \textbf{Beneficial Regularization:} This regime identifies robust, over-parameterized models where all training strategies perform consistently well. An architecture is classified here only if it first passes a crucial check: no ablative mode can be a significant positive outlier. Specifically, if $\mu_a > (\mu_B + \sigma_{eff})$ for any $a \in A$, the model is disqualified from this regime. If it is not disqualified, it is classified as beneficial regularization if the means of all ablative modes fall within one effective standard deviation of the baseline mean.
+    \begin{multline}
+        \text{if } \neg\exists a \in A \text{ s.t. } \mu_a > (\mu_B + \sigma_{eff}), \\
+        \text{then check if } |\mu_m - \mu_B| \le \sigma_{eff} \quad \forall m \in M
+    \end{multline}
+    
+    \item \textbf{Optimally Sized:} This regime characterizes models with limited redundant capacity, where interventions are generally harmful. An architecture is classified here if the mean performance of the ablative modes is significantly detrimental, falling more than one effective standard deviation below the mean of the baseline modes.
     \begin{equation}
         \mu_A < (\mu_B - \sigma_{eff})
     \end{equation}
 
-    \item \textbf{Chaotic Optimization:} If none of the above rules are met, the architecture is evaluated for whether it's ``chaotic'': characterized by either (a) the baseline modes failing ($P_b^{\text{(max)}} \le Z_{val}$ for all $b \in B$) while at least one ablative mode succeeds ($P_a^{\text{(max)}} > Z_{val}$ for some $a \in A$), or (b) the ablative modes providing a significant average performance uplift ($\mu_A > \mu_B + 0.5\%$).\\
-    
+    \item \textbf{Chaotic Optimization:} This regime is characterized by high instability and unpredictable performance, identified by any of the following three conditions: (a) \textit{Optimizer Rescue:} All baseline modes consistently fail ($P_b^{\text{(max)}} \le Z_{val}$ for all $b \in B$) while at least one ablative mode achieves a successful learning outcome ($P_a^{\text{(max)}} > Z_{val}$ for some $a \in A$). (b) \textit{Stochastic Overachievement:} The ablative modes provide a significant average performance uplift over the baselines ($\mu_A > \mu_B + 0.5\%$). (c) \textit{High Baseline Instability:} The performance of any baseline mode is extremely volatile, indicating chance-based success ($\sigma_b > 15\%$ for any $b \in B$).
+
+    \item \textbf{Unknown:} This isn't a regime as such; instead representing a failure of classification. None of the 98 configurations resulted in a failure to classify, and thus this can be used to further refine our regime analysis in the future should unclassifiable configurations be found.
 \end{enumerate}
 
-This algorithm successfully classifies all 98 architectures using the previous rules, and are visualized in (Figure~\ref{fig:regime_map}).
+This algorithm successfully classifies all 98 architectures, providing a robust and reproducible basis for the analysis visualized in Figure~\ref{fig:regime_map}.
+
+---
 
 \section{Results: The Four Regimes of Training (on SimpleMLP)}
 Our large-scale experiment, comprising 5,880 trials across 98 distinct MLP architectures, reveals that the efficacy of Persistent Stochastic Ablation is not universal but is instead governed by the interplay between a model's parametric capacity and its architectural stability, especially when compared to baseline techniques. We identified four distinct behavioral regimes, which are clearly demarcated in the architectural design space, as visualized in Figure \ref{fig:regime_map}.
@@ -289,9 +327,10 @@ A summary of the training results for each model, over 10 trials each lasting fo
 
 \subsection{Regime I: Beneficial Regularization in High Capacity, Stable Models}
 
-Located in the upper-left quadrant of the design space (Fig. \ref{fig:regime_map}, green points), this regime consists of shallow-and-wide architectures with high parametric capacity (e.g., \texttt{1*2048}, \texttt{2*939}, \texttt{4*632}). These models are sufficiently over-parameterized for MNIST to easily overfit in a form of \textbf{Beneficial Regularization}.
 
-In this regime, PSA also seems to function as a regularizer, but its blind damage is consistently outperformed by the more principled regularization of its baseline peers Dropout and Weight Decay. For the \texttt{1*2048} architecture with \texttt{1,628,170} parameters, for example, \textbf{Weight Decay} achieves the highest mean accuracy at \textbf{98.23\%}, demonstrating the most stable and reliable performance.
+Located in the upper-left quadrant of the design space (Fig. \ref{fig:regime_map}, green points), this regime consists of shallow-and-wide architectures with high parametric capacity (e.g., \texttt{1*2048}, \texttt{2*939}, \texttt{4*632}). These models are sufficiently over-parameterized for the MNIST task, creating a landscape where nearly any reasonable training strategy can achieve high performance. We term this observed behavior \textbf{Beneficial Regularization}, not because every mode is a competitive regularizer, but because the models are robust enough to benefit from, or be unharmed by, various interventions.
+
+The performance of our different training modes are tightly clustered in this regime. For the largest model, the \texttt{1*2048} architecture with \texttt{1,628,170} parameters, the \textbf{none} (Control) mode achieves the highest mean accuracy at \textbf{98.25\%} and also captures the single-best trial performance at \textbf{98.37\%}, suggesting that with extreme over-parameterization, the model has enough capacity to find an optimal solution without needing external regularization. However, the performance of \verb|decay|, \verb|dropout|, and PSA's \verb|hidden| modes are statistically very close, demonstrating the model's resilience. As expected, the \verb|output| ablation shows a comparatively deeper drop in performance, indicating that persistent damage to the logit layer can be detrimental even in a highly redundant network.
 
 \begin{table}[h!]
 \centering
@@ -301,19 +340,19 @@ In this regime, PSA also seems to function as a regularizer, but its blind damag
 \toprule
 \textbf{Mode} & \textbf{Mean} & \textbf{Std} & \textbf{Min} & \textbf{Max} \\
 \midrule
-None    & 98.19\% & 0.06\% & 98.08\% & 98.34\% \\
-Decay   & \textbf{98.23\%} & 0.03\% & 98.17\% & 98.26\% \\
-Dropout & 98.19\% & 0.09\% & 98.06\% & 98.33\% \\
-Full    & 98.13\% & 0.05\% & 98.04\% & 98.21\% \\
-Hidden  & 98.22\% & 0.06\% & 98.15\% & \textbf{98.35\%} \\
-Output  & 97.99\% & 0.09\% & 97.82\% & 98.11\% \\
+None & \textbf{98.25\%} & 0.06\% & 98.18\% & \textbf{98.37\%} \\
+Decay & 98.21\% & 0.04\% & 98.15\% & 98.26\% \\
+Dropout & 98.20\% & 0.05\% & 98.10\% & 98.26\% \\
+Full & 98.11\% & 0.07\% & 97.98\% & 98.21\% \\
+Hidden & 98.19\% & 0.06\% & 98.07\% & 98.26\% \\
+Output & 97.89\% & 0.12\% & 97.61\% & 98.10\% \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Interestingly, while traditional regularizers are superior on average, the stochastic nature of PSA allows it to occasionally discover outlier solutions. The \textbf{Hidden} ablation mode produced the single highest peak accuracy of this group at \textbf{98.35\%}, narrowly exceeding the maximums of all other methods. This suggests that while less reliable, PSA's random exploration can, by chance, find configurations inaccessible to more stable optimizers.
+Our parameter-matching design allows us to observe the beneficial effects of principled regularization as these over-parameterized architectures gain depth. For the \texttt{2*939} architecture, \textbf{Dropout} emerges as the dominant strategy, securing the highest mean accuracy at \textbf{98.19\%} and the highest peak performance at \textbf{98.29\%}. This shift is further supported in the \texttt{4*632} architecture where \verb|dropout| dominates again with a mean accuracy of \textbf{98.15\%} and peak of \textbf{98.19\%} , suggesting that Dropout becomes more effective in this regime as the number of available layers increases.
 
-This trend becomes even clearer as depth increases. For the parameter-matched \texttt{2*939} architecture, \textbf{Dropout} emerges as the dominant strategy, securing both the highest mean accuracy (\textbf{98.23\%}) and the highest peak performance (\textbf{98.30\%}).
+Interestingly, while traditional regularizers are superior on average, the stochastic nature of PSA allows it to occasionally discover outlier solutions. The \textbf{Hidden} ablation mode produced the highest peak accuracy for the \texttt{1*512} architecture at \textbf{98.10\%}, narrowly exceeding the maximums of all other methods. This suggests that while less reliable, PSA's random exploration can, by chance, find configurations inaccessible to more stable optimizers.
 
 This demonstrates a clear hierarchy where principled regularizers are most effective, but the random search of PSA provides a different, albeit less consistent, performance profile.
 
@@ -321,24 +360,24 @@ A promising direction for future work is to analyze the convergence dynamics ove
 
 \subsection{Regime II: Optimal Sizing in Low Capacity, Stable Models}
 
-As model capacity decreases from the over-parameterized configurations, we enter a regime where the architectures are \textbf{Optimally Sized} for the MNIST task. These models (Fig. \ref{fig:regime_map}, red points), such as \texttt{1*128} or \texttt{2*59}, possess enough parameters to provide valuable solutions (e.g., with success rates $>$ 97\%) even without the significant parametric redundancy of their much larger counterparts.
+As model capacity decreases from the over-parameterized configurations, we enter a regime where the architectures are \textbf{Optimally Sized} for the MNIST task. These models (Fig. \ref{fig:regime_map}, red points), such as \texttt{1*128} or \texttt{4*119}, possess enough parameters to provide valuable solutions (e.g., with success rates $>$ 97\%) even without the significant parametric redundancy of their much larger counterparts.
 
 The defining characteristic of this regime is that any training intervention, whether principled regularization or persistent ablation, becomes increasingly detrimental when compared to the control. Further, the maximum performance of PSA techniques diverge quickly from their baseline regularizing counterparts, with their damage becoming catastrophic far more quickly than their peers. 
 
-In the \verb|1*256| configuration with \verb|203,530| parameters, sitting at the boundary between Beneficial Regularization and the Optimally Sizes regimes, the strongest PSA technique is \verb|hidden| with a maximum of 97.74\%, while the weakest baseline technique is \verb|decay| with a maximum of 97.90\% for a divergence of $\sim0.16\%$. Deeper into the regime, at the \verb|1*64| configuration with \verb|50,890| parameters, the maximums diverge significantly at $\sim0.84\%$ for \verb|hidden| and \verb|dropout|, at 96.23\% and 97.05\% respectively, illustrating the detrimental effects of PSA.
+In the \verb|1*256| configuration with \verb|203,530| parameters, sitting at the boundary between Beneficial Regularization and the Optimally Sizes regimes, the strongest PSA technique is \verb|hidden| with a maximum of 97.81\%, while the weakest baseline technique is \verb|none| with a maximum of 97.83\% for a divergence of $\sim0.02\%$. Deeper into the regime, at the \verb|1*64| configuration with \verb|50,890| parameters, the maximums diverge significantly at $\sim0.73\%$ for \verb|hidden| and \verb|none|, at 96.15\% and 96.86\% respectively, illustrating the detrimental effects of PSA.
 
-As shown in the ``Winning Strategy Map'' (Fig. \ref{fig:heatmap_winning}), there is a clear shift away from Dropout and Weight Decay being the top performers towards the None (Control) model as parameter counts drop towards less stable regimes. This indicates that the networks require their full parameter budget to function, and preserving every weight is the optimal strategy when the architecture is already optimally sized.
+As shown in the ``Winning Strategy Map'' (Fig. \ref{fig:heatmap_winning}), there is a clear shift away from \verb|dropout|, first towards \verb|decay| and then \verb|none| as top performers when parameter counts drop towards less stable regimes. This indicates that the networks require their full parameter budget to function, and sensitivity to the preservation of weights is a defining feature when an architecture is already optimally sized.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{SimpleMLP_Heatmap_Winning_Strategy.png}
-\caption{Winning strategies across the SimpleMLP design space. Measured by the highest score from all trials per ablation type. Note that ablation techniques demonstrated utility in training degenerate or resource constrained network configurations. The single ``win'' of the \texttt{hidden} ablation strategy in the \texttt{(18*18)} architecture stands out as an example of how persistent, random LKG ablation potentially acts as an escape mechanism from local optima.}
+\caption{Winning strategies across the SimpleMLP design space. Measured by the highest score from all trials per ablation type. Note that ablation techniques demonstrated utility in training degenerate or resource constrained network configurations. The singular ``win'' of the \texttt{hidden} ablation strategy in the \texttt{(18*18)} architecture stands out as an example of how persistent, random LKG ablation potentially acts as an escape mechanism from local optima.}
 \label{fig:heatmap_winning}
 \end{figure}
 
 The key insight from this regime is that PSA is not a universally applicable \textit{regularizer}. Its effectiveness is contingent on the existence of network redundancy in simplistic MLP architectures. When that redundancy is unavailable in an optimally sized model, PSA's ``blind damage'' is no longer a nudge towards a more robust solution but a direct impediment to the network's ability to learn.
 
-This presents an interesting avenue of future research on its own: detecting optimal network configurations by comparing the baseline techniques to the rate of harm that the PSA techniques are able to inflict.
+This presents an interesting avenue of future research on its own: \textit{detecting optimal network configurations} by comparing the baseline techniques to the rate of harm that the PSA techniques are able to inflict.
 
 \subsection{Regime III: Chaotic Optimization in Low Capacity, Unstable Models}
 
@@ -347,7 +386,7 @@ The most surprising results of our study emerge in a regime defined by architect
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{SimpleMLP_Heatmap_Instability.png}
-\caption{Instability across the SimpleMLP design space, measured by the maximum standard deviation observed across the six training modes. The bright red diagonal band, corresponding to the Chaotic Optimization regime, highlights extreme performance variance, where PSA methods can induce high-scoring outliers even as baselines consistently fail. Black represents completely untrainable architectural failures.}
+\caption{Instability across the SimpleMLP design space, measured by the maximum standard deviation observed across the six training modes. The bright red diagonal band, corresponding to the Chaotic Optimization regime, highlights extreme performance variance, where PSA methods can induce high-scoring outliers even as baselines consistently fail. Black represents completely untrainable, architectural failures.}
 \label{fig:heatmap_instability}
 \end{figure}
 
@@ -356,11 +395,11 @@ The defining characteristic of this regime is a dramatic divergence in ``uplifti
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{SimpleMLP_Heatmap_Baseline_Performance.png}
-\caption{Baseline performance heatmap across the SimpleMLP design space. Architectures with depth $\geq$ $\sim$21 or utilizing degenerately narrow widths are untrainable across all ablation modes. These boundaries are a manifestation of the Vanishing Gradient Problem.}
+\caption{Baseline performance heatmap across the SimpleMLP design space. Architectures with depth $\geq$ $\sim$27 or utilizing degenerately narrow widths are untrainable across all ablation modes. These boundaries are a manifestation of the Vanishing Gradient Problem.}
 \label{fig:heatmap_baseline}
 \end{figure}
 
-In positive contrast, the ``Ablation Effects'' map (Fig. \ref{fig:heatmap_ablation_effects}) reveals this same region as the only area where PSA is \textit{consistently beneficial}. (green). The ``Instability'' map (Fig. \ref{fig:heatmap_instability}) provides valuable insight: this regime exhibits the highest training variance (bright red), indicating that while many PSA trials may fail, some achieve dramatically successful outcomes. This supports our hypothesis that PSA acts as a /textbf{stochastic kick}, allowing the optimizer to escape traditionally intractable local optima.
+In positive contrast, the ``Ablation Effects'' map (Fig. \ref{fig:heatmap_ablation_effects}) reveals this same region as the only area where PSA is \textit{consistently beneficial}. (green). The ``Instability'' map (Fig. \ref{fig:heatmap_instability}) provides valuable insight even in the over-parameterized regime: while many PSA trials may fail, some achieve measurably superior successful outcomes. This supports our hypothesis that PSA acts as a /textbf{stochastic kick}, allowing the optimizer to escape traditionally difficult or intractable local optima.
 
 \begin{figure}[ht]
 \centering
@@ -369,22 +408,22 @@ In positive contrast, the ``Ablation Effects'' map (Fig. \ref{fig:heatmap_ablati
 \label{fig:heatmap_ablation_effects}
 \end{figure}
 
-A powerful example is the \texttt{19*19} architecture with \texttt{21,955} parameters. Table \ref{tab:19x19_results} shows a total failure of the baseline methods (e.g., a maximum of 11.02\% over all 10 trials). However, the \verb|hidden| and \verb|output| PSA modes produce massive improvements in peak performance, at 47.14\% and 63.12\% respectively.
+A powerful example is the \texttt{18*18} architecture with \texttt{20,134} parameters. Table \ref{tab:18x18_results} shows a total failure of the baseline methods (e.g., a maximum of 11.02\% over all 10 trials). However, the \verb|full| and \verb|output| PSA modes produce demonstrable improvements in peak performance, at 19.29\% and 71.16\% respectively.
 
 \begin{table}[h!]
 \centering
-\caption{Performance Summary for the \texttt{19*19} Architecture\\ \texttt{21,955} Parameters (n=10).}
-\label{tab:19x19_results}
+\caption{Performance Summary for the \texttt{18*18} Architecture\ \texttt{20,134} Parameters (n=10).}
+\label{tab:18x18_results}
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Mode} & \textbf{Mean} & \textbf{Std} & \textbf{Min} & \textbf{Max} \\
 \midrule
-None    & 10.34\% & 0.54\% & 9.72\% & 11.02\% \\
-Decay   & 10.21\% & 0.91\% & 8.65\% & 11.02\% \\
-Dropout & 10.24\% & 0.51\% & 9.72\% & 11.02\% \\
-Full    & 10.45\% & 0.57\% & 9.72\% & 11.02\% \\
-Hidden  & 13.80\% & 11.12\% & 9.72\% & 47.14\% \\
-Output  & \textbf{19.08\%} & 15.45\% & 10.10\% & \textbf{63.12\%} \\
+None & 10.48\% & 0.51\% & 9.81\% & 11.02\% \\
+Decay & 10.22\% & 0.74\% & 8.65\% & 11.02\% \\
+Dropout & 10.18\% & 0.39\% & 9.73\% & 10.92\% \\
+Full & \textbf{11.20\%} & 2.74\% & 9.81\% & \textbf{19.29\%} \\
+Hidden & 10.11\% & 0.47\% & 9.73\% & 11.02\% \\
+Output & \textbf{18.87\%} & 17.87\% & 10.12\% & \textbf{71.16\%} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -392,14 +431,16 @@ Output  & \textbf{19.08\%} & 15.45\% & 10.10\% & \textbf{63.12\%} \\
 Critically, the separation of PSA into three different modes allows us to disentangle the effects of ablative placement and method. The ``Winning Strategy Map'' (Fig. \ref{fig:heatmap_winning}) shows that no single PSA mode dominates this chaotic regime; instead, the optimal strategy depends on the specific architectural pathology.
 
 \begin{itemize}
-    \item \textbf{Hidden Ablation (Full Neuron Ablation):} For the deep but unstable square model \texttt{18*18}, \textbf{Hidden} ablation was the most effective strategy. This method performs a \textit{full neuron ablation} by zeroing both the bias, incoming, and outgoing weights of randomly chosen hidden neurons. It suggests that for networks trapped by the Vanishing Gradient Problem, a more aggressive stochastic ``kick'' may fundamentally alter the network's functional pathways and escape the poor local minimum.
+    \item \textbf{Hidden Ablation (Full Neuron Ablation):} For the deep but unstable square model \texttt{17*17}, \textbf{Hidden} ablation was the most effective strategy. This method performs a \textit{full neuron ablation} by zeroing both the bias, incoming, and outgoing weights of randomly chosen hidden neurons. It suggests that for networks trapped by the Vanishing Gradient Problem, a more aggressive stochastic ``kick'' may fundamentally alter the network's functional pathways and escape the poor local minimum.
 
-    \item \textbf{Full \& Output Ablation (Partial Ablations):} In contrast, for extremely small, resource-starved models such as \texttt{4*4} and \texttt{1*2}, the winning strategies were \textbf{Full} and \textbf{Output} ablation. These methods use a less destructive \textit{partial ablation} (zeroing only incoming weights and the bias). This finding suggests that when a model has very few parameters to begin with, a more targeted perturbation is more effective. Note that the \verb|output| is the most aggressive and chaotic of the three modes due to directly zeroing the weights of output logits.
+    \item \textbf{Full \& Output Ablation (Partial Ablations):} In contrast, for extremely small, resource-starved models such as \texttt{1*1} and \texttt{5*5}, the winning strategies were \textbf{Full} and \textbf{Output} ablation. These methods use a less destructive \textit{partial ablation} (zeroing only incoming weights and the bias). This finding suggests that when a model has very few parameters to begin with, a more targeted perturbation is more effective. Note that the \verb|output| is the most aggressive and chaotic of the three modes due to directly zeroing the weights of output logits.
 \end{itemize}
 
 This regime provides the strongest evidence for the non-regularization utility of PSA. It demonstrates that blind, persistent damage can serve as a powerful tool for online stochastic optimization, offering a lifeline to models that might be otherwise untrainable with standard gradient-based methods.
 
 Our findings around the ``stochastic kick'' behavior, where a random perturbation might dramatically improve an otherwise failing training optimization process, seems conceptually similar to the effectiveness of random search for hyper-parameter optimization, often outperforming grid search in high-dimensional, non-convex problem spaces \cite{b7}.
+
+This reasoning is further supported by the success of \verb|none|, \verb|decay|, and \verb|dropout| in the \verb|19*19| architecture where each, by chance in 1 trial out of 10, randomly discovered a viable above-ZeroR optimization path that allowed the model to learn despite deepening failure; the same logic extends to the unexpected trainability of the \verb|26*26| architecture with \verb|none| and \verb|output|. This demonstrates the need for even further trials (ex. 100 for each mode) to fully map the probabilistic boundaries of the Vanishing Gradient Problem in \verb|SimpleMLP|.
 
 \subsection{Regime IV: Architectural Failure in Zero Capacity, Unstable Models}
 
@@ -409,38 +450,40 @@ Models in this regime (Fig. \ref{regime_map}, black points) universally fail to 
 
 \subsubsection{The VGP Boundary in Square Architectures}
 
-One of the primary goals of our study was to identify the exact depth at which a simple MLP becomes untrainable on MNIST. Our exploration of square models revealed this boundary between a depth of 20 and 21 layers.
+One of the primary goals of our study was to identify the exact depth at which a simple MLP becomes untrainable on MNIST. Our exploration of square models revealed this boundary between a depth of 19 and 20 layers.
 
-As shown in Table \ref{tab:20v21_results}, the \texttt{20*20} architecture resides within the Chaotic Optimization regime. While its baseline methods fail, the \textbf{Full} ablation mode is able to provide a stochastic kick, achieving a peak accuracy of 20.91\%. This demonstrates that at a depth of 20, the model is on the absolute edge of failure yet remains salvageable by PSA.
+As shown in Table \ref{tab:19v20_results}, the \texttt{19*19} architecture resides firmly within the Chaotic Optimization regime. While the majority of modes fail - including the PSA variants that were successful in \verb|18*18| - the \textbf{Decay} mode is able to randomly find a trainable path, achieving a remarkable peak accuracy of 79.87\% in a single trial. This demonstrates that at a depth of 19, the model is on the absolute edge of failure yet remains salvageable through specific, albeit chaotic, training dynamics.
 
-The \texttt{21*21} architecture, just one layer deeper, \textit{completely fails to train}. All six training modes, including every PSA variant, fail completely, with no trial exceeding the 11.02\% baseline. The stochastic kick is no longer powerful enough to escape a loss landscape that has possibly become intractably flat due to the compounded decay of gradients through 21 successive layers, nor can the traditional regularization methods traverse the region in a meaningful way.
+The \texttt{20*20} architecture, just one layer deeper, \textit{completely fails to train}. All six training modes, including every PSA variant, fail completely, with no trial exceeding the 11.02\% ZeroR. Neither lucky starting conditions for the baseline regularization techniques, nor are the aggressive stochastic kicks of PSA powerful enough to escape a loss landscape that has become intractably flat due to the compounded decay of gradients through 20 successive layers.
 
 \begin{table}[h!]
 \centering
-\caption{Performance Collapse at the VGP Boundary (n=10).}
-\label{tab:20v21_results}
+\caption{Performance Collapse at the VGP Boundary (n=10). The \texttt{19*19} architecture remains salvageable by chance (utilizing \texttt{decay}), while the \texttt{20*20} architecture shows complete training failure across all modes.}
+\label{tab:19v20_results}
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{l|cccc|cccc}
 \toprule
-& \multicolumn{4}{c|}{\textbf{\texttt{20*20} (Salvageable)}} & \multicolumn{4}{c}{\textbf{\texttt{21*21} (Untrainable)}} \\
+& \multicolumn{4}{c|}{\textbf{\texttt{19*19} (Chaotic but Salvageable)}} & \multicolumn{4}{c}{\textbf{\texttt{20*20} (Untrainable)}} \\
 \textbf{Mode} & \textbf{Mean} & \textbf{Std} & \textbf{Min} & \textbf{Max} & \textbf{Mean} & \textbf{Std} & \textbf{Min} & \textbf{Max} \\
 \midrule
-None & 10.39\% & 0.51\% & 9.72\% & 11.02\% & 10.46\% & 0.44\% & 10.09\% & 11.02\% \\
-Decay & 10.34\% & 0.75\% & 8.65\% & 11.02\% & 10.13\% & 0.45\% & 9.72\% & 11.02\% \\
-Dropout & 10.15\% & 0.46\% & 9.72\% & 11.02\% & 10.33\% & 0.47\% & 9.81\% & 11.02\% \\
-Full & \textbf{11.77\%} & 3.07\% & 9.84\% & \textbf{20.91\%} & 10.51\% & 0.49\% & 9.73\% & 11.02\% \\
-Hidden & 10.37\% & 0.52\% & 9.81\% & 11.02\% & 10.48\% & 0.53\% & 9.72\% & 11.02\% \\
-Output & 10.66\% & 0.45\% & 10.10\%& 11.02\% & 10.82\% & 0.36\% & 10.09\% & 11.02\% \\
+None & 11.34\% & 3.02\% & 8.65\% & 20.12\% & 10.13\% & 0.45\% & 9.72\% & 11.02\% \\
+Decay & \textbf{17.24\%} & 20.88\% & 9.73\% & \textbf{79.87\%} & 10.69\% & 0.48\% & 9.72\% & 11.02\% \\
+Dropout & 11.50\% & 2.98\% & 9.72\% & 20.30\% & 10.19\% & 0.54\% & 9.72\% & 11.02\% \\
+Full & 10.46\% & 0.55\% & 9.73\% & 11.02\% & 10.59\% & 0.74\% & 8.65\% & 11.02\% \\
+Hidden & 10.46\% & 0.58\% & 9.72\% & 11.02\% & 10.52\% & 0.51\% & 9.72\% & 11.02\% \\
+Output & 10.61\% & 0.48\% & 9.81\% & 11.02\% & 11.02\% & 0.00\% & 11.02\% & 11.02\% \\
 \bottomrule
 \end{tabular}
 }
 \end{table}
 
-The identification of this boundary highlights the limitations of our SimpleMLP testbed. Architectures like ResNet\cite{b8} or the more recent ResMLP\cite{b9} were designed specifically to overcome this boundary by introducing skip connections, providing uninterrupted paths for gradient flow, and enabling the training of much deeper networks.
+However, further results also reveal that this boundary is not a simple, binary cut-off, but rather a probabilistic one. For the much deeper \texttt{26*26} architecture, whose neighbors were otherwise untrainable, a single trial of the \texttt{none} (Control) mode achieved a peak accuracy of 73.34\%. This outlier success suggests that viable optimization paths still exist even as the VGP becomes overwhelming, but are so narrow that they are only found by chance. This particular finding demonstrates that the ten trials conducted per configuration in this study were insufficient to fully map the probabilistic influence of the VGP in deeper topologies.
+
+Still, identification of this boundary highlights the limitations of our SimpleMLP testbed. Architectures like ResNet\cite{b8} or the more recent ResMLP\cite{b9} were designed specifically to overcome this boundary by introducing skip connections, providing uninterrupted paths for gradient flow, and enabling the training of much deeper networks.
 
 \subsubsection{Information Bottlenecks in Deep-and-Narrow Architectures}
 
-The second cause of architectural failure is the information bottleneck. This occurs in our ``deep-and-narrow'' configurations (e.g., L*4, L*2, L*1). While the shallowest of these, such as 1*1 and 2*1, are technically trainable (albeit with poor performance, landing them in the Chaotic Optimization regime), they quickly become untrainable as depth increases.
+The second cause of architectural failure is the information bottleneck. This occurs in our ``deep-and-narrow'' configurations (e.g., L*4, L*2, L*1). While the shallowest of these, such as 1*1 and 4*2, are technically trainable (albeit with poor performance, landing them in the Chaotic Optimization regime), they quickly become untrainable as depth increases.
 
 It is self-evident that collapsing the 784-pixel input of the MNIST dataset into a 1-neuron wide set of layers irrevocably destroys critical spatial data, and these maximally degenerate cases were included not just for the sake of ``completeness'' but to identify the boundaries where any possible learning \textit{stops}, especially when compared to other deep-and-narrow yet slightly wider topologies.
 
@@ -463,9 +506,27 @@ In stable architectures, such as the over-parameterized \texttt{1*2048} model (F
 
 The dynamics diverge dramatically in the \textbf{Chaotic Optimization} regime. For the \texttt{18*18} architecture (Figure \ref{fig:convergence_plots}, Second from Bottom), the baseline methods are completely unable to escape a quickly identified, poor local minimum: flat-lining at the ZeroR baseline for all 100 meta-loops. The learning curves for the PSA methods, however, are extremely volatile. This is the direct empirical signature of the ``Frustration Engine'' at work: each point represents a recovery attempt from a newly damaged state. Many attempts fail, resulting in performance drops back towards the baseline. However, this high-variance search process seems to allow the optimizer to explore a much wider solution space. We believe it is this chaotic exploration that enables PSA to discover optimization pathways that lead to significant performance breakthroughs, reaching accuracies far beyond what the stable, gradient-based methods achieve on their own.
 
-\subsubsection{Stochastic Exploration Cost and Benefit}
+\subsubsection{Cost and Benefit of Late-Stage Breakthroughs}
 
-This volatility represents the inherent ``cost of exploration'' in the PSA paradigm: many candidate models are ultimately discarded. However, our analysis reveals that this is a central mechanism of the method's utility in unstable architectures, as the repeated ``kicks'' from a disadvantaged state are precisely what prevent the optimizer from getting permanently trapped. The success of PSA in the Chaotic Optimization regime demonstrates that for certain pathological loss landscapes, abandoning monotonic convergence in favor of a volatile, persistent search is possibly an effective, albeit lengthy, optimization strategy.
+This volatility represents the inherent ``cost of exploration'' in the PSA paradigm, as many candidate models are ultimately discarded. Our analysis of the LKG growth data, however, reveals that this is the central mechanism of the method's utility in unstable architectures. The repeated ``kicks'' from a disadvantaged state seem to prevent the optimizer from getting permanently trapped.
+
+\begin{figure*}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{SimpleMLP_Plot_Late_Breakthroughs.png}
+    \caption{Late-stage convergence dynamics for four architectures in the Chaotic Optimization regime. Each line plots the peak validation accuracy (LKG) of a single, best-performing trial out of ten for each mode over 100 meta-loops. These plots clearly illustrate PSA's ability to \textbf{rescue learning} in otherwise intractable landscapes (e.g., \texttt{18*18}), where baseline methods stall at the ZeroR; unlock an \textbf{explosive cascade} of late-stage improvements (\texttt{10*10}); and act as a \textbf{sustained exploratory mechanism} until the final training loops (\texttt{17*17}). Finally, the pathologically small \texttt{4*2} architecture reveals that even baseline methods like \texttt{decay} and \texttt{dropout} can exhibit late-stage exploration under extreme constraints.}
+    \label{fig:converge_plots_late_breakthroughs}
+\end{figure*}
+
+The LKG growth data provides multiple instances of these late-stage breakthroughs, showing significant improvements from PSA modes after baseline methods have plateaued (Fig. \ref{fig:converge_plots_late_breakthroughs}):
+\begin{itemize}
+
+    \item \textbf{\texttt{18*18} (Output):} This is a quintessential example of ``optimizer rescue.'' While all baseline modes stall at the ZeroR baseline, the \verb|output| mode ``ignites'' after four dormant meta-loops with a massive \textbf{10.45\%} improvement at \textit{meta-loop 5}. This begins an exploratory search for the rest of the run, achieving another significant improvement of \textbf{0.77\%} as late as \textit{meta-loop 89}.
+    \item \textbf{\texttt{17*17} (Hidden):} This architecture showcases PSA as a truly \textbf{sustained} exploratory search. Rather than a single breakthrough, the \verb|hidden| mode consistently finds new paths to improvement throughout the entire run, including gains at \textit{meta-loop 79} (\textbf{1.31\%}), \textit{meta-loop 92} (\textbf{0.45\%}), and even on the \textit{100th and final meta-loop} (\textbf{0.20\%}); an elegant demonstration that the search space wasn't exhausted.
+    \item \textbf{\texttt{10*10} (Full):} This case demonstrates an explosive, late-stage learning breakthrough. After a period of inconsistent gains, the \verb|full| mode began a dramatic and sustained cascade of improvements starting at \textit{meta-loop 86}. In the final 15 loops of the trial, the model gained over \textbf{24\%} in absolute validation accuracy, showing that PSA can unlock periods of rapid optimization long after initial learning has slowed.
+    \item \textbf{\texttt{4*2} (Decay \& Dropout):} This degenerately small architecture demonstrates that even baseline methods can exhibit late-stage exploration under extreme constraints. The \verb|decay| trial stagnated over a long period before its last sudden, significant improvement at \textit{meta-loop 96} (\textbf{0.12\%}). Dropout, on the other hand, showed small but continuous improves all the way to the /textit{100th meta-loop}, suggesting that for certain unstable configurations premature convergence can be prevented by the inherent stochasticity of the training mode.
+\end{itemize}
+
+The success of PSA in the Chaotic Optimization regime demonstrates that for certain pathological landscapes, switching from monotonic convergence in favor of a volatile, persistent search is a highly effective, albeit potentially lengthy, optimization strategy.
 
 It also leaves the door open for post-regularization ``kicks'' into nearby but valuable optima once a traditional regularization technique like Dropout has done all it can, and this will be an avenue of further research.
 
@@ -476,14 +537,14 @@ Our exhaustive study reveals that the primary utility of Persistent Stochastic A
 
 For these pathological networks, trapped in poor local minima by the Vanishing Gradient Problem or degenerate Information Bottlenecks, PSA provides a method capable of inducing meaningful learning, outperforming conventional baselines like Dropout and Weight Decay. While PSA can confer a minor regularizing effect in stable, over-parameterized models, this benefit is neither statistically significant nor competitive with established techniques over the training intervals we observed (100 meta-loops).
 
-We find that PSA's currently demonstable value lies not in refining well-behaved models, but in rescuing otherwise untrainable ones, possibly positioning PSA as a novel mechanism for exploring intractable loss landscapes and motivating our future work in applying this paradigm to more complex architectures where optimization challenges persist.
+We find that PSA's currently demonstable value lies not in refining well-behaved models, but in rescuing otherwise untrainable ones, possibly positioning PSA as a novel mechanism for exploring difficult or intractable loss landscapes and motivating our future work in applying this paradigm to more complex architectures where optimization challenges persist.
 
 Key limitations of this initial study include:
 \begin{itemize}
     \item \textbf{Architectural Weakness:} The study was confined to simple MLPs, which lack modern components like residual connections (as in ResNet)\cite{b8} or normalization layers (like Batch Norm)\cite{b10}. The observed efficacy of PSA might be entirely different in more complex and robust architectures, or disappear altogether.
     \item \textbf{Single, Simple Dataset:} All experiments were conducted on MNIST. While useful for a proof-of-concept, its low complexity is not representative of the challenges posed by more complex, real-world datasets (e.g., CIFAR-100, ImageNet). The benefits of PSA could be magnified, diminished, or altered on more difficult problems.
     \item \textbf{Fixed Ablation Strategy:} The PSA mechanism was fixed to ablating exactly one neuron per meta-loop. The effects could change dramatically with different strategies, such as ablating a percentage of neurons, targeting specific layers, or adaptively varying the rate of ablation over the course of training.
-    \item \textbf{Fixed Optimizer Hyperparameters:} The underlying optimization algorithm (e.g., AdamW\cite{b11}) and its hyperparameters (e.g., learning rate) were held constant across the vastly different architectures. It is possible that some of the ``Architectural Failures'' could have been mitigated with architecture-specific tuning, potentially altering the winning ablation mode in some regimes.
+    \item \textbf{Fixed Optimizer Hyperparameters:} The underlying optimization algorithm (e.g., AdamW) and its hyperparameters (e.g., learning rate) were held constant across the vastly different architectures. It is possible that some of the ``Architectural Failures'' could have been mitigated with architecture-specific tuning, potentially altering the winning ablation mode in some regimes.
     \item \textbf{Limited Training Intervals:} We trained each model for only 100 meta-loops, and while existing regularization techniques like Dropout and Weight Decay quickly converged with the first 30-75\% of the training intervals, several PSA modes were still finding improvements into the 99-th meta-loop, suggesting that the reported peak accuracies for PSA may be understated and that longer training runs are an important avenue for future work.
     \item \textbf{Greedy Advancement Mechanism:} The initial ``Frustration Engine'' is greedy, only accepting a new model if its performance is strictly better. This could prevent the training process from taking a temporary step back in accuracy to navigate a ridge in the loss landscape that might lead to a much better eventual solution. We will address this in our future work by implementing a patience mechanic into the Frustration Engine, allowing it a certain number of retries before accepting a new LKG from an inferior model if the Bounty is not met.
 \end{itemize}
@@ -508,9 +569,11 @@ Overall, we have shown that Persistent Stochastic Ablation is a promising resear
 
 \item \textbf{Implementation of ResMLP:} In order to explicitly explore and measure the effects of PSA in deeper architectures we will reimplement the experiments using a ResMLP testbed while replicating the original paramters of our study. This will clarify any of our results that were completely dependent on the instability of the underlying test architectures, and help measure further limits of the Vanishing Gradient Problem and Information Bottlenecks in degenerate topologies.
 
+\item \textbf{Additional Trials testing the VGP: } The \verb|26*26| architecture makes it clear that we have not fully understood the behavior of the Vanishing Gradient Problem as a probablistic impact on optimization paths, motivating a follow-up study with a greatly increased number of trials (e.g., n=100), focused specifically on the square architectures (\texttt{1*1} to \texttt{32*32}).
+
 \item \textbf{Convergence dynamics analysis over time:} Preliminary results suggest different convergence patterns between methods (dropout converging quickly vs. PSA showing continued improvement near the 100-meta-loop limit), warranting systematic investigation of temporal training dynamics.
 
-\item \textbf{Disrupting Training Traps:} Because the SimpleMLP hidden blocks share the same structure for all modes we are able to train partially in one mode and then resume training in another. This means we can explore initiating ``stochastic kicks'' even when Dropout has already converged, and vice versa.
+\item \textbf{Disrupting training traps:} Because the SimpleMLP hidden blocks share the same structure for all modes we are able to train partially in one mode and then resume training in another. This means we can explore initiating ``stochastic kicks'' even when Dropout has already converged, and vice versa.
 
 \item \textbf{Frustration with Patience:} We propose an update to our Frustration Engine's meta-loops that would allow a ``patience'' dynamic, allowing geometric ``retries'' and accepting lower performing models as subsequent LKG states after exhausting the local attempts, while retaining the Bounty as a method to reset the number of required retries when a truly improved model is found.
 
@@ -522,7 +585,7 @@ Overall, we have shown that Persistent Stochastic Ablation is a promising resear
 
 \item \textbf{Detecting optimal network configurations using PSA harm rates:} Our observation that PSA's rate of harm correlates with optimization optimality suggests a novel method for automatically determining appropriate model capacity for tasks.
 
-\item \textbf{Random search parallels in high-dimensional optimization:} The similarity between PSA's stochastic kick behavior and the effectiveness of random search in hyperparametewlr optimization suggests broader applications in non-convex optimization landscapes, and is also worthy of exploration for providing a grounded, mathematical understanding into how and why PSA works.
+\item \textbf{Random search parallels in high-dimensional optimization:} The similarity between PSA's stochastic kick behavior and the effectiveness of random search in hyperparameter optimization suggests broader applications in non-convex optimization landscapes, and is also worthy of exploration for providing a grounded, mathematical understanding into how and why PSA works.
 
 \item \textbf{Varied online ablation strategies:} Stochastic ablation was an obvious first research avenue, but we also wish to explore persistent fixed ablation, especially in output layers. Additionally, researching intelligent strategies that react to network conditions is also of high interest.
 
@@ -570,8 +633,9 @@ This appendix provides the supplementary data referenced in the main text, inclu
 
 % --- TABLE OF ALL ARCHITECTURES ---
 \begin{table}[ht]
+\tiny  % Reduce font size slightly
 \centering
-\caption{Parameters for Network Architectures}
+\caption{Configurations \& Parameters for Network Architectures}
 \label{tab:architecture_parameters}
 \begin{tabular}{lcl}
 \toprule
@@ -587,7 +651,7 @@ This appendix provides the supplementary data referenced in the main text, inclu
 1*16       & 12,730          & Matched \\
 1*8        & 6,370           & Matched \\
 1*4        & 3,190           & Matched \\
-1*2        & 1,600           & Asymmetric \\
+1*2        & 1,600           & Matched \\
 2*939      & 1,629,175       & Matched \\
 2*588      & 813,802         & Matched \\
 2*354      & 407,110         & Matched \\
@@ -598,23 +662,62 @@ This appendix provides the supplementary data referenced in the main text, inclu
 2*16       & 13,002          & Matched \\
 2*8        & 6,442           & Matched \\
 2*4        & 3,210           & Matched \\
+4*632      & 1,702,618       & Matched \\
+4*425      & 881,035         & Matched \\
+4*280      & 458,650         & Matched \\
+4*185      & 250,315         & Matched \\
+4*119      & 137,455         & Matched \\
+4*76       & 77,986          & Matched \\
+4*47       & 44,143          & Matched \\
+4*29       & 25,675          & Matched \\
+4*17       & 14,443          & Matched \\
 115*115    & 1,612,195       & Matched \\
 91*91      & 825,835         & Matched \\
 71*71      & 414,295         & Matched \\
 56*56      & 220,090         & Matched \\
 44*44      & 120,130         & Matched \\
 35*35      & 70,675          & Matched \\
+32*32      & 58,186          & Matched \\
+31*31      & 54,415          & Matched \\
+30*30      & 50,830          & Matched \\
+29*29      & 47,425          & Matched \\
+28*28      & 44,194          & Matched \\
+27*27      & 41,131          & Matched \\
 26*26      & 38,230          & Matched \\
+25*25      & 35,485          & Matched \\
+24*24      & 32,890          & Matched \\
+23*23      & 30,439          & Matched \\
+22*22      & 28,126          & Matched \\
+21*21      & 25,945          & Matched \\
+20*20      & 23,890          & Matched \\
+19*19      & 21,955          & Matched \\
 18*18      & 20,134          & Matched \\
+17*17      & 18,421          & Matched \\
+16*16      & 16,810          & Matched \\
+15*15      & 15,295          & Matched \\
+14*14      & 13,870          & Matched \\
+13*13      & 12,529          & Matched \\
 12*12      & 11,266          & Matched \\
+11*11      & 10,075          & Matched \\
+10*10      & 8,950           & Matched \\
+9*9        & 7,885           & Matched \\
 8*8        & 6,874           & Matched \\
-7*7        & 5,911           & Asymmetric \\
-6*6        & 4,990           & Asymmetric \\
-5*5        & 4,105           & Asymmetric \\
+7*7        & 5,911           & Matched \\
+6*6        & 4,990           & Matched \\
+5*5        & 4,105           & Matched \\
 4*4        & 3,250           & Matched \\
-3*3        & 2,419           & Asymmetric \\
-2*2        & 1,606           & Asymmetric \\
-1*1        & 805             & Asymmetric \\
+3*3        & 2,419           & Matched \\
+2*2        & 1,606           & Matched \\
+1*1        & 805             & Matched \\
+632*4      & 15,810          & Asymmetric \\
+425*4      & 11,670          & Asymmetric \\
+280*4      & 8,770           & Asymmetric \\
+185*4      & 6,870           & Asymmetric \\
+119*4      & 5,550           & Asymmetric \\
+76*4       & 4,690           & Asymmetric \\
+47*4       & 4,110           & Asymmetric \\
+29*4       & 3,750           & Asymmetric \\
+17*4       & 3,510           & Asymmetric \\
 939*2      & 7,228           & Asymmetric \\
 588*2      & 5,122           & Asymmetric \\
 354*2      & 3,718           & Asymmetric \\
@@ -644,7 +747,7 @@ This appendix provides the supplementary data referenced in the main text, inclu
 % \setcounter{LTchunksize}{50}
 \tiny  % Reduce font size slightly
 \begin{longtable}{@{}lccccccl@{}}
-\caption{Mean Peak Accuracy (\%) with Standard Deviation over 10 Trials of 100 Meta-Loops for SimpleMLP Architectures}
+\caption{Mean of Validation Peak Accuracy (\%) with Standard Deviation over 10 Trials of 100 Meta-Loops for SimpleMLP Architectures}
 \label{tab:results_summary} \\
 \toprule
 \textbf{Architecture} & \textbf{none} & \textbf{decay} & \textbf{dropout} & \textbf{full} & \textbf{hidden} & \textbf{output} & \textbf{Winner} \\
@@ -667,104 +770,106 @@ This appendix provides the supplementary data referenced in the main text, inclu
 \bottomrule
 \endlastfoot
 
-$1*2048$ & $98.19 \pm 0.06$ & \bfseries $98.23 \pm 0.03$ & $98.19 \pm 0.09$ & $98.13 \pm 0.05$ & $98.22 \pm 0.06$ & $97.99 \pm 0.09$ & \texttt{decay} \\
-$1*1024$ & \bfseries $98.12 \pm 0.06$ & $98.06 \pm 0.11$ & $98.11 \pm 0.06$ & $98.01 \pm 0.10$ & $98.08 \pm 0.04$ & $97.65 \pm 0.12$ & \texttt{none} \\
-$1*512$ & $97.92 \pm 0.05$ & $97.90 \pm 0.10$ & \bfseries $98.03 \pm 0.08$ & $97.84 \pm 0.09$ & $97.93 \pm 0.08$ & $97.36 \pm 0.08$ & \texttt{dropout} \\
-$1*256$ & $97.74 \pm 0.11$ & $97.75 \pm 0.10$ & \bfseries $97.83 \pm 0.07$ & $97.47 \pm 0.11$ & $97.60 \pm 0.07$ & $96.73 \pm 0.25$ & \texttt{dropout} \\
-$1*128$ & $97.30 \pm 0.13$ & $97.30 \pm 0.15$ & \bfseries $97.40 \pm 0.15$ & $96.81 \pm 0.23$ & $96.96 \pm 0.17$ & $95.71 \pm 0.34$ & \texttt{dropout} \\
-$1*64$ & $96.54 \pm 0.23$ & $96.62 \pm 0.23$ & \bfseries $96.82 \pm 0.29$ & $95.50 \pm 0.21$ & $95.83 \pm 0.30$ & $94.47 \pm 0.35$ & \texttt{dropout} \\
-$1*32$ & $95.32 \pm 0.40$ & $95.37 \pm 0.37$ & \bfseries $95.55 \pm 0.26$ & $93.15 \pm 0.32$ & $93.67 \pm 0.43$ & $92.83 \pm 0.37$ & \texttt{dropout} \\
-$1*16$ & \bfseries $93.56 \pm 0.51$ & $93.22 \pm 0.33$ & $93.48 \pm 0.27$ & $91.24 \pm 0.41$ & $91.65 \pm 0.19$ & $91.31 \pm 0.35$ & \texttt{none} \\
-$1*8$ & \bfseries $91.17 \pm 0.33$ & $91.00 \pm 0.27$ & $90.48 \pm 0.26$ & $87.53 \pm 1.01$ & $86.61 \pm 1.16$ & $88.98 \pm 0.75$ & \texttt{none} \\
-$1*4$ & $82.60 \pm 0.90$ & \bfseries $82.75 \pm 1.56$ & $81.39 \pm 1.98$ & $66.19 \pm 7.98$ & $56.87 \pm 9.18$ & $74.99 \pm 4.57$ & \texttt{decay} \\
-$1*2$ & $35.86 \pm 8.37$ & $40.61 \pm 14.95$ & \bfseries $43.26 \pm 11.36$ & $30.78 \pm 9.51$ & $21.11 \pm 2.65$ & $40.57 \pm 7.21$ & \texttt{dropout} \\
-$2*939$ & $98.12 \pm 0.10$ & $98.14 \pm 0.06$ & \bfseries $98.23 \pm 0.05$ & $98.11 \pm 0.06$ & $98.16 \pm 0.06$ & $98.01 \pm 0.08$ & \texttt{dropout} \\
-$2*588$ & $98.06 \pm 0.08$ & $98.09 \pm 0.05$ & \bfseries $98.18 \pm 0.05$ & $98.01 \pm 0.08$ & $98.07 \pm 0.03$ & $97.87 \pm 0.09$ & \texttt{dropout} \\
-$2*354$ & $97.90 \pm 0.09$ & $97.95 \pm 0.05$ & \bfseries $98.07 \pm 0.08$ & $97.86 \pm 0.13$ & $97.98 \pm 0.08$ & $97.45 \pm 0.14$ & \texttt{dropout} \\
-$2*214$ & $97.75 \pm 0.10$ & $97.75 \pm 0.10$ & \bfseries $97.96 \pm 0.09$ & $97.62 \pm 0.10$ & $97.70 \pm 0.08$ & $96.94 \pm 0.24$ & \texttt{dropout} \\
-$2*115$ & $97.40 \pm 0.08$ & $97.30 \pm 0.13$ & \bfseries $97.64 \pm 0.11$ & $97.06 \pm 0.19$ & $97.22 \pm 0.12$ & $96.10 \pm 0.25$ & \texttt{dropout} \\
-$2*59$ & $96.59 \pm 0.18$ & $96.57 \pm 0.22$ & \bfseries $96.95 \pm 0.14$ & $95.74 \pm 0.17$ & $96.04 \pm 0.16$ & $94.75 \pm 0.35$ & \texttt{dropout} \\
-$2*30$ & $95.03 \pm 0.42$ & $95.33 \pm 0.32$ & \bfseries $95.48 \pm 0.22$ & $93.38 \pm 0.35$ & $93.90 \pm 0.40$ & $92.74 \pm 0.44$ & \texttt{dropout} \\
-$2*16$ & $93.58 \pm 0.34$ & \bfseries $93.65 \pm 0.52$ & $92.94 \pm 0.32$ & $91.13 \pm 0.20$ & $91.41 \pm 0.23$ & $91.25 \pm 0.57$ & \texttt{decay} \\
-$2*8$ & \bfseries $90.78 \pm 0.67$ & $90.39 \pm 0.70$ & $89.14 \pm 0.51$ & $84.27 \pm 1.60$ & $84.83 \pm 1.90$ & $87.09 \pm 1.21$ & \texttt{none} \\
-$2*4$ & \bfseries $80.16 \pm 2.70$ & $59.16 \pm 30.45$ & $72.41 \pm 10.00$ & $51.19 \pm 10.29$ & $41.29 \pm 14.18$ & $61.57 \pm 14.81$ & \texttt{none} \\
-$4*632$ & $97.94 \pm 0.09$ & $97.96 \pm 0.08$ & \bfseries $98.14 \pm 0.06$ & $97.89 \pm 0.07$ & $97.95 \pm 0.06$ & $97.84 \pm 0.06$ & \texttt{dropout} \\
-$4*425$ & $97.80 \pm 0.08$ & $97.84 \pm 0.04$ & \bfseries $98.07 \pm 0.10$ & $97.80 \pm 0.07$ & $97.82 \pm 0.10$ & $97.73 \pm 0.06$ & \texttt{dropout} \\
-$4*280$ & $97.71 \pm 0.07$ & $97.70 \pm 0.06$ & \bfseries $97.98 \pm 0.13$ & $97.60 \pm 0.10$ & $97.67 \pm 0.08$ & $97.52 \pm 0.10$ & \texttt{dropout} \\
-$4*185$ & $97.49 \pm 0.13$ & $97.40 \pm 0.16$ & \bfseries $97.88 \pm 0.07$ & $97.44 \pm 0.12$ & $97.42 \pm 0.10$ & $97.06 \pm 0.20$ & \texttt{dropout} \\
-$4*119$ & $97.19 \pm 0.09$ & $97.11 \pm 0.14$ & \bfseries $97.64 \pm 0.14$ & $97.05 \pm 0.17$ & $97.08 \pm 0.18$ & $96.51 \pm 0.25$ & \texttt{dropout} \\
-$4*76$ & $96.71 \pm 0.12$ & $96.76 \pm 0.08$ & \bfseries $97.27 \pm 0.17$ & $96.46 \pm 0.24$ & $96.48 \pm 0.19$ & $95.73 \pm 0.28$ & \texttt{dropout} \\
-$4*47$ & $95.81 \pm 0.26$ & $96.04 \pm 0.26$ & \bfseries $96.49 \pm 0.21$ & $95.43 \pm 0.34$ & $95.63 \pm 0.33$ & $94.54 \pm 0.53$ & \texttt{dropout} \\
-$4*29$ & $94.95 \pm 0.30$ & \bfseries $95.28 \pm 0.35$ & $95.16 \pm 0.23$ & $93.62 \pm 0.44$ & $93.98 \pm 0.31$ & $92.76 \pm 0.79$ & \texttt{decay} \\
-$4*17$ & $93.15 \pm 0.37$ & \bfseries $93.62 \pm 0.32$ & $92.42 \pm 0.51$ & $90.07 \pm 0.94$ & $90.91 \pm 0.57$ & $89.90 \pm 0.80$ & \texttt{decay} \\
+
+$1*2048$ & \bfseries $98.25 \pm 0.06$ & $98.21 \pm 0.04$ & $98.20 \pm 0.05$ & $98.11 \pm 0.07$ & $98.19 \pm 0.06$ & $97.89 \pm 0.12$ & \texttt{none} \\
+$1*1024$ & $98.09 \pm 0.05$ & \bfseries $98.12 \pm 0.03$ & $98.11 \pm 0.07$ & $98.05 \pm 0.06$ & $98.10 \pm 0.08$ & $97.71 \pm 0.12$ & \texttt{decay} \\
+$1*512$ & \bfseries $98.01 \pm 0.05$ & $97.92 \pm 0.09$ & $97.95 \pm 0.11$ & $97.85 \pm 0.09$ & $97.95 \pm 0.07$ & $97.35 \pm 0.11$ & \texttt{none} \\
+$1*256$ & $97.62 \pm 0.19$ & $97.71 \pm 0.07$ & \bfseries $97.82 \pm 0.08$ & $97.47 \pm 0.18$ & $97.69 \pm 0.07$ & $96.65 \pm 0.19$ & \texttt{dropout} \\
+$1*128$ & $97.37 \pm 0.14$ & $97.41 \pm 0.14$ & \bfseries $97.53 \pm 0.13$ & $96.78 \pm 0.18$ & $97.10 \pm 0.09$ & $95.81 \pm 0.41$ & \texttt{dropout} \\
+$1*64$ & $96.74 \pm 0.12$ & $96.78 \pm 0.16$ & \bfseries $96.98 \pm 0.14$ & $95.46 \pm 0.14$ & $95.81 \pm 0.23$ & $94.65 \pm 0.29$ & \texttt{dropout} \\
+$1*32$ & $95.49 \pm 0.20$ & $95.47 \pm 0.21$ & \bfseries $95.61 \pm 0.20$ & $93.04 \pm 0.32$ & $93.80 \pm 0.41$ & $93.00 \pm 0.49$ & \texttt{dropout} \\
+$1*16$ & $93.12 \pm 0.33$ & \bfseries $93.42 \pm 0.47$ & $93.41 \pm 0.30$ & $91.33 \pm 0.34$ & $91.82 \pm 0.18$ & $91.43 \pm 0.41$ & \texttt{decay} \\
+$1*8$ & $91.14 \pm 0.24$ & \bfseries $91.24 \pm 0.33$ & $90.30 \pm 0.44$ & $86.44 \pm 1.70$ & $86.58 \pm 1.67$ & $89.07 \pm 0.45$ & \texttt{decay} \\
+$1*4$ & $81.35 \pm 3.53$ & \bfseries $83.56 \pm 1.13$ & $80.25 \pm 2.16$ & $67.04 \pm 9.28$ & $60.16 \pm 9.26$ & $72.75 \pm 3.58$ & \texttt{decay} \\
+$1*2$ & $40.28 \pm 15.04$ & \bfseries $46.90 \pm 12.69$ & $40.37 \pm 10.62$ & $33.50 \pm 10.07$ & $20.19 \pm 2.83$ & $36.58 \pm 7.41$ & \texttt{decay} \\
+$2*939$ & $98.09 \pm 0.05$ & $98.15 \pm 0.04$ & \bfseries $98.19 \pm 0.06$ & $98.13 \pm 0.05$ & $98.17 \pm 0.05$ & $97.96 \pm 0.08$ & \texttt{dropout} \\
+$2*588$ & $98.05 \pm 0.08$ & $98.04 \pm 0.06$ & \bfseries $98.13 \pm 0.06$ & $98.00 \pm 0.08$ & $98.06 \pm 0.07$ & $97.87 \pm 0.07$ & \texttt{dropout} \\
+$2*354$ & $97.94 \pm 0.12$ & $97.95 \pm 0.08$ & \bfseries $98.11 \pm 0.08$ & $97.89 \pm 0.08$ & $97.91 \pm 0.11$ & $97.54 \pm 0.13$ & \texttt{dropout} \\
+$2*214$ & $97.68 \pm 0.14$ & $97.68 \pm 0.09$ & \bfseries $97.91 \pm 0.09$ & $97.60 \pm 0.12$ & $97.69 \pm 0.07$ & $97.01 \pm 0.21$ & \texttt{dropout} \\
+$2*115$ & $97.32 \pm 0.10$ & $97.34 \pm 0.18$ & \bfseries $97.58 \pm 0.18$ & $97.09 \pm 0.13$ & $97.27 \pm 0.13$ & $96.07 \pm 0.30$ & \texttt{dropout} \\
+$2*59$ & $96.65 \pm 0.18$ & $96.62 \pm 0.10$ & \bfseries $96.94 \pm 0.19$ & $95.84 \pm 0.32$ & $96.01 \pm 0.17$ & $94.63 \pm 0.32$ & \texttt{dropout} \\
+$2*30$ & $95.44 \pm 0.20$ & $95.38 \pm 0.27$ & \bfseries $95.55 \pm 0.29$ & $93.48 \pm 0.29$ & $93.77 \pm 0.52$ & $93.10 \pm 0.51$ & \texttt{dropout} \\
+$2*16$ & $93.49 \pm 0.32$ & \bfseries $93.65 \pm 0.49$ & $92.95 \pm 0.32$ & $91.02 \pm 0.44$ & $91.79 \pm 0.41$ & $91.17 \pm 0.47$ & \texttt{decay} \\
+$2*8$ & \bfseries $90.94 \pm 0.56$ & $90.78 \pm 0.39$ & $88.76 \pm 0.65$ & $83.50 \pm 1.80$ & $84.10 \pm 3.28$ & $86.79 \pm 1.23$ & \texttt{none} \\
+$2*4$ & $56.48 \pm 31.54$ & $70.89 \pm 17.56$ & \bfseries $72.05 \pm 8.34$ & $52.72 \pm 8.35$ & $49.19 \pm 12.36$ & $66.78 \pm 7.11$ & \texttt{dropout} \\
+$4*632$ & $97.94 \pm 0.10$ & $97.96 \pm 0.05$ & \bfseries $98.15 \pm 0.04$ & $97.92 \pm 0.07$ & $97.90 \pm 0.05$ & $97.87 \pm 0.12$ & \texttt{dropout} \\
+$4*425$ & $97.81 \pm 0.05$ & $97.87 \pm 0.07$ & \bfseries $98.03 \pm 0.05$ & $97.86 \pm 0.07$ & $97.85 \pm 0.05$ & $97.79 \pm 0.08$ & \texttt{dropout} \\
+$4*280$ & $97.70 \pm 0.10$ & $97.68 \pm 0.07$ & \bfseries $98.01 \pm 0.08$ & $97.63 \pm 0.10$ & $97.69 \pm 0.08$ & $97.43 \pm 0.07$ & \texttt{dropout} \\
+$4*185$ & $97.50 \pm 0.09$ & $97.44 \pm 0.12$ & \bfseries $97.88 \pm 0.11$ & $97.47 \pm 0.12$ & $97.39 \pm 0.12$ & $96.97 \pm 0.22$ & \texttt{dropout} \\
+$4*119$ & $97.23 \pm 0.09$ & $97.16 \pm 0.16$ & \bfseries $97.71 \pm 0.17$ & $97.02 \pm 0.10$ & $97.12 \pm 0.15$ & $96.48 \pm 0.34$ & \texttt{dropout} \\
+$4*76$ & $96.70 \pm 0.15$ & $96.74 \pm 0.16$ & \bfseries $97.39 \pm 0.09$ & $96.40 \pm 0.18$ & $96.50 \pm 0.30$ & $95.50 \pm 0.16$ & \texttt{dropout} \\
+$4*47$ & $95.98 \pm 0.35$ & $96.24 \pm 0.13$ & \bfseries $96.50 \pm 0.23$ & $95.55 \pm 0.28$ & $95.60 \pm 0.21$ & $94.48 \pm 0.33$ & \texttt{dropout} \\
+$4*29$ & $95.04 \pm 0.43$ & \bfseries $95.27 \pm 0.19$ & $95.01 \pm 0.27$ & $93.78 \pm 0.48$ & $93.92 \pm 0.48$ & $92.77 \pm 0.52$ & \texttt{decay} \\
+$4*17$ & \bfseries $93.34 \pm 0.53$ & $93.32 \pm 0.61$ & $92.59 \pm 0.25$ & $90.61 \pm 0.44$ & $90.65 \pm 0.53$ & $90.03 \pm 0.61$ & \texttt{none} \\
 $115*115$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.02 \pm 0.00$ & Tie: \texttt{none}/\texttt{decay}/\texttt{dropout}/\texttt{full}/\texttt{hidden}/\texttt{output} \\
 $91*91$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.02 \pm 0.00$ & Tie: \texttt{none}/\texttt{decay}/\texttt{dropout}/\texttt{full}/\texttt{hidden}/\texttt{output} \\
 $71*71$ & \bfseries $11.01 \pm 0.03$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.02 \pm 0.00$ & Tie: \texttt{none}/\texttt{decay}/\texttt{dropout}/\texttt{full}/\texttt{hidden}/\texttt{output} \\
-$56*56$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.02 \pm 0.00$ & \bfseries $11.01 \pm 0.03$ & \bfseries $11.02 \pm 0.00$ & $10.92 \pm 0.27$ & \bfseries $11.02 \pm 0.00$ & Tie: \texttt{none}/\texttt{decay}/\texttt{dropout}/\texttt{full}/\texttt{output} \\
-$44*44$ & $10.81 \pm 0.36$ & $11.00 \pm 0.04$ & $10.62 \pm 0.50$ & $10.88 \pm 0.38$ & $10.54 \pm 0.60$ & \bfseries $11.02 \pm 0.00$ & \texttt{output} \\
-$35*35$ & $10.76 \pm 0.52$ & $11.00 \pm 0.04$ & $10.82 \pm 0.36$ & \bfseries $11.02 \pm 0.00$ & $10.53 \pm 0.51$ & \bfseries $11.01 \pm 0.03$ & Tie: \texttt{full}/\texttt{output} \\
-$32*32$ & $10.62 \pm 0.48$ & $10.74 \pm 0.42$ & $10.43 \pm 0.60$ & $10.63 \pm 0.48$ & $10.70 \pm 0.48$ & \bfseries $11.02 \pm 0.00$ & \texttt{output} \\
-$31*31$ & $10.71 \pm 0.46$ & $10.23 \pm 0.54$ & $10.75 \pm 0.52$ & $10.56 \pm 0.57$ & \bfseries $10.92 \pm 0.28$ & \bfseries $10.93 \pm 0.28$ & Tie: \texttt{hidden}/\texttt{output} \\
-$30*30$ & $10.69 \pm 0.73$ & $10.59 \pm 0.54$ & $10.52 \pm 0.50$ & $10.64 \pm 0.44$ & $10.82 \pm 0.36$ & \bfseries $10.93 \pm 0.27$ & \texttt{output} \\
-$29*29$ & $10.39 \pm 0.61$ & $10.51 \pm 0.79$ & $10.73 \pm 0.42$ & $10.74 \pm 0.51$ & $10.67 \pm 0.54$ & \bfseries $10.89 \pm 0.35$ & \texttt{output} \\
-$28*28$ & $10.67 \pm 0.52$ & $10.53 \pm 0.50$ & $10.48 \pm 0.54$ & $10.80 \pm 0.42$ & $10.60 \pm 0.53$ & \bfseries $10.90 \pm 0.26$ & \texttt{output} \\
-$27*27$ & $10.67 \pm 0.50$ & $10.77 \pm 0.44$ & $10.54 \pm 0.57$ & $10.74 \pm 0.41$ & \bfseries $10.84 \pm 0.37$ & $10.82 \pm 0.36$ & \texttt{hidden} \\
-$26*26$ & $10.57 \pm 0.55$ & $10.64 \pm 0.56$ & $10.77 \pm 0.47$ & $10.61 \pm 0.50$ & $10.46 \pm 0.57$ & \bfseries $11.01 \pm 0.03$ & \texttt{output} \\
-$25*25$ & \bfseries $10.76 \pm 0.49$ & $10.39 \pm 0.80$ & $10.61 \pm 0.50$ & $10.57 \pm 0.76$ & $10.39 \pm 0.81$ & \bfseries $10.75 \pm 0.42$ & Tie: \texttt{none}/\texttt{output} \\
-$24*24$ & $10.25 \pm 0.50$ & $10.47 \pm 0.56$ & $10.33 \pm 0.75$ & $10.72 \pm 0.46$ & $10.64 \pm 0.43$ & \bfseries $10.92 \pm 0.27$ & \texttt{output} \\
-$23*23$ & $10.18 \pm 0.69$ & $10.50 \pm 0.49$ & $10.34 \pm 0.52$ & $10.64 \pm 0.44$ & $10.56 \pm 0.54$ & \bfseries $10.67 \pm 0.51$ & \texttt{output} \\
-$22*22$ & \bfseries $10.90 \pm 0.26$ & $10.42 \pm 0.79$ & $10.23 \pm 0.73$ & $10.54 \pm 0.49$ & $10.71 \pm 0.46$ & $10.79 \pm 0.45$ & \texttt{none} \\
-$21*21$ & $10.46 \pm 0.44$ & $10.13 \pm 0.45$ & $10.33 \pm 0.47$ & $10.51 \pm 0.49$ & $10.48 \pm 0.53$ & \bfseries $10.82 \pm 0.36$ & \texttt{output} \\
-$20*20$ & $10.39 \pm 0.51$ & $10.34 \pm 0.75$ & $10.15 \pm 0.46$ & \bfseries $11.77 \pm 3.07$ & $10.37 \pm 0.52$ & $10.66 \pm 0.45$ & \texttt{full} \\
-$19*19$ & $10.34 \pm 0.54$ & $10.21 \pm 0.91$ & $10.24 \pm 0.51$ & $10.45 \pm 0.57$ & $13.80 \pm 11.12$ & \bfseries $19.08 \pm 15.45$ & \texttt{output} \\
-$18*18$ & $10.17 \pm 0.69$ & $10.92 \pm 1.58$ & $14.95 \pm 13.17$ & $22.23 \pm 21.53$ & $17.06 \pm 19.19$ & \bfseries $24.51 \pm 22.79$ & \texttt{output} \\
-$17*17$ & $10.15 \pm 0.56$ & $10.32 \pm 0.77$ & $10.11 \pm 0.48$ & $24.18 \pm 25.24$ & \bfseries $26.04 \pm 25.11$ & $13.21 \pm 4.77$ & \texttt{hidden} \\
-$16*16$ & $10.87 \pm 2.80$ & $10.25 \pm 0.73$ & $11.55 \pm 3.26$ & $26.27 \pm 26.27$ & $24.02 \pm 22.70$ & \bfseries $34.71 \pm 25.88$ & \texttt{output} \\
-$15*15$ & \bfseries $19.54 \pm 18.72$ & $10.06 \pm 0.33$ & $11.46 \pm 3.05$ & $12.83 \pm 4.84$ & $12.52 \pm 4.44$ & $17.28 \pm 16.36$ & \texttt{none} \\
-$14*14$ & $10.64 \pm 2.42$ & $17.40 \pm 18.70$ & $11.31 \pm 4.13$ & $19.98 \pm 19.00$ & $17.61 \pm 18.29$ & \bfseries $24.63 \pm 22.67$ & \texttt{output} \\
-$13*13$ & $20.32 \pm 18.15$ & $31.62 \pm 30.68$ & $11.40 \pm 3.21$ & $16.79 \pm 20.23$ & $17.09 \pm 11.56$ & \bfseries $37.62 \pm 25.77$ & \texttt{output} \\
-$12*12$ & $21.18 \pm 20.86$ & $10.66 \pm 2.46$ & $10.23 \pm 0.50$ & $17.98 \pm 11.95$ & $24.66 \pm 20.65$ & \bfseries $36.92 \pm 23.66$ & \texttt{output} \\
-$11*11$ & $10.80 \pm 2.50$ & $18.08 \pm 20.97$ & $12.33 \pm 3.78$ & $22.63 \pm 15.49$ & $16.39 \pm 13.22$ & \bfseries $25.09 \pm 20.83$ & \texttt{output} \\
-$10*10$ & $10.14 \pm 0.66$ & $12.57 \pm 3.95$ & $11.01 \pm 3.70$ & $16.10 \pm 6.22$ & $14.74 \pm 5.18$ & \bfseries $34.77 \pm 21.40$ & \texttt{output} \\
-$9*9$ & $17.36 \pm 4.65$ & \bfseries $24.40 \pm 27.71$ & $19.03 \pm 13.65$ & $19.91 \pm 4.96$ & $15.67 \pm 7.49$ & $24.02 \pm 13.95$ & \texttt{decay} \\
-$8*8$ & $22.30 \pm 20.55$ & $13.54 \pm 4.94$ & $13.17 \pm 5.06$ & $17.51 \pm 7.40$ & $21.91 \pm 13.69$ & \bfseries $27.05 \pm 16.31$ & \texttt{output} \\
-$7*7$ & $26.51 \pm 24.37$ & $14.61 \pm 4.59$ & $12.96 \pm 4.50$ & $29.60 \pm 16.86$ & $21.59 \pm 10.11$ & \bfseries $32.91 \pm 24.74$ & \texttt{output} \\
-$6*6$ & $16.43 \pm 8.31$ & $18.37 \pm 8.34$ & $13.54 \pm 6.16$ & $20.08 \pm 7.68$ & $19.76 \pm 5.07$ & \bfseries $38.04 \pm 22.00$ & \texttt{output} \\
-$5*5$ & $14.71 \pm 5.45$ & $31.04 \pm 25.99$ & $22.52 \pm 10.18$ & $28.47 \pm 6.38$ & $23.12 \pm 10.19$ & \bfseries $32.72 \pm 23.00$ & \texttt{output} \\
-$4*4$ & $26.00 \pm 26.12$ & $33.40 \pm 25.26$ & $18.14 \pm 6.85$ & $24.89 \pm 11.17$ & $25.34 \pm 13.24$ & \bfseries $34.70 \pm 22.16$ & \texttt{output} \\
-$3*3$ & $24.13 \pm 14.75$ & \bfseries $29.34 \pm 15.41$ & $22.34 \pm 13.07$ & $20.41 \pm 4.01$ & $17.91 \pm 4.72$ & $28.49 \pm 15.48$ & \texttt{decay} \\
-$2*2$ & $26.17 \pm 7.55$ & $27.07 \pm 12.17$ & \bfseries $29.30 \pm 17.98$ & $19.79 \pm 9.64$ & $17.85 \pm 5.70$ & $26.59 \pm 10.47$ & \texttt{dropout} \\
-$1*1$ & $17.91 \pm 5.58$ & $16.85 \pm 6.16$ & $19.30 \pm 6.16$ & \bfseries $22.66 \pm 2.83$ & $14.35 \pm 3.60$ & $21.42 \pm 2.74$ & \texttt{full} \\
-$632*4$ & $9.92 \pm 0.55$ & $10.03 \pm 0.36$ & \bfseries $10.45 \pm 0.54$ & $9.93 \pm 0.63$ & $10.13 \pm 0.54$ & $10.29 \pm 0.72$ & \texttt{dropout} \\
-$425*4$ & \bfseries $10.54 \pm 0.51$ & $9.93 \pm 0.63$ & $9.97 \pm 0.34$ & $10.29 \pm 0.77$ & $10.31 \pm 0.53$ & $10.41 \pm 0.45$ & \texttt{none} \\
-$280*4$ & $9.96 \pm 0.35$ & $9.99 \pm 0.62$ & $9.96 \pm 0.15$ & $10.19 \pm 0.44$ & $9.89 \pm 0.53$ & \bfseries $10.44 \pm 0.41$ & \texttt{output} \\
-$185*4$ & $9.82 \pm 0.76$ & $10.02 \pm 0.61$ & $9.98 \pm 0.82$ & $9.85 \pm 0.68$ & $10.10 \pm 0.34$ & \bfseries $10.39 \pm 0.49$ & \texttt{output} \\
-$119*4$ & $10.35 \pm 0.52$ & $10.09 \pm 0.87$ & $9.75 \pm 0.83$ & $10.30 \pm 0.56$ & $10.02 \pm 0.34$ & \bfseries $10.73 \pm 0.41$ & \texttt{output} \\
-$76*4$ & $9.93 \pm 0.61$ & $9.95 \pm 0.55$ & $10.23 \pm 0.71$ & $10.31 \pm 0.46$ & $9.90 \pm 0.76$ & \bfseries $10.78 \pm 0.42$ & \texttt{output} \\
-$47*4$ & $9.96 \pm 0.18$ & $10.00 \pm 0.61$ & $10.00 \pm 0.65$ & $9.84 \pm 0.42$ & $9.86 \pm 0.52$ & \bfseries $10.48 \pm 0.52$ & \texttt{output} \\
-$29*4$ & \bfseries $10.49 \pm 0.76$ & $9.98 \pm 0.82$ & $10.26 \pm 0.48$ & $10.01 \pm 0.63$ & $10.36 \pm 0.54$ & $10.43 \pm 0.45$ & \texttt{none} \\
-$17*4$ & \bfseries $10.62 \pm 1.60$ & $10.11 \pm 0.46$ & $10.02 \pm 0.34$ & $10.30 \pm 0.69$ & $10.03 \pm 0.63$ & $10.42 \pm 0.45$ & \texttt{none} \\
-$939*2$ & $10.15 \pm 0.74$ & $10.12 \pm 0.44$ & $10.09 \pm 0.68$ & $10.14 \pm 0.46$ & $9.81 \pm 0.41$ & \bfseries $10.64 \pm 0.43$ & \texttt{output} \\
-$588*2$ & $10.13 \pm 0.44$ & $10.24 \pm 0.74$ & $10.19 \pm 0.38$ & $10.07 \pm 0.45$ & $10.20 \pm 0.73$ & \bfseries $10.72 \pm 0.40$ & \texttt{output} \\
-$354*2$ & $10.10 \pm 0.30$ & $9.63 \pm 0.89$ & $9.83 \pm 0.42$ & $10.20 \pm 0.41$ & $10.23 \pm 0.52$ & \bfseries $10.60 \pm 0.48$ & \texttt{output} \\
-$214*2$ & $9.59 \pm 0.62$ & $10.07 \pm 0.69$ & $10.30 \pm 0.78$ & $9.98 \pm 0.84$ & $10.03 \pm 0.37$ & \bfseries $10.54 \pm 0.44$ & \texttt{output} \\
-$115*2$ & $10.00 \pm 0.65$ & $10.02 \pm 0.88$ & $10.13 \pm 0.43$ & $10.23 \pm 0.50$ & $9.71 \pm 0.65$ & \bfseries $10.39 \pm 0.53$ & \texttt{output} \\
-$59*2$ & $9.92 \pm 0.75$ & $9.66 \pm 0.74$ & $10.10 \pm 0.61$ & \bfseries $10.34 \pm 0.53$ & $10.05 \pm 0.67$ & $10.31 \pm 0.45$ & \texttt{full} \\
-$30*2$ & $9.46 \pm 0.67$ & $10.25 \pm 0.78$ & $10.03 \pm 0.87$ & $10.17 \pm 0.43$ & $10.20 \pm 0.48$ & \bfseries $10.70 \pm 0.45$ & \texttt{output} \\
-$16*2$ & $10.11 \pm 0.68$ & $10.00 \pm 0.81$ & $9.86 \pm 0.55$ & $10.26 \pm 0.45$ & $9.86 \pm 0.53$ & \bfseries $10.51 \pm 0.48$ & \texttt{output} \\
-$8*2$ & $10.22 \pm 0.50$ & $10.06 \pm 0.36$ & $10.26 \pm 0.47$ & \bfseries $10.52 \pm 0.51$ & $10.05 \pm 0.62$ & $10.46 \pm 0.44$ & \texttt{full} \\
-$4*2$ & $11.82 \pm 4.02$ & $14.45 \pm 5.15$ & $10.95 \pm 3.09$ & \bfseries $14.72 \pm 6.13$ & $12.59 \pm 4.16$ & $14.68 \pm 5.87$ & \texttt{full} \\
-$2048*1$ & $9.87 \pm 0.53$ & $10.03 \pm 0.63$ & $10.01 \pm 0.61$ & $9.83 \pm 0.66$ & $9.98 \pm 0.81$ & \bfseries $10.57 \pm 0.50$ & \texttt{output} \\
-$1024*1$ & $9.86 \pm 0.55$ & $10.14 \pm 0.87$ & $9.99 \pm 0.34$ & $10.22 \pm 0.50$ & $10.18 \pm 0.50$ & \bfseries $10.47 \pm 0.51$ & \texttt{output} \\
-$512*1$ & $10.08 \pm 0.67$ & $9.66 \pm 0.52$ & $10.11 \pm 0.71$ & $10.14 \pm 0.68$ & $9.97 \pm 0.61$ & \bfseries $10.49 \pm 0.52$ & \texttt{output} \\
-$256*1$ & $10.04 \pm 0.62$ & $10.00 \pm 0.63$ & $10.09 \pm 0.69$ & $10.16 \pm 0.41$ & $10.02 \pm 0.63$ & \bfseries $10.59 \pm 0.45$ & \texttt{output} \\
-$128*1$ & $10.17 \pm 0.53$ & $9.91 \pm 0.53$ & $10.19 \pm 0.44$ & $9.65 \pm 0.52$ & $10.18 \pm 0.44$ & \bfseries $10.59 \pm 0.46$ & \texttt{output} \\
-$64*1$ & $9.70 \pm 0.38$ & $10.09 \pm 0.70$ & $10.27 \pm 0.46$ & $10.33 \pm 0.54$ & $9.98 \pm 0.65$ & \bfseries $10.52 \pm 0.47$ & \texttt{output} \\
-$32*1$ & $9.67 \pm 0.53$ & $9.74 \pm 0.38$ & $10.25 \pm 0.52$ & \bfseries $10.31 \pm 0.45$ & \bfseries $10.32 \pm 0.57$ & $10.14 \pm 0.68$ & Tie: \texttt{full}/\texttt{hidden} \\
-$16*1$ & $9.93 \pm 0.56$ & $9.43 \pm 0.65$ & $10.15 \pm 0.44$ & \bfseries $10.43 \pm 0.47$ & $10.06 \pm 0.49$ & $10.35 \pm 0.54$ & \texttt{full} \\
-$8*1$ & $9.77 \pm 0.85$ & $10.14 \pm 0.41$ & $9.92 \pm 0.62$ & $10.39 \pm 0.49$ & $9.97 \pm 0.81$ & \bfseries $10.53 \pm 0.43$ & \texttt{output} \\
-$4*1$ & $9.85 \pm 0.67$ & $10.80 \pm 1.60$ & $10.19 \pm 0.49$ & $10.32 \pm 0.54$ & $10.14 \pm 0.71$ & \bfseries $12.97 \pm 4.92$ & \texttt{output} \\
-$2*1$ & $15.77 \pm 5.42$ & $13.58 \pm 6.13$ & $12.01 \pm 3.69$ & $13.88 \pm 5.43$ & $11.82 \pm 2.88$ & \bfseries $18.57 \pm 5.37$ & \texttt{output} \\
+$56*56$ & \bfseries $11.01 \pm 0.03$ & \bfseries $11.02 \pm 0.00$ & $10.93 \pm 0.28$ & \bfseries $11.02 \pm 0.00$ & $10.90 \pm 0.36$ & \bfseries $11.02 \pm 0.00$ & Tie: \texttt{none}/\texttt{decay}/\texttt{full}/\texttt{output} \\
+$44*44$ & $10.92 \pm 0.27$ & \bfseries $11.02 \pm 0.00$ & $10.90 \pm 0.35$ & $10.75 \pm 0.42$ & $10.92 \pm 0.27$ & \bfseries $11.02 \pm 0.00$ & Tie: \texttt{decay}/\texttt{output} \\
+$35*35$ & \bfseries $10.84 \pm 0.36$ & $10.65 \pm 0.54$ & $10.54 \pm 0.60$ & \bfseries $10.83 \pm 0.37$ & $10.81 \pm 0.43$ & $10.71 \pm 0.47$ & Tie: \texttt{none}/\texttt{full} \\
+$32*32$ & $10.57 \pm 0.56$ & $10.90 \pm 0.36$ & $10.62 \pm 0.48$ & $10.56 \pm 0.57$ & $10.63 \pm 0.59$ & \bfseries $11.00 \pm 0.04$ & \texttt{output} \\
+$31*31$ & $10.78 \pm 0.44$ & $10.51 \pm 0.50$ & $10.55 \pm 0.59$ & $10.35 \pm 0.56$ & $10.66 \pm 0.52$ & \bfseries $11.02 \pm 0.00$ & \texttt{output} \\
+$30*30$ & $10.73 \pm 0.40$ & $10.61 \pm 0.50$ & $10.67 \pm 0.52$ & $10.79 \pm 0.45$ & \bfseries $11.01 \pm 0.03$ & $10.90 \pm 0.36$ & \texttt{hidden} \\
+$29*29$ & $10.72 \pm 0.40$ & $10.59 \pm 0.52$ & $10.50 \pm 0.74$ & \bfseries $10.91 \pm 0.27$ & $10.64 \pm 0.53$ & $10.67 \pm 0.52$ & \texttt{full} \\
+$28*28$ & $10.67 \pm 0.54$ & $10.39 \pm 0.53$ & $10.64 \pm 0.58$ & $10.51 \pm 0.60$ & $10.66 \pm 0.54$ & \bfseries $10.92 \pm 0.27$ & \texttt{output} \\
+$27*27$ & $10.56 \pm 0.54$ & $10.25 \pm 0.50$ & $10.46 \pm 0.57$ & $10.72 \pm 0.46$ & $10.42 \pm 0.61$ & \bfseries $10.93 \pm 0.28$ & \texttt{output} \\
+$26*26$ & \bfseries $16.78 \pm 18.86$ & $10.13 \pm 0.71$ & $10.19 \pm 0.45$ & $10.70 \pm 0.48$ & $10.56 \pm 0.55$ & $16.18 \pm 15.52$ & \texttt{none} \\
+$25*25$ & $10.37 \pm 0.52$ & \bfseries $10.84 \pm 0.37$ & $10.49 \pm 0.53$ & $10.56 \pm 0.46$ & \bfseries $10.84 \pm 0.37$ & \bfseries $10.84 \pm 0.36$ & Tie: \texttt{decay}/\texttt{hidden}/\texttt{output} \\
+$24*24$ & $10.63 \pm 0.43$ & $10.27 \pm 0.51$ & \bfseries $10.92 \pm 0.27$ & $10.70 \pm 0.48$ & $10.35 \pm 0.75$ & \bfseries $10.93 \pm 0.28$ & Tie: \texttt{dropout}/\texttt{output} \\
+$23*23$ & $10.50 \pm 0.53$ & $10.61 \pm 0.47$ & $10.71 \pm 0.49$ & $10.44 \pm 0.55$ & $10.69 \pm 0.49$ & \bfseries $10.89 \pm 0.39$ & \texttt{output} \\
+$22*22$ & $10.00 \pm 0.82$ & $10.33 \pm 0.75$ & $10.10 \pm 0.49$ & $10.58 \pm 0.73$ & $10.40 \pm 0.46$ & \bfseries $10.98 \pm 0.05$ & \texttt{output} \\
+$21*21$ & $10.53 \pm 0.59$ & $10.17 \pm 0.69$ & $10.39 \pm 0.48$ & $10.61 \pm 0.51$ & $10.42 \pm 0.57$ & \bfseries $10.80 \pm 0.45$ & \texttt{output} \\
+$20*20$ & $10.13 \pm 0.45$ & $10.69 \pm 0.48$ & $10.19 \pm 0.54$ & $10.59 \pm 0.74$ & $10.52 \pm 0.51$ & \bfseries $11.02 \pm 0.00$ & \texttt{output} \\
+$19*19$ & $11.34 \pm 3.02$ & \bfseries $17.24 \pm 20.88$ & $11.50 \pm 2.98$ & $10.46 \pm 0.55$ & $10.46 \pm 0.58$ & $10.61 \pm 0.48$ & \texttt{decay} \\
+$18*18$ & $10.48 \pm 0.51$ & $10.22 \pm 0.74$ & $10.18 \pm 0.39$ & $11.20 \pm 2.74$ & $10.11 \pm 0.47$ & \bfseries $18.87 \pm 17.87$ & \texttt{output} \\
+$17*17$ & $16.18 \pm 19.01$ & $10.17 \pm 0.69$ & $10.37 \pm 0.50$ & $12.76 \pm 4.35$ & \bfseries $24.56 \pm 26.11$ & $12.40 \pm 3.88$ & \texttt{hidden} \\
+$16*16$ & $11.14 \pm 3.18$ & \bfseries $23.76 \pm 25.24$ & $10.13 \pm 0.71$ & $23.52 \pm 23.73$ & $18.04 \pm 18.37$ & $23.64 \pm 20.87$ & \texttt{decay} \\
+$15*15$ & $11.38 \pm 3.05$ & $11.57 \pm 2.63$ & $20.06 \pm 18.82$ & $26.67 \pm 22.60$ & $12.55 \pm 4.36$ & \bfseries $36.52 \pm 26.21$ & \texttt{output} \\
+$14*14$ & $23.18 \pm 26.84$ & $12.83 \pm 5.34$ & $12.66 \pm 8.67$ & $13.26 \pm 4.69$ & $25.31 \pm 26.00$ & \bfseries $32.08 \pm 22.41$ & \texttt{output} \\
+$13*13$ & $17.16 \pm 21.46$ & $11.91 \pm 3.37$ & $12.49 \pm 4.32$ & $18.68 \pm 18.01$ & $16.21 \pm 14.60$ & \bfseries $26.49 \pm 21.26$ & \texttt{output} \\
+$12*12$ & $10.23 \pm 0.62$ & $13.14 \pm 4.54$ & $11.25 \pm 3.64$ & $22.61 \pm 18.67$ & $10.84 \pm 3.03$ & \bfseries $27.06 \pm 23.59$ & \texttt{output} \\
+$11*11$ & $10.81 \pm 2.37$ & $11.14 \pm 2.46$ & $11.12 \pm 3.18$ & $36.10 \pm 26.46$ & $20.67 \pm 18.70$ & \bfseries $44.24 \pm 22.97$ & \texttt{output} \\
+$10*10$ & $17.23 \pm 21.59$ & $12.26 \pm 4.84$ & $16.03 \pm 7.53$ & $17.68 \pm 11.81$ & $19.85 \pm 15.51$ & \bfseries $26.20 \pm 18.87$ & \texttt{output} \\
+$9*9$ & $20.42 \pm 18.24$ & $13.06 \pm 5.05$ & $14.05 \pm 6.51$ & $18.39 \pm 11.12$ & $18.32 \pm 13.57$ & \bfseries $24.06 \pm 17.72$ & \texttt{output} \\
+$8*8$ & $15.00 \pm 6.66$ & $19.51 \pm 17.65$ & $11.69 \pm 3.93$ & $25.16 \pm 11.06$ & $14.70 \pm 6.38$ & \bfseries $27.96 \pm 17.22$ & \texttt{output} \\
+$7*7$ & $20.99 \pm 20.96$ & $15.44 \pm 6.46$ & $15.48 \pm 7.21$ & $25.02 \pm 14.61$ & $20.14 \pm 12.01$ & \bfseries $44.32 \pm 17.95$ & \texttt{output} \\
+$6*6$ & $20.79 \pm 19.33$ & $20.30 \pm 17.55$ & $20.44 \pm 12.59$ & \bfseries $29.55 \pm 7.78$ & $24.48 \pm 12.64$ & $23.20 \pm 17.23$ & \texttt{full} \\
+$5*5$ & $14.93 \pm 5.22$ & $17.30 \pm 12.10$ & $18.27 \pm 13.38$ & \bfseries $25.70 \pm 3.52$ & $19.07 \pm 9.26$ & $25.08 \pm 14.18$ & \texttt{full} \\
+$4*4$ & $30.30 \pm 21.80$ & \bfseries $34.51 \pm 28.07$ & $17.98 \pm 8.90$ & $26.77 \pm 10.55$ & $17.79 \pm 7.12$ & $33.09 \pm 15.13$ & \texttt{decay} \\
+$3*3$ & $26.04 \pm 17.78$ & $28.45 \pm 19.36$ & \bfseries $34.73 \pm 14.75$ & $22.82 \pm 8.99$ & $15.81 \pm 4.84$ & $28.35 \pm 15.06$ & \texttt{dropout} \\
+$2*2$ & $23.54 \pm 17.00$ & $27.24 \pm 14.06$ & $24.95 \pm 15.18$ & $19.81 \pm 5.41$ & $18.93 \pm 4.39$ & \bfseries $29.36 \pm 10.44$ & \texttt{output} \\
+$1*1$ & $18.84 \pm 3.85$ & $18.76 \pm 3.94$ & $18.52 \pm 5.39$ & \bfseries $23.20 \pm 2.04$ & $13.07 \pm 3.63$ & $22.40 \pm 1.63$ & \texttt{full} \\
+$632*4$ & $9.90 \pm 0.82$ & $9.69 \pm 0.36$ & $10.11 \pm 0.43$ & $10.13 \pm 0.70$ & $9.72 \pm 0.65$ & \bfseries $10.51 \pm 0.48$ & \texttt{output} \\
+$425*4$ & $9.98 \pm 0.53$ & $10.21 \pm 0.91$ & $10.00 \pm 0.38$ & $10.11 \pm 0.61$ & $10.01 \pm 0.63$ & \bfseries $10.79 \pm 0.35$ & \texttt{output} \\
+$280*4$ & $10.32 \pm 0.50$ & $9.97 \pm 0.81$ & $9.89 \pm 0.15$ & $10.08 \pm 0.60$ & $10.41 \pm 0.78$ & \bfseries $10.51 \pm 0.47$ & \texttt{output} \\
+$185*4$ & $10.23 \pm 0.71$ & $10.35 \pm 0.51$ & $9.87 \pm 0.53$ & $10.20 \pm 0.75$ & $10.47 \pm 0.54$ & \bfseries $10.65 \pm 0.43$ & \texttt{output} \\
+$119*4$ & $9.88 \pm 0.15$ & $10.17 \pm 0.69$ & $9.87 \pm 0.54$ & $10.10 \pm 0.61$ & $10.00 \pm 0.81$ & \bfseries $10.29 \pm 0.43$ & \texttt{output} \\
+$76*4$ & $10.08 \pm 0.67$ & $10.40 \pm 0.48$ & $9.95 \pm 0.55$ & $10.00 \pm 0.55$ & $9.83 \pm 0.14$ & \bfseries $10.61 \pm 0.47$ & \texttt{output} \\
+$47*4$ & $10.03 \pm 0.52$ & $10.03 \pm 0.70$ & $9.80 \pm 0.65$ & $9.97 \pm 0.63$ & $10.02 \pm 0.32$ & \bfseries $10.59 \pm 0.47$ & \texttt{output} \\
+$29*4$ & $9.96 \pm 0.75$ & $10.05 \pm 0.35$ & $10.21 \pm 0.65$ & $10.18 \pm 0.52$ & $10.04 \pm 0.87$ & \bfseries $10.83 \pm 0.36$ & \texttt{output} \\
+$17*4$ & $10.39 \pm 0.51$ & $10.11 \pm 0.68$ & $9.95 \pm 0.65$ & $10.34 \pm 0.54$ & $10.09 \pm 0.70$ & \bfseries $10.57 \pm 0.55$ & \texttt{output} \\
+$939*2$ & $10.12 \pm 0.44$ & $9.82 \pm 0.52$ & $9.81 \pm 0.52$ & $10.20 \pm 0.51$ & $10.47 \pm 0.58$ & \bfseries $10.64 \pm 0.44$ & \texttt{output} \\
+$588*2$ & $9.83 \pm 0.42$ & \bfseries $10.30 \pm 0.45$ & $10.24 \pm 0.51$ & $10.24 \pm 0.49$ & $9.97 \pm 0.81$ & $10.18 \pm 0.40$ & \texttt{decay} \\
+$354*2$ & $10.05 \pm 0.33$ & $10.08 \pm 0.69$ & $10.08 \pm 0.71$ & $10.11 \pm 0.46$ & $9.99 \pm 0.64$ & \bfseries $10.61 \pm 0.47$ & \texttt{output} \\
+$214*2$ & $9.99 \pm 0.65$ & $9.89 \pm 0.75$ & $10.00 \pm 0.61$ & $10.17 \pm 0.43$ & \bfseries $10.55 \pm 0.53$ & $10.28 \pm 0.48$ & \texttt{hidden} \\
+$115*2$ & $9.81 \pm 0.58$ & $10.12 \pm 0.42$ & $10.27 \pm 0.49$ & $9.99 \pm 0.61$ & $10.19 \pm 0.65$ & \bfseries $10.54 \pm 0.44$ & \texttt{output} \\
+$59*2$ & $9.91 \pm 0.53$ & $9.75 \pm 0.57$ & $10.07 \pm 0.36$ & $10.26 \pm 0.59$ & $10.25 \pm 0.50$ & \bfseries $10.31 \pm 0.44$ & \texttt{output} \\
+$30*2$ & $10.08 \pm 0.32$ & $9.98 \pm 0.14$ & $9.90 \pm 0.54$ & $9.99 \pm 0.61$ & $10.28 \pm 0.46$ & \bfseries $10.58 \pm 0.50$ & \texttt{output} \\
+$16*2$ & $9.89 \pm 0.53$ & $9.89 \pm 0.55$ & $9.88 \pm 0.16$ & $10.30 \pm 0.77$ & $10.11 \pm 0.46$ & \bfseries $10.43 \pm 0.47$ & \texttt{output} \\
+$8*2$ & $9.50 \pm 0.57$ & $10.09 \pm 0.68$ & $10.21 \pm 0.75$ & \bfseries $10.72 \pm 0.40$ & $10.16 \pm 0.72$ & $10.20 \pm 0.40$ & \texttt{full} \\
+$4*2$ & $11.10 \pm 2.68$ & $11.86 \pm 3.58$ & $13.58 \pm 6.96$ & $13.38 \pm 5.09$ & $13.78 \pm 5.51$ & \bfseries $14.35 \pm 5.18$ & \texttt{output} \\
+$2048*1$ & $10.09 \pm 0.67$ & $10.01 \pm 0.37$ & $9.78 \pm 0.84$ & $10.12 \pm 0.47$ & $9.91 \pm 0.56$ & \bfseries $10.47 \pm 0.45$ & \texttt{output} \\
+$1024*1$ & $9.98 \pm 0.35$ & $10.29 \pm 0.58$ & $9.88 \pm 0.53$ & $10.17 \pm 0.86$ & $10.02 \pm 0.61$ & \bfseries $10.51 \pm 0.47$ & \texttt{output} \\
+$512*1$ & $10.00 \pm 0.83$ & $10.17 \pm 0.51$ & $9.98 \pm 0.35$ & $10.22 \pm 0.51$ & $9.87 \pm 0.55$ & \bfseries $10.61 \pm 0.40$ & \texttt{output} \\
+$256*1$ & $9.91 \pm 0.53$ & $9.88 \pm 0.73$ & $10.22 \pm 0.50$ & $9.73 \pm 0.64$ & $10.10 \pm 0.34$ & \bfseries $10.61 \pm 0.42$ & \texttt{output} \\
+$128*1$ & $10.09 \pm 0.44$ & $10.10 \pm 0.71$ & $9.83 \pm 0.42$ & $9.91 \pm 0.75$ & $10.24 \pm 0.46$ & \bfseries $10.32 \pm 0.43$ & \texttt{output} \\
+$64*1$ & $9.89 \pm 0.75$ & $10.23 \pm 0.53$ & $10.07 \pm 0.69$ & $10.25 \pm 0.73$ & $10.26 \pm 0.48$ & \bfseries $10.62 \pm 0.43$ & \texttt{output} \\
+$32*1$ & $10.15 \pm 0.42$ & $9.65 \pm 0.79$ & $10.22 \pm 0.74$ & $10.15 \pm 0.67$ & $9.80 \pm 0.54$ & \bfseries $10.47 \pm 0.43$ & \texttt{output} \\
+$16*1$ & $9.98 \pm 0.62$ & $9.70 \pm 0.76$ & $10.23 \pm 0.67$ & $10.24 \pm 0.48$ & $9.90 \pm 0.53$ & \bfseries $10.46 \pm 0.42$ & \texttt{output} \\
+$8*1$ & $10.00 \pm 0.53$ & $10.01 \pm 0.36$ & $9.94 \pm 0.84$ & \bfseries $10.44 \pm 0.55$ & $10.34 \pm 0.51$ & \bfseries $10.43 \pm 0.47$ & Tie: \texttt{full}/\texttt{output} \\
+$4*1$ & \bfseries $10.80 \pm 2.18$ & $10.05 \pm 0.62$ & $9.91 \pm 0.53$ & $10.48 \pm 0.52$ & $10.10 \pm 0.46$ & $10.55 \pm 0.45$ & \texttt{none} \\
+$2*1$ & $14.69 \pm 4.95$ & $16.78 \pm 5.24$ & $14.73 \pm 7.21$ & $16.75 \pm 5.34$ & $9.58 \pm 0.70$ & \bfseries $16.89 \pm 5.48$ & \texttt{output} \\
+
 \end{longtable}
 \twocolumn
 
@@ -816,7 +921,7 @@ poetry run train -- --arch "[1*512]" --ablation-mode full
 \begin{verbatim}
 poetry run make-design-space-figure
 poetry run make-figure-heatmaps
-poetry run make-convergence-plots --targets "1*2048,18*18"
+poetry run make-convergence-plots --targets "..."
 poetry run make-architecture-table
 poetry run make-trial-accuracy-table
 poetry run regime-classifier
@@ -846,7 +951,7 @@ poetry run sagemaker-estimate-costs
 \subsection*{AWS SageMaker Infrastructure}
 
 \begin{itemize}
-  \item \textbf{Training Jobs}: 588 total jobs across 98 architectures × 6 ablation modes
+  \item \textbf{Training Jobs}: 588 total jobs across 98 architectures times 6 ablation modes
   \item \textbf{Instance Type}: ml.g4dn.xlarge (4 vCPUs, 16GB RAM, 1 GPU)
   \item \textbf{Storage Requirements}: 
     \begin{itemize}
@@ -862,9 +967,9 @@ poetry run sagemaker-estimate-costs
       \item Log parsing: Extracts meta-loop progress, LKG tracking, validation accuracy
     \end{itemize}
   \item \textbf{Job Naming Convention}: \texttt{psa-<depth>x<width>-<mode>-<timestamp>}
-  \item \textbf{Actual Cost}: \$632.19 total (858.5 billable hours at \$0.7364/hr)
-  \item \textbf{Concurrency Efficiency}: 28.3 hours wall-clock time (30x speedup)
-  \item \textbf{Computational Bottleneck}: 2048×1 architecture with dropout mode (28.3 hours)
+  \item \textbf{Actual Cost}: \$640.32 total (869.5 billable hours at \$0.7364/hr)
+  \item \textbf{Concurrency Efficiency}: 27.9 hours wall-clock time (30x speedup)
+  \item \textbf{Longest-Running Job}: 2048*1 architecture with dropout mode (27.9 hours)
 \end{itemize}
 
 \subsection*{Reproducibility}
